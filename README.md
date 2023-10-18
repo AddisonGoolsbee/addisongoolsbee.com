@@ -1,24 +1,14 @@
 # addisongoolsbee.com
 My personal website
-*This project is based on [https://github.com/solidjs/templates]*
 
 ## Usage
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+Install dependencies with: `npm i`
 
-### `npm start`
+To run in development mode: `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
+To test as a static site: `npm run build && npm run serve`
 
 ## Deployment
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+Build and deploy the website with: `npm run deploy`
