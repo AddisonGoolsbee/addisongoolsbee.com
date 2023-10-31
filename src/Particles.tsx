@@ -12,9 +12,9 @@ interface Particle {
 }
 
 const Particles: Component = () => {
-  const SPEED = 1;
-  const SIZE = 7;
-  const GROWTH = 0.05;
+  const SPEED = 0.5;
+  const SIZE = 5;
+  const GROWTH = 0.03;
   const MAX_AMOUNT = 120;
 
   let currentAmount = 0;
