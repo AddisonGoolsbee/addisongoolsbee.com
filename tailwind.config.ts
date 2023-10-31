@@ -7,7 +7,17 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '2p': '2%',
+        '5p': '5%',
+        '7p': '7%',
+        '10p': '10%',
+      },
+      height: {
+        '9/10': '90%',
+      }
+    },
   },
   plugins: [],
 };
