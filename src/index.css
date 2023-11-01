@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 body {
-    overscroll-behavior: none;
+  /* overscroll-behavior: hidden; */
+  overflow: hidden;
 }
 
 @layer components {
-    .link {
-      @apply underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
-    }
+  .link {
+    @apply underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
   }
+}
