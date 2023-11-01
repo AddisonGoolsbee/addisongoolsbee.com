@@ -1,22 +1,22 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}',
-  ],
-  darkMode: 'class',
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}"],
+  darkMode: "class",
   theme: {
     extend: {
       spacing: {
-        '2p': '2%',
-        '5p': '5%',
-        '7p': '7%',
-        '10p': '10%',
+        "2p": "2%",
+        "5p": "5%",
+        "7p": "7%",
+        "10p": "10%",
       },
       height: {
-        '9/10': '90%',
-      }
+        "9/10": "90%",
+      },
+      width: {
+        "11/20": "55%",
+      },
     },
   },
   plugins: [],
