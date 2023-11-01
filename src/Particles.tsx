@@ -18,8 +18,16 @@ const Particles: Component = () => {
   const MAX_AMOUNT = 120;
   const COLOR = "#ddd"
 
+  const [canvasSize, setCanvasSize] = createSignal({ width: window.innerWidth, height: window.innerHeight });
+
   let currentAmount = 0;
   let canvasRef: HTMLCanvasElement | undefined;
+  const particles: Particle[] = [];
+  let animationFrameId: number;
+
+  const handleResize = () => {
+    setCanvasSize({ width: window.innerWidth, height: window.innerHeight });
+  };
 
   const initParticles = () => {
     const canvas = canvasRef;
@@ -27,13 +35,9 @@ const Particles: Component = () => {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-
-    const particles: Particle[] = [];
-    let canvasSize = { width: window.innerWidth, height: window.innerHeight };
-    let animationFrameId: number;
-
-    canvas.width = canvasSize.width;
-    canvas.height = canvasSize.height;
+    
+    canvas.width = canvasSize().width;
+    canvas.height = canvasSize().height;
 
     const createParticle = () => {
       currentAmount++;
@@ -84,6 +88,16 @@ const Particles: Component = () => {
   };
 
   onMount(() => {
+    window.addEventListener('resize', handleResize);
+    initParticles();
+  });
+
+  onCleanup(() => {
+    window.removeEventListener('resize', handleResize);
+    cancelAnimationFrame(animationFrameId);
+  });
+
+  createEffect(() => {
     initParticles();
   });
 

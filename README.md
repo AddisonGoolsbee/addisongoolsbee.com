@@ -20,11 +20,11 @@ Build and deploy the website with: `npm run deploy`
 - add some more decorations to the screen
 - initial page MEET ADDISON followed by fake-scroll scrolldown
 - changelog in header
+- previous versions live demo
 - add other interests to blurb
-- projects page
-- auto-update with github
+- projects page (HUGE)
+- auto-update with new github projects
 - something that reveals the can gif
 - mouse effect
 - secrets
-- blurb bottom has linkedin/github/resume/email
 - phone/narrow layout
