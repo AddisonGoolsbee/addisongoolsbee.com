@@ -12,10 +12,11 @@ interface Particle {
 }
 
 const Particles: Component = () => {
-  const SPEED = 0.5;
-  const SIZE = 5;
-  const GROWTH = 0.03;
+  const SPEED = 0.1;
+  const SIZE = 1;
+  const GROWTH = 0.01;
   const MAX_AMOUNT = 120;
+  const COLOR = "#ddd"
 
   let currentAmount = 0;
   let canvasRef: HTMLCanvasElement | undefined;
@@ -53,7 +54,7 @@ const Particles: Component = () => {
         let p = particles[i];
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.currentSize, 0, Math.PI * 2);
-        ctx.fillStyle = "#8ff";
+        ctx.fillStyle = COLOR;
         ctx.fill();
         p.x += p.speedX;
         p.y += p.speedY;
