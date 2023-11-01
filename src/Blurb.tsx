@@ -4,7 +4,7 @@ import { FiMail, FiFileText } from "solid-icons/fi";
 
 const Blurb: Component = () => {
   return (
-    <div class="absolute top-0 right-0 w-2/3 h-full p-7p pl-10p flex flex-col">
+    <div class="absolute top-0 right-0 w-2/3 h-full p-7p pl-10p flex flex-col animate-pop-in">
       <div class="text-black bg-white bg-opacity-70 z-10 p-8 rounded-sm shadow-2xl flex-grow">
         <p class="text-3xl font-extralight">
           My name is <span class="text-teal-800 font-medium">Addison Goolsbee</span>
