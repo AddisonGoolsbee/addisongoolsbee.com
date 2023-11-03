@@ -10,6 +10,8 @@ const config: Config = {
         "5p": "5%",
         "7p": "7%",
         "10p": "10%",
+        "7vp": "7vh",
+        '22p': '22%',
       },
       height: {
         "9/10": "90%",
@@ -38,7 +40,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
 
 export default config;
