@@ -21,7 +21,6 @@ Build and deploy the website with: `npm run deploy`
 - changelog in header
 - phone/narrow layout
 - something that reveals the can gif
-- website icon
 
 **Version 1.1**
 - create color palette
