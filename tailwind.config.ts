@@ -25,11 +25,16 @@ const config: Config = {
         popIn: {
           "0%": {transform: "scale(0.5)" },
           "100%": {transform: "scale(1)" },
-        }
+        },
+        logo: {
+          "0%": { transform: "translateY(-150%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         "slide-up": "slideUp 1s ease-out forwards",
         "pop-in": "popIn 1s ease-out forwards",
+        "logo": "logo 1s ease-out both"
       },
     },
   },
