@@ -8,7 +8,7 @@ const App: Component = () => {
       <Particles />
       <div class="h-16 text-white flex items-center px-6 z-10"></div>
       <div class="absolute w-full h-9/10 bottom-0 flex items-end" style={{ left: "22%", transform: "translateX(-50%)" }}>
-        <img src="/images/profile.png" alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up" />
+        <img src="/images/profile.png" alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up" draggable="false" />
       </div>
       <Blurb/>
     </div>
