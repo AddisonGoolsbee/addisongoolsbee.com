@@ -11,4 +11,16 @@ body {
   .link {
     @apply underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
   }
+  .blurbButtons {
+    @apply text-white text-4xl transition-transform transform;
+  }
+  .blurbButtons:hover {
+    transform: scale(1.25);
+  }
+  .blurbButtonLabel {
+    @apply absolute bottom-14 px-2 text-sm text-white rounded opacity-0 transition-opacity group-hover:opacity-100;
+    transform: translateX(-50%);
+    left: 50%;
+    white-space: nowrap;
+  }
 }

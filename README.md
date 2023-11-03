@@ -16,15 +16,31 @@ Build and deploy the website with: `npm run deploy`
 
 ## Todo
 
-- create color palette
-- add some more decorations to the screen
-- initial page MEET ADDISON followed by fake-scroll scrolldown
+**Version 1.0**
+- add more content to blurb
 - changelog in header
-- previous versions live demo
-- add other interests to blurb
-- projects page (HUGE)
-- auto-update with new github projects
-- something that reveals the can gif
-- mouse effect
-- secrets
 - phone/narrow layout
+- something that reveals the can gif
+- website icon
+- blurb icon hover effects
+
+**Version 1.1**
+- create color palette
+- initial page MEET ADDISON followed by fake-scroll scrolldown
+- previous versions live demo
+
+**Version 1.2**
+- PROJECTS PAGE
+- secrets
+
+**Future Additions**
+- add some more decorations to the screen
+- auto-update with new github projects
+- mouse effects
+- more secrets
+
+
+#### Inspirations
+- personalsit.es
+- erikboesen.com
+- ericgit.me

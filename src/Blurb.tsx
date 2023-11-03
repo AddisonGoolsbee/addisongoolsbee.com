@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
+import BlurbButton from "./BlurbButton";
 
 const Blurb: Component = () => {
   return (
@@ -17,6 +18,10 @@ const Blurb: Component = () => {
           <a href="https://github.com/addisongoolsbee" target="_blank" class="link">
             Check out some of my projects
           </a>
+          ,&nbsp;or take a look at my&nbsp;
+          <a href="/images/resume.pdf" class="link">
+            resume
+          </a>
         </p>
         <br />
         <p>
@@ -31,18 +36,10 @@ const Blurb: Component = () => {
         </p>
       </div>
       <div class="w-full bg-teal-800 bg-opacity-90 p-5 flex justify-center space-x-7p">
-        <a href="https://www.linkedin.com/in/addisongoolsbee" target="_blank" class="text-white text-4xl">
-          <FaBrandsLinkedin />
-        </a>
-        <a href="https://github.com/addisongoolsbee" target="_blank" class="text-white text-4xl">
-          <FaBrandsGithub />
-        </a>
-        <a href="mailto:addisongoolsbee@gmail.com" class="text-white text-4xl">
-          <FiMail />
-        </a>
-        <a href="/images/resume.pdf" target="_blank" class="text-white text-4xl">
-          <FiFileText />
-        </a>
+        <BlurbButton href="https://www.linkedin.com/in/addisongoolsbee" text="LinkedIn" icon={<FaBrandsLinkedin />}/>
+        <BlurbButton href="https://github.com/addisongoolsbee" text="GitHub" icon={<FaBrandsGithub />}/>
+        <BlurbButton href="mailto:addisongoolsbee@gmail.com" text="Email" icon={<FiMail />}/>
+        <BlurbButton href="images/resume.pdf" text="Resume" icon={<FiFileText />}/>
       </div>
     </div>
   );
