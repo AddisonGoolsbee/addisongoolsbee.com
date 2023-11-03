@@ -12,15 +12,36 @@ body {
     @apply underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
   }
   .blurbButtons {
-    @apply text-white text-4xl transition-transform transform;
+    @apply relative z-20 text-white text-4xl transition-transform transform ;
   }
   .blurbButtons:hover {
     transform: scale(1.25);
   }
   .blurbButtonLabel {
-    @apply absolute bottom-14 px-2 text-sm text-white rounded opacity-0 transition-opacity group-hover:opacity-100;
+    @apply absolute top-14 px-2 text-sm text-white rounded opacity-0 transition-opacity group-hover:opacity-90 z-40;
     transform: translateX(-50%);
     left: 50%;
     white-space: nowrap;
   }
+}
+
+
+/* Custom scrollbar */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: darkgray; 
+  border-radius: 6px; 
+}
+
+/* For IE, Edge, and Firefox */
+.scrollbar-custom {
+  scrollbar-width: thin; 
+  scrollbar-color: darkgray transparent; 
 }
