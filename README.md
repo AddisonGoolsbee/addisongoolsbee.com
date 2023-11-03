@@ -22,7 +22,6 @@ Build and deploy the website with: `npm run deploy`
 - phone/narrow layout
 - something that reveals the can gif
 - website icon
-- blurb icon hover effects
 
 **Version 1.1**
 - create color palette
