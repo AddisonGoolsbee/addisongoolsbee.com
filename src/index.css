@@ -25,6 +25,44 @@ body {
   }
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.menu-enter {
+  animation: slideIn 0.5s forwards;
+}
+
+.menu-exit {
+  animation: slideOut 0.5s forwards;
+}
+
+.changelog-panel {
+  transition: transform 0.3s ease;
+}
+
+.changelog-panel-open {
+  transform: translateX(0);
+}
+
+.changelog-panel-closed {
+  transform: translateX(100%);
+}
+
 
 /* Custom scrollbar */
 .scrollbar-custom::-webkit-scrollbar {

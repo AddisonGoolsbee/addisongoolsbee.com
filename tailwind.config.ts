@@ -32,11 +32,23 @@ const config: Config = {
           "0%": { transform: "translateY(-150%)" },
           "100%": { transform: "translateX(0)" },
         },
+        changelog: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        fadeIn: {
+          "0%": { opacity: '0' },
+          "100%": { opacit: '100' },
+        }
       },
       animation: {
         "slide-up": "slideUp 1s ease-out forwards",
         "pop-in": "popIn 1s ease-out forwards",
-        "logo": "logo 1s ease-out both"
+        "logo": "logo 1s ease-out both",
+        "changelog": "changelog 0.5s ease-out both",
+        "changelog-close": "changelog 0.5s ease-in reverse both",
+        "fade-in": "fadeIn 0.5s ease-out both",
+        "fade-out": "fadeIn 0.5s reverse both",
       },
     },
   },
