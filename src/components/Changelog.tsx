@@ -55,9 +55,6 @@ const Changelog: Component<Props> = (props) => {
       >
         {props.changelogVisible() && (
           <div class="fixed top-0 right-0 w-[330px] h-full bg-gray-50 p-2 z-30 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit" ref={changelogRef}>
-            <button class="underline p-1 select-none" onClick={props.toggleChangelog}>
-              back
-            </button>
             <p class="text-center font-bold text-xl my-3">Changelog</p>
             <p class="text-sm text-gray-700 mb-8 p-1">
               Below is a comprehensive list of the changes to my website over time. The full source code is available on&nbsp;
