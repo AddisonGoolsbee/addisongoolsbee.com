@@ -20,6 +20,7 @@ Build and deploy the website with: `npm run deploy`
 - add more content to blurb
 - changelog in header
 - something that reveals the can gif
+- https bug
 
 **Version 1.1**
 - create color palette
@@ -32,8 +33,6 @@ Build and deploy the website with: `npm run deploy`
 - PROJECTS PAGE
 - secrets
 
-**Bugs To Fix**
-- https is not longer required...?
 
 **Future Additions**
 - add some more decorations to the screen

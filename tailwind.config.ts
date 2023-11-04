@@ -19,6 +19,9 @@ const config: Config = {
       width: {
         "11/20": "55%",
       },
+      scale: {
+        '200': '2', // This sets the scale to 200%
+      },
       keyframes: {
         slideUp: {
           "0%": { transform: "translateY(50%)" },
