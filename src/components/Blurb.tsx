@@ -47,7 +47,7 @@ const Blurb: Component<Props> = (props) => {
             .
           </p>
           <br />
-          <p>When I'm not busy wrestling with code or reveling in my five-gallon water jug collection, I like to indulge in the finer things in life—debating philosophy until 3 AM, juggling, foraging for wild mushrooms, and fueling my Alibaba shopping addiction.</p>
+          <p>When I'm not busy wrestling with code or reveling in my five-gallon water jug collection, I like to indulge in the finer things in life—debating philosophy until 3 AM, juggling, foraging for wild mushrooms, and feeding my Alibaba shopping addiction.</p>
           <br />
           <p>
             Aside from coding, I also am the co-founder of a pineapple soap business on campus, run the&nbsp;
@@ -78,7 +78,7 @@ const Blurb: Component<Props> = (props) => {
           </p>
           <br />
         </div>
-        <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">This website has a few hidden secrets. Try clicking "Addison Goolsbee"</p>
+        <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">This website has a few hidden secrets, try clicking "Addison Goolsbee"</p>
       </div>
       <div class="w-full bg-teal-800 bg-opacity-90 p-5 flex justify-center space-x-7p">
         <BlurbButton href="https://www.linkedin.com/in/addisongoolsbee" text="LinkedIn" icon={<FaBrandsLinkedin />} />

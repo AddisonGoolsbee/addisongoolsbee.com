@@ -16,11 +16,6 @@ Build and deploy the website with: `npm run deploy`
 
 ## Todo
 
-**Version 1.0**
-- add more content to blurb
-- something that reveals the can gif
-- Turn navbar into component
-
 **Version 1.1**
 - create color palette
 - initial page MEET ADDISON followed by fake-scroll scrolldown

@@ -3,6 +3,7 @@ import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
 import { profile } from "console";
+import Navbar from "../components/Navbar";
 
 const Home: Component = () => {
   let imgRef;
@@ -10,8 +11,8 @@ const Home: Component = () => {
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [changelogVisible, setChangelogVisible] = createSignal(false);
-  const [profileSrc, setProfileSrc] = createSignal('/images/profile.png')
-  const [myName, setMyName] = createSignal("Addison Goolsbee")
+  const [profileSrc, setProfileSrc] = createSignal("/images/profile.png");
+  const [myName, setMyName] = createSignal("Addison Goolsbee");
 
   const updateTopPoint = () => {
     if (imgRef) {
@@ -43,28 +44,22 @@ const Home: Component = () => {
   };
 
   const sandwichMode = () => {
-    const newSrc = profileSrc() === '/images/profile.png' ? '/images/sandwich.gif' : '/images/profile.png';
+    const newSrc = profileSrc() === "/images/profile.png" ? "/images/sandwich.gif" : "/images/profile.png";
     setProfileSrc(newSrc);
-    const newName = myName() === 'Addison Goolsbee' ? 'Sandwich' : 'Addison Goolsbee';
-    setMyName(newName)
-  }
+    const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
+    setMyName(newName);
+  };
 
   return (
     <div class="h-screen overflow-hidden relative bg-gray-800">
       <Particles />
-      <div class="h-16 text-white flex flex-row justify-end z-10 pl-4 space-x-4 select-none">
-        <img src="/images/whiteLogo.svg" alt="logo" class="absolute top-0 left-0 ml-4 mt-2 h-auto w-10 sm:w-12 cursor-pointer animate-logo select-none" draggable="false" onClick={() => (window.location.href = "/")} />
-        <div class="flex flex-row items-center space-x-4 animate-navBar pr-4">
-          <button class="text-white cursor-pointer z-20 p-2" onClick={toggleChangelog}>
-            changelog
-          </button>
-        </div>
-      </div>
+      <img src="/images/whiteLogo.svg" alt="logo" class="absolute top-0 left-0 ml-4 mt-2 h-auto w-10 sm:w-12 cursor-pointer animate-logo select-none" draggable="false" onClick={() => (window.location.href = "/")} />
+      <Navbar toggleChangelog={toggleChangelog} />
       <div class="absolute w-5/6 h-9/10 bottom-0 flex items-end left-1/2 transform -translate-x-1/2 sm:left-22p">
         <img src={profileSrc()} alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />
       </div>
       <Show when={imageLoaded()}>
-        <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} myName={myName()}/>
+        <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} myName={myName()} />
       </Show>
       <Changelog changelogVisible={changelogVisible} setChangelogVisible={setChangelogVisible} toggleChangelog={toggleChangelog} />
     </div>
