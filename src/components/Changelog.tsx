@@ -75,13 +75,13 @@ const Changelog: Component<Props> = (props) => {
               version="0.2"
               description="Host change, restarting from scratch"
               changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]}
-              url="/0-2"
+              url="/v0_2"
             />
             <ChangelogVersionCard
               version="0.1"
               description="Template-based site created in 1 hour"
               changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]}
-              url="/0-1"
+              url="/v0_1"
             />
           </div>
         )}

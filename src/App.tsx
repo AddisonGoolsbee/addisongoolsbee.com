@@ -10,8 +10,8 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" component={Home} />
-        <Route path="/0_2" component={v0_2} />
-        <Route path="/0_1" component={v0_1} />
+        <Route path="/v0_2" component={v0_2} />
+        <Route path="/v0_1" component={v0_1} />
       </Routes>
     </>
   );
