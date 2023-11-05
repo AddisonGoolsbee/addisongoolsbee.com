@@ -23,6 +23,9 @@ body {
     left: 50%;
     white-space: nowrap;
   }
+  .navbarButton {
+    @apply text-white cursor-pointer z-20 p-2 transform duration-100 hover:border-b-4 border-white;
+  }
 }
 
 .hyphen-list li::before {

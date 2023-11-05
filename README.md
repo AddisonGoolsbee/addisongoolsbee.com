@@ -34,6 +34,7 @@ Build and deploy the website with: `npm run deploy`
 - mouse effects
 - more secrets
 - QR code page
+- Improved sandwich mode
 
 
 #### Inspirations
