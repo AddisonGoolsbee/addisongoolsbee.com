@@ -5,7 +5,7 @@ import BlurbButton from "./BlurbButton";
 
 type Props = {
   imgTop: number;
-}
+};
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -46,7 +46,7 @@ const Blurb: Component<Props> = (props) => {
             The code is public
           </a>
           .&nbsp;You can look at my previous template-based (lame) website&nbsp;
-          <a href="/images/initialWebsite.png" class="link">
+          <a href="/v0_1" class="link">
             here
           </a>
         </p>
