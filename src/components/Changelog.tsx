@@ -16,14 +16,18 @@ type VersionProps = {
 };
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleOnClick = () => {
-        navigate(props.url)
+  const handleOnClick = () => {
+    if (props.url === "/") {
+      window.location.href = "/"; // to reload page
+    } else {
+      navigate(props.url);
     }
+  };
 
   return (
-    <div class="p-3 bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-300 ease-in-out transform  hover:shadow-2xl active:scale-95 active:shadow-md" onClick={handleOnClick}>
+    <div class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md " onClick={handleOnClick}>
       <p class="text-lg font-bold text-gray-800 mt-1">Version {props.version}</p>
       <p class="text-sm text-gray-600">{props.description}</p>
       <ul class="list-outside list-disc mt-2 text-sm pl-3">
@@ -54,9 +58,9 @@ const Changelog: Component<Props> = (props) => {
         }}
       >
         {props.changelogVisible() && (
-          <div class="fixed top-0 right-0 w-[330px] h-full bg-gray-50 p-2 z-30 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit" ref={changelogRef}>
-            <p class="text-center font-bold text-xl my-3">Changelog</p>
-            <p class="text-sm text-gray-700 mb-8 p-1">
+          <div class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 z-30 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit" ref={changelogRef}>
+            <p class="text-center font-medium text-xl mt-2 mb-5">Changelog</p>
+            <p class="text-sm text-gray-700 mb-8">
               Below is a comprehensive list of the changes to my website over time. The full source code is available on&nbsp;
               <a class="link" href="https://github.com/addisongoolsbee/addisongoolsbee.com" target="_blank">
                 Github
@@ -71,18 +75,8 @@ const Changelog: Component<Props> = (props) => {
               changes={["Home page layout: cutout of myself on left side, blurb on right side", "Glowing dots moving around in the background", "Changelog", "Site logo", "Blurb footer link icons with animations", "Responsive layout", "Initial page load animations", "New copy for the blurb", "Mobile layout"]}
               url="/"
             />
-            <ChangelogVersionCard
-              version="0.2"
-              description="Host change, restarting from scratch"
-              changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]}
-              url="/v0_2"
-            />
-            <ChangelogVersionCard
-              version="0.1"
-              description="Template-based site created in 1 hour"
-              changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]}
-              url="/v0_1"
-            />
+            <ChangelogVersionCard version="0.2" description="Host change, restarting from scratch" changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]} url="/v0_2" />
+            <ChangelogVersionCard version="0.1" description="Template-based site created in 1 hour" changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]} url="/v0_1" />
           </div>
         )}
       </Transition>
