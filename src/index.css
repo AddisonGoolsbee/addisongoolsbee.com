@@ -9,7 +9,7 @@ body {
 
 @layer components {
   .link {
-    @apply underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
+    @apply cursor-pointer underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
   }
   .blurbButtons {
     @apply relative z-20 text-white text-4xl transition-transform transform ;

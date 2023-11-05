@@ -2,6 +2,7 @@ import { onMount, type Component, onCleanup, createSignal, Show, createEffect } 
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
+import { profile } from "console";
 
 const Home: Component = () => {
   let imgRef;
@@ -9,6 +10,8 @@ const Home: Component = () => {
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [changelogVisible, setChangelogVisible] = createSignal(false);
+  const [profileSrc, setProfileSrc] = createSignal('/images/profile.png')
+  const [myName, setMyName] = createSignal("Addison Goolsbee")
 
   const updateTopPoint = () => {
     if (imgRef) {
@@ -39,6 +42,13 @@ const Home: Component = () => {
     setChangelogVisible(!changelogVisible());
   };
 
+  const sandwichMode = () => {
+    const newSrc = profileSrc() === '/images/profile.png' ? '/images/sandwich.gif' : '/images/profile.png';
+    setProfileSrc(newSrc);
+    const newName = myName() === 'Addison Goolsbee' ? 'Sandwich' : 'Addison Goolsbee';
+    setMyName(newName)
+  }
+
   return (
     <div class="h-screen overflow-hidden relative bg-gray-800">
       <Particles />
@@ -51,10 +61,10 @@ const Home: Component = () => {
         </div>
       </div>
       <div class="absolute w-5/6 h-9/10 bottom-0 flex items-end left-1/2 transform -translate-x-1/2 sm:left-22p">
-        <img src="/images/profile.png" alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />
+        <img src={profileSrc()} alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />
       </div>
       <Show when={imageLoaded()}>
-        <Blurb imgTop={topPoint()} />
+        <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} myName={myName()}/>
       </Show>
       <Changelog changelogVisible={changelogVisible} setChangelogVisible={setChangelogVisible} toggleChangelog={toggleChangelog} />
     </div>
