@@ -18,9 +18,7 @@ Build and deploy the website with: `npm run deploy`
 
 **Version 1.0**
 - add more content to blurb
-- changelog in header
 - something that reveals the can gif
-- https bug
 
 **Version 1.1**
 - create color palette
