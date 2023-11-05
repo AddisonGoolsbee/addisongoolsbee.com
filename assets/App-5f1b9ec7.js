@@ -1,0 +1,1 @@
+import{t as e}from"./index-4b141f44.js";const t=e(`<p class="text-4xl text-black text-center py-20">Hey there, how's it going? I'm currently in the process of migrating my website to Solid.js, come check back soon for more updates! You can reach me at addisongoolsbee@gmail.com`),s=()=>t();export{s as default};
