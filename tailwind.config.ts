@@ -56,7 +56,7 @@ const config: Config = {
         "changelog-close": "changelog 0.5s ease-in reverse both",
         "fade-in": "fadeIn 0.5s ease-out both",
         "fade-out": "fadeIn 0.5s reverse both",
-        "navBar": "navBar 1s ease-in-out 1.5s both"
+        "navBar": "navBar 1s ease-in-out 1.5s backwards"
       },
     },
   },
