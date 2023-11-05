@@ -42,6 +42,10 @@ const config: Config = {
         fadeIn: {
           "0%": { opacity: '0' },
           "100%": { opacit: '100' },
+        },
+        navBar: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
         }
       },
       animation: {
@@ -52,6 +56,7 @@ const config: Config = {
         "changelog-close": "changelog 0.5s ease-in reverse both",
         "fade-in": "fadeIn 0.5s ease-out both",
         "fade-out": "fadeIn 0.5s reverse both",
+        "navBar": "navBar 1s ease-in-out 1.5s both"
       },
     },
   },

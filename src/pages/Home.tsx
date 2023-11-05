@@ -42,9 +42,9 @@ const Home: Component = () => {
   return (
     <div class="h-screen overflow-hidden relative bg-gray-800">
       <Particles />
-      <div class="h-16 text-white flex flex-row justify-end z-10 px-4 space-x-4 select-none">
+      <div class="h-16 text-white flex flex-row justify-end z-10 pl-4 space-x-4 select-none">
         <img src="/images/whiteLogo.svg" alt="logo" class="absolute top-0 left-0 ml-4 mt-2 h-auto w-10 sm:w-12 cursor-pointer animate-logo select-none" draggable="false" onClick={() => (window.location.href = "/")} />
-        <div class="flex flex-row items-center space-x-4">
+        <div class="flex flex-row items-center space-x-4 animate-navBar pr-4">
           <button class="text-white cursor-pointer z-20 p-2" onClick={toggleChangelog}>
             changelog
           </button>
