@@ -56,7 +56,7 @@ const Blurb: Component<Props> = (props) => {
             </a>
             , am in a&nbsp;
             <a href="https://campuspress.yale.edu/danceworks/" class="link" target="_blank">
-              Dance Group
+              dance group
             </a>
             , and am involved in a number of various other clubs on campus.
           </p>
