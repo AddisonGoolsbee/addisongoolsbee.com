@@ -19,9 +19,9 @@ Build and deploy the website with: `npm run deploy`
 **Version 1.1**
 - create color palette
 - initial page MEET ADDISON followed by fake-scroll scrolldown
-- previous versions live demo
 - custom font(s)
 - more button hover effects
+- Fix mobile layout on safari with the url bar (also in landscape mode)
 
 **Version 1.2**
 - PROJECTS PAGE
