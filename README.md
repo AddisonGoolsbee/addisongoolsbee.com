@@ -17,24 +17,29 @@ Build and deploy the website with: `npm run deploy`
 ## Todo
 
 **Version 1.1**
-- create color palette
+- Figma template
+    - Grid-based slight redesign
+    - Color palette
 - initial page MEET ADDISON followed by fake-scroll scrolldown
 - custom font(s)
-- more button hover effects
 - Fix mobile layout on safari with the url bar (also in landscape mode)
 
 **Version 1.2**
 - PROJECTS PAGE
-- secrets
+
+**Version 1.3**
+- more button hover effects
+- many more secrets
+- custom mouse effect(s)
+- Something interesting button
 
 
 **Future Additions**
-- add some more decorations to the screen
 - auto-update with new github projects
-- mouse effects
-- more secrets
 - QR code page
 - Improved sandwich mode
+- Playable Unity games 
+
 
 
 #### Inspirations
