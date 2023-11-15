@@ -23,6 +23,10 @@ Build and deploy the website with: `npm run deploy`
 - initial page MEET ADDISON followed by fake-scroll scrolldown
 - custom font(s)
 - Fix mobile layout on safari with the url bar (also in landscape mode)
+- Google search analytics
+- Have the website actually appear on google search
+    - Make a sitemap
+    - Canonical site
 
 **Version 1.2**
 - PROJECTS PAGE

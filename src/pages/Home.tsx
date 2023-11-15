@@ -2,10 +2,11 @@ import { onMount, type Component, onCleanup, createSignal, Show, createEffect } 
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
-import { profile } from "console";
 import Navbar from "../components/Navbar";
+import { useCanonical } from "../utils/canonical";
 
 const Home: Component = () => {
+  useCanonical();
   let imgRef;
 
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
