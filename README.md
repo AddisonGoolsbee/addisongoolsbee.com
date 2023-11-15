@@ -17,6 +17,8 @@ Build and deploy the website with: `npm run deploy`
 ## Todo
 
 **Version 1.1**
+- Make new git branch and implement standardized branching rules
+- Move v1.0 into previousVersions 
 - Figma template
     - Grid-based slight redesign
     - Color palette
@@ -27,6 +29,9 @@ Build and deploy the website with: `npm run deploy`
 - Have the website actually appear on google search
     - Make a sitemap
     - Canonical site
+- custom link animations & design
+- Go back feature for previous versions in changelog
+- Get someone to look at and edit my copy
 
 **Version 1.2**
 - PROJECTS PAGE

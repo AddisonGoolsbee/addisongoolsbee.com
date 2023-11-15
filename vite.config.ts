@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
+import {viteStaticCopy} from 'vite-plugin-static-copy'
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
@@ -10,6 +11,18 @@ export default defineConfig({
     */
     // devtools(),
     solidPlugin(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'sitemap.xml',
+          dest: ''
+        },
+        {
+          src: 'CNAME',
+          dest: ''
+        }
+      ]
+    })
   ],
   server: {
     port: 3000,
