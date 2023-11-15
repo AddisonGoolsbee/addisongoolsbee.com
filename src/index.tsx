@@ -4,7 +4,6 @@ import { render } from 'solid-js/web';
 import { Router } from "@solidjs/router";
 
 import App from './App';
-import Point2 from './previousVersions/0.2/App';
 
 const root = document.getElementById('root');
 
@@ -22,17 +21,3 @@ render(
   ),
   document.getElementById("root")
 );
-
-// render(
-//   () => (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<App />} />
-//         <Route path="/0.2" element={<Point2 />} />
-//       </Routes>
-//     </Router>
-//   ),
-//   document.getElementById("root")
-// );
-
-// render(() => <App />, root!);

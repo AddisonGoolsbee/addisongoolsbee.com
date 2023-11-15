@@ -70,7 +70,7 @@ const Blurb: Component<Props> = (props) => {
           </p>
           <br />
           <p>
-            Feeling nostalgic? See previous iterations of my webiste&nbsp;
+            Feeling nostalgic? See previous iterations of my website&nbsp;
             <a onClick={props.toggleChangelog} class="link">
               here
             </a>
