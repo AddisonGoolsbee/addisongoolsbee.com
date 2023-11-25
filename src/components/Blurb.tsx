@@ -50,7 +50,7 @@ const Blurb: Component<Props> = (props) => {
           <p>When I'm not busy wrestling with code or reveling in my five-gallon water jug collection, I like to indulge in the finer things in life—debating philosophy until 3 AM, juggling, foraging for wild mushrooms, and feeding my Alibaba shopping addiction.</p>
           <br />
           <p>
-            Aside from coding, I also am the co-founder of a pineapple soap business on campus, run the&nbsp;
+            Aside from coding, I am also the cofounder of a pineapple soap business on campus, am president of the&nbsp;
             <a href="https://yalecomputersociety.org" class="link" target="_blank">
               Yale Computer Society
             </a>
@@ -66,7 +66,7 @@ const Blurb: Component<Props> = (props) => {
             <a href="https://github.com/addisongoolsbee/addisongoolsbee.com" class="link">
               The code is public
             </a>
-            .
+            . It's on pause for now, but it's not finished—not even close!
           </p>
           <br />
           <p>
