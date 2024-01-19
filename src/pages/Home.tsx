@@ -12,7 +12,7 @@ const Home: Component = () => {
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [changelogVisible, setChangelogVisible] = createSignal(false);
-  const [profileSrc, setProfileSrc] = createSignal("/images/profile.png");
+  const [profileSrc, setProfileSrc] = createSignal("/images/profile.webp");
   const [myName, setMyName] = createSignal("Addison Goolsbee");
 
   const updateTopPoint = () => {
