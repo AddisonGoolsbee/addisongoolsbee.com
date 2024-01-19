@@ -1,0 +1,1 @@
+import{t as e}from"./index-a5849ddd.js";import{u as t}from"./canonical-47ec21dd.js";const o=e(`<p class="text-4xl text-black text-center py-20">Hey there, how's it going? I'm currently in the process of migrating my website to Solid.js, come check back soon for more updates! You can reach me at addisongoolsbee@gmail.com`),r=()=>(t(),o());export{r as default};
