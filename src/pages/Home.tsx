@@ -9,18 +9,33 @@ const Home: Component = () => {
   useCanonical();
   let imgRef;
 
+  const profileURL = "/images/profile.webp";
+  const sandwichURL = "/images/sandwich.webp"
+
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [changelogVisible, setChangelogVisible] = createSignal(false);
-  const [profileSrc, setProfileSrc] = createSignal("/images/profile.webp");
+  const [profileSrc, setProfileSrc] = createSignal(profileURL);
   const [myName, setMyName] = createSignal("Addison Goolsbee");
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
 
-    onMount(() => {
+  onMount(() => {
+      const img = new Image();
+      img.onload = () => setIsProfileLoaded(true);
+      img.src = profileSrc();
+
+      setTimeout(() => {
         const img = new Image();
-        img.onload = () => setIsProfileLoaded(true);
-        img.src = profileSrc();
-    });
+        img.src = sandwichURL;
+      }, 0);
+
+      window.addEventListener("resize", updateTopPoint);
+      updateTopPoint();
+  });
+
+  onCleanup(() => {
+    window.removeEventListener("resize", updateTopPoint);
+  });
 
   const updateTopPoint = () => {
     if (imgRef) {
@@ -38,21 +53,12 @@ const Home: Component = () => {
     setImageLoaded(true);
   };
 
-  onMount(() => {
-    window.addEventListener("resize", updateTopPoint);
-    updateTopPoint();
-  });
-
-  onCleanup(() => {
-    window.removeEventListener("resize", updateTopPoint);
-  });
-
   const toggleChangelog = () => {
     setChangelogVisible(!changelogVisible());
   };
 
   const sandwichMode = () => {
-    const newSrc = profileSrc() === "/images/profile.png" ? "/images/sandwich.gif" : "/images/profile.png";
+    const newSrc = profileSrc() === profileURL ? sandwichURL : profileURL;
     setProfileSrc(newSrc);
     const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
     setMyName(newName);
