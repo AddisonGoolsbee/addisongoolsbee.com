@@ -33,6 +33,7 @@ Build and deploy the website with: `npm run deploy`
 - custom link animations & design
 - Go back feature for previous versions in changelog
 - Get someone to look at and edit my copy
+- Fix sandwich gif on Safari
 
 ### Version 1.2
 
