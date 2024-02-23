@@ -34,7 +34,6 @@ Build and deploy the website with: `npm run deploy`
 - Go back feature for previous versions in changelog
 - Get someone to look at and edit my copy
 - Fix sandwich gif on Safari
-- Remove ds stores
 - change navbar button hover animation to yalecomputersoceity.org
 
 ### Version 1.2
