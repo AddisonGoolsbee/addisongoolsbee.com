@@ -19,6 +19,7 @@
 - Get someone to look at and edit my copy
 - Fix sandwich gif on Safari
 - change navbar button hover animation to yalecomputersoceity.org
+- Fix favicon on google search page
 
 ## Version 1.2
 

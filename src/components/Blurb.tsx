@@ -22,7 +22,7 @@ const Blurb: Component<Props> = (props) => {
   });
 
   return (
-    <div class={`absolute right-0 top-0 w-full p-5p pt-7vp flex flex-col animate-pop-in sm:w-2/3 sm:pl-10p sm:mb-0 sm:pb-7vp`} style={{ bottom: `${Math.ceil(props.imgTop)}px` }}>
+    <div class={`absolute right-0 top-0 w-full p-5p pt-7vp flex flex-col animate-pop-in sm:w-2/3 sm:pl-10p sm:mb-0 sm:pb-7vp sm:pt-8vp`} style={{ bottom: `${Math.ceil(props.imgTop)}px` }}>
       <div class="text-black bg-white bg-opacity-70 z-10 rounded-sm shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
         <div class="p-5p">
           <p class="text-3xl font-extralight leading-normal">
@@ -33,7 +33,7 @@ const Blurb: Component<Props> = (props) => {
             </span>
           </p>
           <div class="border-t-2 border-black w-full mt-5p mb-7p"></div>
-          <p> Hey there! I'm a {props.myName === "Addison Goolsbee" ? "junior" : props.myName.toLowerCase()} at Yale University studying computer science. Welcome to my website! </p>
+          <p> Hey there! I'm a {props.myName === "Addison Goolsbee" ? "senior" : props.myName.toLowerCase()} at Yale University studying computer science. Welcome to my website! </p>
           <br />
           <p>
             I'm a fullstack developer with a particular interest in system design/development. I love building things—useful applications, extremely useless applications, video games, physical devices, water jug art installations, and more.&nbsp;
