@@ -38,3 +38,4 @@
 - QR code page
 - Improved sandwich mode
 - Playable Unity games
+- My Name is Printer (picture of a printer) on command+P
