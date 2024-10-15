@@ -45,7 +45,7 @@ const config: Config = {
           "100%": { opacit: '100' },
         },
         navBar: {
-          "0%": { transform: "translateX(100%)" },
+          "0%": { transform: "translateY(-150%)" },
           "100%": { transform: "translateX(0)" },
         }
       },
@@ -57,7 +57,7 @@ const config: Config = {
         "changelog-close": "changelog 0.5s ease-in reverse both",
         "fade-in": "fadeIn 0.5s ease-out both",
         "fade-out": "fadeIn 0.5s reverse both",
-        "navBar": "navBar 1s ease-in-out 1.5s backwards"
+        "navBar": "navBar 0.9s ease-out backwards"
       },
     },
   },

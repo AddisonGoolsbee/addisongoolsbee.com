@@ -70,16 +70,10 @@ const Changelog: Component<Props> = (props) => {
               You can click on any version to pull up a demo of what the site used to look like
             </p>
             <ChangelogVersionCard
-              version="1.1"
-              description="Party Mode"
-              changes={["Under construction!"]}
-              url="/"
-            />
-            <ChangelogVersionCard
               version="1.0"
               description="Fully-funcitonal MVP built in Solid.js"
               changes={["Home page layout: cutout of myself on left, blurb on right", "Rewritten blurb", "Glowing dots in the background", "Changelog", "Site logo", "Blurb footer link icons with animations", "Responsive layout", "Initial page load animations", "Mobile layout", "Sandwich mode"]}
-              url="/v1_0"
+              url="/"
             />
             <ChangelogVersionCard version="0.2" description="Host change, restarting from scratch" changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]} url="/v0_2" />
             <ChangelogVersionCard version="0.1" description="Template-based site created in 1 hour" changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]} url="/v0_1" />

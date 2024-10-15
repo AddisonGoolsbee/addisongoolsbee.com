@@ -2,9 +2,9 @@ import { Routes, Route } from "@solidjs/router";
 import { lazy } from "solid-js";
 
 const Home = lazy(() => import("./pages/Home"));
-const v1_0 = lazy(() => import("./previousVersions/1.0/App"));
-const v0_2 = lazy(() => import("./previousVersions/0.2/App"));
-const v0_1 = lazy(() => import("./previousVersions/0.1/App"));
+const v1_0 = lazy(() => import("../1.0/App"));
+const v0_2 = lazy(() => import("../0.2/App"));
+const v0_1 = lazy(() => import("../0.1/App"));
 
 export default function App() {
   return (
