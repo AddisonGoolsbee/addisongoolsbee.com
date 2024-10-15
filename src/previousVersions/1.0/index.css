@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* overscroll-behavior: hidden; */
+  overflow: hidden;
+}
+
+@layer components {
+  .link {
+    @apply cursor-pointer underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
+  }
+  .blurbButtons {
+    @apply relative z-20 text-white text-4xl transition-transform transform ;
+  }
+  .blurbButtons:hover {
+    transform: scale(1.25);
+  }
+  .blurbButtonLabel {
+    @apply absolute top-14 px-2 text-sm text-white rounded opacity-0 transition-opacity group-hover:opacity-90 z-40;
+    transform: translateX(-50%);
+    left: 50%;
+    white-space: nowrap;
+  }
+  .navbarButton {
+    @apply text-white cursor-pointer z-20 p-2 transform duration-100 hover:border-b-4 border-white;
+  }
+}
+
+.hyphen-list li::before {
+  content: "-";
+  padding-right: px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.menu-enter {
+  animation: slideIn 0.5s forwards;
+}
+
+.menu-exit {
+  animation: slideOut 0.5s forwards;
+}
+
+.changelog-panel {
+  transition: transform 0.3s ease;
+}
+
+.changelog-panel-open {
+  transform: translateX(0);
+}
+
+.changelog-panel-closed {
+  transform: translateX(100%);
+}
+
+
+/* Custom scrollbar */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: rgba(169, 169, 169, 1);
+  border-radius: 6px; 
+}
+
+/* For IE, Edge, and Firefox */
+.scrollbar-custom {
+  scrollbar-width: thin; 
+  scrollbar-color: darkgray transparent; 
+}
+
+/* Custom scrollbar for non-transparent */
+.scrollbar-custom2::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.scrollbar-custom2::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.scrollbar-custom2::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 6px; 
+}
+
+/* For IE, Edge, and Firefox */
+.scrollbar-custom2 {
+  scrollbar-width: thin; 
+  scrollbar-color: gray transparent; 
+}
