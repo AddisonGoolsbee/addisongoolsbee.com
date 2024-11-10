@@ -39,7 +39,7 @@ const Blurb: Component<Props> = (props) => {
   });
 
   return (
-    <div class={`blurb-container absolute right-0 top-0 w-full p-5p pt-7vp flex flex-col animate-pop-in sm:w-2/3 sm:pl-10p sm:mb-0 sm:pb-7vp sm:pt-8vp transition-all`} style={{ bottom: `${Math.ceil(props.imgTop)}px` }}>
+    <div class={`blurb-container absolute right-0 top-0 w-full p-5p pt-7vp flex flex-col animate-pop-in sm:w-2/3 sm:pl-10p sm:mb-0 sm:pb-7vp sm:pt-8vp transition-all z-[600]`} style={{ bottom: `${Math.ceil(props.imgTop)}px` }}>
       <div class="text-black bg-white bg-opacity-70 z-10 rounded-sm shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
         <div class="p-5p">
           <p class="text-3xl font-extralight leading-normal">

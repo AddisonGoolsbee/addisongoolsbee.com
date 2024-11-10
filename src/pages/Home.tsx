@@ -4,6 +4,7 @@ import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
 import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
+import Party from "../components/Party";
 
 const Home: Component = () => {
   useCanonical();
@@ -21,17 +22,17 @@ const Home: Component = () => {
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
 
   onMount(() => {
+    const img = new Image();
+    img.onload = () => setIsProfileLoaded(true);
+    img.src = profileSrc();
+
+    setTimeout(() => {
       const img = new Image();
-      img.onload = () => setIsProfileLoaded(true);
-      img.src = profileSrc();
+      img.src = sandwichURL;
+    }, 0);
 
-      setTimeout(() => {
-        const img = new Image();
-        img.src = sandwichURL;
-      }, 0);
-
-      window.addEventListener("resize", updateTopPoint);
-      updateTopPoint();
+    window.addEventListener("resize", updateTopPoint);
+    updateTopPoint();
   });
 
   onCleanup(() => {
@@ -71,11 +72,14 @@ const Home: Component = () => {
 
   return (
     <div class="h-screen overflow-hidden relative bg-gray-800">
+      <Show when={partyModeActive()}>
+        <Party />
+      </Show>
       <Particles />
       <img src="/images/whiteLogo.svg" alt="logo" class="absolute top-0 left-0 ml-4 mt-2 h-auto w-10 sm:w-12 cursor-pointer animate-logo select-none" draggable="false" onClick={() => (window.location.href = "/")} />
-      <Navbar toggleChangelog={toggleChangelog} togglePartyMode={togglePartyMode}/>
+      <Navbar toggleChangelog={toggleChangelog} togglePartyMode={togglePartyMode} />
       <Show when={isProfileLoaded()}>
-        <div class="absolute w-5/6 h-9/10 bottom-0 flex items-end left-1/2 transform -translate-x-1/2 sm:left-22p">
+        <div class={`absolute w-5/6 h-9/10 -bottom-1 flex items-end left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-in-out z-[500] ${partyModeActive() ? "sm:left-1/2" : "sm:left-22p"}`}>
           <img src={profileSrc()} alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />
         </div>
       </Show>
