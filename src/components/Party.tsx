@@ -6,13 +6,16 @@ const Party = () => {
       const container = document.querySelector('#party-container') as HTMLElement;
       if (!container) return;
 
-      const numRows = 11;
-      const numColumns = 21;
+      const isMobile = window.innerWidth < 768;
+
+      const numRows = isMobile ? 7 : 11;
+      const numColumns = isMobile ? 11 : 21;
       const centerRow = Math.floor(numRows / 2);
-      const ballRadius = 60;
+      const ballRadius = isMobile ? 40 : 60;
       const maxRowFactor = Math.pow(centerRow, 2);
-      const speed = 10;
+      const speed = isMobile ? 5 : 7;
       const sphereRadius = 20;
+      const sphereHeightScale = isMobile ? 0.5 : 1
 
       const getRainbowColor = (index: number, total: number): string => {
         const hue = (index / total) * 360;
@@ -40,7 +43,7 @@ const Party = () => {
           );
 
           circle.style.backgroundColor = getRainbowColor(col + numColumns, numColumns);
-          circle.style.top = `calc(${row * rowHeight}vh - ${
+          circle.style.top = `calc(${((row * rowHeight) * sphereHeightScale) + (sphereHeightScale * 100)}vh - ${
             ballRadius * ((row + (row > 0 ? 1 : 0)) / numRows)
           }px)`;
           circle.style.animationDelay = `${animationDelay}s`;
