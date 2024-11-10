@@ -58,7 +58,7 @@ const Changelog: Component<Props> = (props) => {
         }}
       >
         {props.changelogVisible() && (
-          <div class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 z-30 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit" ref={changelogRef}>
+          <div class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]" ref={changelogRef}>
             <p class="text-center font-medium text-xl mt-2 mb-5">Changelog</p>
             <p class="text-sm text-gray-700 mb-8">
               Below is a comprehensive list of the changes to my website over time. The full source code is available on&nbsp;
@@ -98,7 +98,7 @@ const Changelog: Component<Props> = (props) => {
       >
         {props.changelogVisible() && (
           <div
-            class="absolute w-full h-full top-0 left-0 bg-black z-20 opacity-30"
+            class="absolute w-full h-full top-0 left-0 bg-black z-[2500] opacity-30"
             onClick={() => {
               props.toggleChangelog();
             }}
