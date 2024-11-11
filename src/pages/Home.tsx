@@ -71,7 +71,7 @@ const Home: Component = () => {
   };
 
   return (
-    <div class="h-screen overflow-hidden relative bg-gray-800">
+    <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
       <Show when={partyModeActive()}>
         <Party />
       </Show>
