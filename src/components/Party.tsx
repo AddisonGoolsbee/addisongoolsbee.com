@@ -43,7 +43,7 @@ const Party = () => {
           );
 
           circle.style.backgroundColor = getRainbowColor(col + numColumns, numColumns);
-          circle.style.top = `calc(${((row * rowHeight) * sphereHeightScale) + (sphereHeightScale * 100)}dvh - ${
+          circle.style.top = `calc(${((row * rowHeight) * sphereHeightScale) + (100 - sphereHeightScale * 100)}dvh - ${
             ballRadius * ((row + (row > 0 ? 1 : 0)) / numRows)
           }px)`;
           circle.style.animationDelay = `${animationDelay}s`;
