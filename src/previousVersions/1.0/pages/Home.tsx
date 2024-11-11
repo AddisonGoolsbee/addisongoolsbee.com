@@ -1,7 +1,7 @@
 import { onMount, type Component, onCleanup, createSignal, Show, createEffect } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
-import Changelog from "../components/Changelog";
+import Changelog from "../../../components/Changelog";
 import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 
