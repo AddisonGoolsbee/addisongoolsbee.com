@@ -76,8 +76,9 @@ const Home: Component = () => {
         <Party />
       </Show>
       <Particles />
-      <img src="/images/whiteLogo.svg" alt="logo" class="absolute top-0 left-0 ml-4 mt-2 h-auto w-10 sm:w-12 cursor-pointer animate-logo select-none z-[2000]" draggable="false" onClick={() => (window.location.href = "/")} />
+
       <Navbar toggleChangelog={toggleChangelog} togglePartyMode={togglePartyMode} />
+      
       <Show when={isProfileLoaded()}>
         <div class={`absolute w-5/6 h-9/10 -bottom-1 flex items-end left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-in-out z-[500] ${partyModeActive() ? "sm:left-1/2" : "sm:left-22p"}`}>
           <img src={profileSrc()} alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />

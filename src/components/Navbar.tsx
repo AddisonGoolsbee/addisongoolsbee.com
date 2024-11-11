@@ -7,13 +7,23 @@ type Props = {
 
 const Navbar: Component<Props> = (props) => {
   return (
-    <div class="absolute top-0 right-0 flex flex-row items-center space-x-4 animate-navBar pr-4 h-16 sm:h-[4.75rem] z-[2000]">
-      <button class="navbarButton" onClick={props.togglePartyMode}>
-        party
-      </button>
-      <button class="navbarButton" onClick={props.toggleChangelog}>
-        changelog
-      </button>
+    <div class="flex flex-row items-center z-[2000] justify-between animate-navBar m-[0.95rem] sm:text-xl text-lg">
+      <div class="relative h-[60%] overflow-hidden cursor-pointer w-10 sm:w-12" onClick={() => (window.location.href = "/")}>
+        <img
+          src="/images/whiteLogo.svg"
+          alt="logo"
+          class="h-full w-full object-cover select-none"
+          draggable="false"
+        />
+      </div>
+      <div class="flex flex-row items-center space-x-6 pr-4">
+        <button class="navbarButton" onClick={props.togglePartyMode}>
+          party
+        </button>
+        <button class="navbarButton" onClick={props.toggleChangelog}>
+          changelog
+        </button>
+      </div>
     </div>
   );
 };
