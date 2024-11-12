@@ -5,11 +5,15 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://addisongoolsbee.com/v_1</loc>
-        <priority>0.5</priority>
+        <loc>https://addisongoolsbee.com/v1_0</loc>
+        <priority>0.1</priority>
     </url>
     <url>
-        <loc>https://addisongoolsbee.com/v_2</loc>
-        <priority>0.5</priority>
+        <loc>https://addisongoolsbee.com/v0_1</loc>
+        <priority>0.1</priority>
+    </url>
+    <url>
+        <loc>https://addisongoolsbee.com/v0_2</loc>
+        <priority>0.1</priority>
     </url>
 </urlset>
