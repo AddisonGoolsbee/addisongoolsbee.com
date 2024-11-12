@@ -41,7 +41,7 @@ const Blurb: Component<Props> = (props) => {
               Check out some of my projects
             </a>
             &nbsp;or take a look at my&nbsp;
-            <a href="/images/resume.pdf" class="link">
+            <a href="resumes/resume1.0.pdf" class="link">
               resume
             </a>
             .
@@ -84,7 +84,7 @@ const Blurb: Component<Props> = (props) => {
         <BlurbButton href="https://www.linkedin.com/in/addisongoolsbee" text="LinkedIn" icon={<FaBrandsLinkedin />} />
         <BlurbButton href="https://github.com/addisongoolsbee" text="GitHub" icon={<FaBrandsGithub />} />
         <BlurbButton href="mailto:addisongoolsbee@gmail.com" text="Email" icon={<FiMail />} />
-        <BlurbButton href="images/resume.pdf" text="Resume" icon={<FiFileText />} />
+        <BlurbButton href="resumes/resume1.0.pdf" text="Resume" icon={<FiFileText />} />
       </div>
     </div>
   );
