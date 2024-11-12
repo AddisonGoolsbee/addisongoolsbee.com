@@ -15,9 +15,8 @@ const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   const [partyUnlocked, setPartyUnlocked] = createSignal(false);
 
-  const shouldBreakLine = () => windowWidth() < 640;
+  const isMobile = () => windowWidth() < 640;
 
-  console.log(props.imgTop)
   createEffect(() => {
     if (props.partyModeActive || partyUnlocked()) {
       setPartyUnlocked(true);
@@ -46,7 +45,7 @@ const Blurb: Component<Props> = (props) => {
           <div class="p-5p">
             <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
               My name is
-              {shouldBreakLine() ? <br /> : ""}
+              {isMobile() ? <br /> : ""}
               <span class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 sm:ml-2" onClick={props.sandwichMode}>
                 {props.myName}
               </span>

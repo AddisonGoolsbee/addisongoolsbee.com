@@ -21,7 +21,7 @@ const config: Config = {
         "11/20": "55%",
       },
       scale: {
-        '200': '2', // This sets the scale to 200%
+        '200': '2',
       },
       keyframes: {
         slideUp: {
