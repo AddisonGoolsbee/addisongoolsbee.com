@@ -44,7 +44,7 @@ const Blurb: Component<Props> = (props) => {
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
         <div class="text-black bg-white bg-opacity-70 z-10 rounded-sm shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
           <div class="p-5p">
-            <p class="text-2xl sm:text-3xl font-extralight leading-normal text-center sm:text-left">
+            <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
               My name is
               {shouldBreakLine() ? <br /> : ""}
               <span class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 sm:ml-2" onClick={props.sandwichMode}>
