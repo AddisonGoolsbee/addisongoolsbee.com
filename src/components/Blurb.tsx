@@ -68,7 +68,7 @@ const Blurb: Component<Props> = (props) => {
             <p>When I'm not busy wrestling with code or reveling in my five-gallon water jug collection, I like to indulge in the finer things in life—debating philosophy until 3 AM, juggling, foraging for wild mushrooms, and feeding my Alibaba shopping addiction.</p>
             <br />
             <p>
-              Aside from coding, I am also the cofounder of a pineapple soap business on campus, president of the&nbsp;
+              Aside from coding, my other pursuits have included being the cofounder of Pineapple Soap Co., president of the&nbsp;
               <a href="https://yalecomputersociety.org" class="link" target="_blank">
                 Yale Computer Society
               </a>
@@ -76,11 +76,11 @@ const Blurb: Component<Props> = (props) => {
               <a href="https://campuspress.yale.edu/danceworks/" class="link" target="_blank">
                 dance group
               </a>
-              , and involved in a number of various other clubs on campus.
+              , and a number of various other clubs on campus.
             </p>
             <br />
             <p>
-              I'm currently working on building my website using Solid.js and Tailwind CSS.&nbsp;
+              This website was written in Solid.js and Tailwind CSS.&nbsp;
               <a href="https://github.com/addisongoolsbee/addisongoolsbee.com" class="link">
                 The code is public
               </a>
