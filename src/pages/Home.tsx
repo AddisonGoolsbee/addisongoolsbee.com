@@ -12,6 +12,9 @@ const Home: Component = () => {
 
   const profileURL = "/images/profile.webp";
   const sandwichURL = "/images/sandwich.webp"
+  const sandwichGifURL = "/images/sandwich.gif";
+
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
@@ -64,7 +67,7 @@ const Home: Component = () => {
   };
 
   const sandwichMode = () => {
-    const newSrc = profileSrc() === profileURL ? sandwichURL : profileURL;
+    const newSrc = profileSrc() === profileURL ? (isSafari ? sandwichGifURL : sandwichURL) : profileURL;
     setProfileSrc(newSrc);
     const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
     setMyName(newName);
