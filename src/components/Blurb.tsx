@@ -39,7 +39,7 @@ const Blurb: Component<Props> = (props) => {
   });
 
   return (
-    <div class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`} style={{bottom: `${props.imgTop+10}px`}}>
+    <div class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`} style={{ bottom: `${props.imgTop + 10}px` }}>
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
         <div class="text-black bg-white bg-opacity-70 z-10 rounded-sm shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
           <div class="p-5p">
@@ -59,7 +59,7 @@ const Blurb: Component<Props> = (props) => {
                 Check out some of my projects
               </a>
               &nbsp;or take a look at my&nbsp;
-              <a href="/images/resume.pdf" class="link">
+              <a href="/resume.pdf" class="link" target="_blank">
                 resume
               </a>
               .
@@ -102,7 +102,7 @@ const Blurb: Component<Props> = (props) => {
           <BlurbButton href="https://www.linkedin.com/in/addisongoolsbee" text="LinkedIn" icon={<FaBrandsLinkedin />} />
           <BlurbButton href="https://github.com/addisongoolsbee" text="GitHub" icon={<FaBrandsGithub />} />
           <BlurbButton href="mailto:addisongoolsbee@gmail.com" text="Email" icon={<FiMail />} />
-          <BlurbButton href="images/resume.pdf" text="Resume" icon={<FiFileText />} />
+          <BlurbButton href="resume.pdf" text="Resume" icon={<FiFileText />} />
         </div>
       </div>
     </div>
