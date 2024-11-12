@@ -17,6 +17,7 @@ const Blurb: Component<Props> = (props) => {
 
   const shouldBreakLine = () => windowWidth() < 500 || (windowWidth() < 850 && windowWidth() > 630);
 
+  console.log(props.imgTop)
   createEffect(() => {
     if (props.partyModeActive || partyUnlocked()) {
       setPartyUnlocked(true);
@@ -39,8 +40,8 @@ const Blurb: Component<Props> = (props) => {
   });
 
   return (
-    <div class="absolute top-0 flex flex-row justify-end h-full items-center ">
-      <div class={`blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] max-h-[75dvh] sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]`} style={{ bottom: `${Math.ceil(props.imgTop)}px` }}>
+    <div class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`} style={{bottom: `${props.imgTop+10}px`}}>
+      <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-4 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh] bg-red-400">
         <div class="text-black bg-white bg-opacity-70 z-10 rounded-sm shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
           <div class="p-5p">
             <p class="text-3xl font-extralight leading-normal">
