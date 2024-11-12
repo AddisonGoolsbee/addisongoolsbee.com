@@ -16,7 +16,7 @@ const Navbar: Component<Props> = (props) => {
           draggable="false"
         />
       </div>
-      <div class="flex flex-row items-center space-x-6 pr-4">
+      <div class="flex flex-row items-center space-x-2 sm:space-x-6 sm:pr-4">
         <button class="navbarButton" onClick={props.togglePartyMode}>
           party
         </button>
