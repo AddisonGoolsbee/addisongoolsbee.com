@@ -13,6 +13,10 @@
 - Get someone to look at and edit my copy
 - Printer mode
 - More secrets
+- Handle system dark mode (something on mobile)
+- Recursive mode
+- Improved sandwich mode
+- navbar buttons stay highlighted when active
 
 ## Version 1.2
 
@@ -29,5 +33,5 @@
 
 - auto-update with new github projects
 - QR code page
-- Improved sandwich mode
 - Playable Unity games
+- Add some of my other websites
