@@ -1,12 +1,12 @@
 import { createEffect, onCleanup } from 'solid-js';
 
 const Party = () => {
+  const isMobile = window.innerWidth < 640;
+
   createEffect(() => {
     const spawnCircles = () => {
       const container = document.querySelector('#party-container') as HTMLElement;
       if (!container) return;
-
-      const isMobile = window.innerWidth < 768;
 
       const numRows = isMobile ? 7 : 11;
       const numColumns = isMobile ? 11 : 21;
@@ -43,9 +43,8 @@ const Party = () => {
           );
 
           circle.style.backgroundColor = getRainbowColor(col + numColumns, numColumns);
-          circle.style.top = `calc(${((row * rowHeight) * sphereHeightScale) + (100 - sphereHeightScale * 100)}dvh - ${
-            ballRadius * ((row + (row > 0 ? 1 : 0)) / numRows)
-          }px)`;
+          circle.style.top = `calc(${((row * rowHeight) * sphereHeightScale) + (100 - sphereHeightScale * 100)}dvh - ${ballRadius * ((row + (row > 0 ? 1 : 0)) / numRows)
+            }px)`;
           circle.style.animationDelay = `${animationDelay}s`;
           circle.style.animationDuration = `${speed}s`;
           circle.style.animationIterationCount = 'infinite';
@@ -78,7 +77,7 @@ const Party = () => {
     };
 
     // Start the spawning process after 300ms delay
-    const spawnTimeout = setTimeout(spawnCircles, 700);
+    const spawnTimeout = setTimeout(spawnCircles, isMobile ? 100 : 700);
 
     // Cleanup function to remove circles and clear timeout when unmounting
     onCleanup(() => {
