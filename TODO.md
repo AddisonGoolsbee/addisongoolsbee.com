@@ -17,6 +17,7 @@
 - Recursive mode
 - Improved sandwich mode
 - navbar buttons stay highlighted when active
+- prefetch sandwich gif for faster loading in poor wifi
 
 ## Version 1.2
 
