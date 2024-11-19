@@ -18,6 +18,7 @@
 - Improved sandwich mode
 - navbar buttons stay highlighted when active
 - prefetch sandwich gif for faster loading in poor wifi
+- fix google search for previous versions (infrequent 404 problem)
 
 ## Version 1.2
 
