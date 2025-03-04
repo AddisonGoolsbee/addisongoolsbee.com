@@ -8,7 +8,7 @@
   <title>Addison Goolsbee</title>
   <link rel="icon" type="image/svg+xml" href="images/blackLogo.svg" sizes="32x32">
   <link rel="shortcut icon" type="image/svg+xml" href="images/blackLogo.svg" sizes="32x32">
-  <link rel="canonical" href="https://addisongoolsbee.com" id="canonical-link" />
+  <link rel="canonical" id="canonical-link" />
   <style>
     body {
       background-color: #1f2937;
@@ -19,6 +19,10 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+
+  <script>
+    document.getElementById("canonical-link").href = window.location.origin + window.location.pathname;
+  </script>
 
   <script src="/src/index.tsx" type="module"></script>
 </body>

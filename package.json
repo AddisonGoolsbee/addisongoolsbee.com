@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cp index.html dist/404.html",
     "serve": "vite preview",
     "deploy": "npm run build && gh-pages -d dist"
   },
