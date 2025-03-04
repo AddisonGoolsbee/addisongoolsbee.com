@@ -1,6 +1,6 @@
 import { type Component, For } from "solid-js";
 import { Transition } from "solid-transition-group";
-import { useNavigate } from "@solidjs/router";
+import { A } from "@solidjs/router";
 
 type Props = {
   changelogVisible: () => boolean;
@@ -16,24 +16,14 @@ type VersionProps = {
 };
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
-  const navigate = useNavigate();
-
-  const handleOnClick = () => {
-    if (props.url === "/") {
-      window.location.href = "/"; // to reload page
-    } else {
-      navigate(props.url);
-    }
-  };
-
   return (
-    <div class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md " onClick={handleOnClick}>
+    <A class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md block" href={props.url}>
       <p class="text-lg font-bold text-gray-800 mt-1">Version {props.version}</p>
       <p class="text-sm text-gray-600">{props.description}</p>
       <ul class="list-outside list-disc mt-2 text-sm pl-3">
         <For each={props.changes}>{(change) => <li class="text-gray-600 mb-1">{change}</li>}</For>
       </ul>
-    </div>
+    </A>
   );
 };
 
@@ -79,10 +69,10 @@ const Changelog: Component<Props> = (props) => {
               version="1.0"
               description="Fully-funcitonal MVP built in Solid.js"
               changes={["Home page layout: cutout of myself on left, blurb on right", "Rewritten blurb", "Glowing dots in the background", "Changelog", "Site logo", "Blurb footer link icons with animations", "Responsive layout", "Initial page load animations", "Mobile layout", "Sandwich mode"]}
-              url="/v1_0"
+              url="v1_0"
             />
-            <ChangelogVersionCard version="0.2" description="Host change, restarting from scratch" changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]} url="/v0_2" />
-            <ChangelogVersionCard version="0.1" description="Template-based site created in 1 hour" changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]} url="/v0_1" />
+            <ChangelogVersionCard version="0.2" description="Host change, restarting from scratch" changes={["Hosting changed from Nixihost to GitHub Pages", "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages", "addisongoolsbee.com repository created", "Solid.js/TailwindCSS/Vite base for the website with a small message", "GitHub action for deploying site"]} url="v0_2" />
+            <ChangelogVersionCard version="0.1" description="Template-based site created in 1 hour" changes={["Domain name and hosting purchased from Nixihost", "cPanel template website", "Enforce HTTPS", "Google Analytics"]} url="v0_1" />
           </div>
         )}
       </Transition>
