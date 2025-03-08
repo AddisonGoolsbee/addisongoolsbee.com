@@ -1,5 +1,8 @@
 # Todo
 
+PUT THIS SOMEWHERE I'LL REMEMBER
+crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been planted"
+
 ## Version 1.1
 
 - Make new git branch and implement standardized branching rules
