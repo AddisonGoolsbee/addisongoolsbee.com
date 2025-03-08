@@ -11,6 +11,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20.8.10",
     "autoprefixer": "^10.4.14",
     "gh-pages": "^6.0.0",
@@ -24,6 +25,7 @@
   "dependencies": {
     "@solidjs/router": "^0.15.3",
     "@tailwindcss/forms": "^0.5.6",
+    "canvas-confetti": "^1.9.3",
     "solid-icons": "^1.1.0",
     "solid-js": "^1.9.5",
     "solid-transition-group": "^0.2.3",
