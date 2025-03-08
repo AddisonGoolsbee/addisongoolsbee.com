@@ -1,7 +1,7 @@
 /* @refresh reload */
 import './index.css';
 import { render } from 'solid-js/web';
-import { Router } from "@solidjs/router";
+import { HashRouter } from "@solidjs/router";
 
 import App from './App';
 
@@ -15,9 +15,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 render(
   () => (
-    <Router>
+    <HashRouter>
       <App />
-    </Router>
+    </HashRouter>
   ),
   document.getElementById("root")
 );
