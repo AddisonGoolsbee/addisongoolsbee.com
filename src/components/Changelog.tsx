@@ -17,7 +17,7 @@ type VersionProps = {
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
   return (
-    <A class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md block" href={props.url}>
+    <A class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md block" href={`/${props.url}`}>
       <p class="text-lg font-bold text-gray-800 mt-1">Version {props.version}</p>
       <p class="text-sm text-gray-600">{props.description}</p>
       <ul class="list-outside list-disc mt-2 text-sm pl-3">

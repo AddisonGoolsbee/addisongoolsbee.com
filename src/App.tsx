@@ -10,9 +10,9 @@ export default function App() {
   return (
     <>
       <Route path="/" component={Home} />
-      <Route path="/v1_0" component={v1_0} />
-      <Route path="/v0_2" component={v0_2} />
-      <Route path="/v0_1" component={v0_1} />
+      <Route path="v1_0" component={v1_0} />
+      <Route path="v0_2" component={v0_2} />
+      <Route path="v0_1" component={v0_1} />
     </>
   );
 }
