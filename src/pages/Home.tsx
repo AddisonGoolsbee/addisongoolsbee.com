@@ -1,4 +1,11 @@
-import { onMount, type Component, onCleanup, createSignal, Show, createEffect } from "solid-js";
+import {
+  onMount,
+  type Component,
+  onCleanup,
+  createSignal,
+  Show,
+  createEffect,
+} from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
@@ -11,8 +18,9 @@ const Home: Component = () => {
   let imgRef;
 
   const profileURL = "/images/profile.webp";
-  const sandwichURL = "/images/sandwich.webp"
+  const sandwichURL = "/images/sandwich.webp";
   const sandwichGifURL = "/images/sandwich.gif";
+  const printerURL = "/images/printer.png";
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
@@ -20,6 +28,7 @@ const Home: Component = () => {
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [changelogVisible, setChangelogVisible] = createSignal(false);
   const [partyModeActive, setPartyModeActive] = createSignal(false);
+  const [printerModeActive, setPrinterModeActive] = createSignal(false);
   const [profileSrc, setProfileSrc] = createSignal(profileURL);
   const [myName, setMyName] = createSignal("Addison Goolsbee");
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
@@ -32,15 +41,25 @@ const Home: Component = () => {
     setTimeout(() => {
       const img = new Image();
       img.src = sandwichURL;
+      const printerImg = new Image();
+      printerImg.src = printerURL;
     }, 0);
 
     window.addEventListener("resize", updateTopPoint);
+    window.addEventListener("beforeprint", handlePrint);
     updateTopPoint();
   });
 
   onCleanup(() => {
     window.removeEventListener("resize", updateTopPoint);
+    window.removeEventListener("beforeprint", handlePrint);
   });
+
+  const handlePrint = () => {
+    setPrinterModeActive(true);
+    setProfileSrc(printerURL);
+    setMyName("Printer");
+  };
 
   const updateTopPoint = () => {
     if (imgRef) {
@@ -67,9 +86,21 @@ const Home: Component = () => {
   };
 
   const sandwichMode = () => {
-    const newSrc = profileSrc() === profileURL ? (isSafari ? sandwichGifURL : sandwichURL) : profileURL;
+    if (printerModeActive()) {
+      setPrinterModeActive(false);
+      setProfileSrc(profileURL);
+      setMyName("Addison Goolsbee");
+      return;
+    }
+    const newSrc =
+      profileSrc() === profileURL
+        ? isSafari
+          ? sandwichGifURL
+          : sandwichURL
+        : profileURL;
     setProfileSrc(newSrc);
-    const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
+    const newName =
+      myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
     setMyName(newName);
   };
 
@@ -80,17 +111,41 @@ const Home: Component = () => {
       </Show>
       <Particles />
 
-      <Navbar toggleChangelog={toggleChangelog} togglePartyMode={togglePartyMode} />
-      
+      <Navbar
+        toggleChangelog={toggleChangelog}
+        togglePartyMode={togglePartyMode}
+      />
+
       <Show when={isProfileLoaded()}>
-        <div class={`absolute w-5/6 h-9/10 -bottom-1 flex items-end left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-in-out z-[500] ${partyModeActive() ? "sm:left-1/2" : "sm:left-22p"}`}>
-          <img src={profileSrc()} alt="Addison" class="w-full h-auto object-contain max-h-full animate-slide-up select-none" draggable="false" ref={imgRef} onLoad={onImageLoad} />
+        <div
+          class={`absolute w-5/6 h-9/10 -bottom-1 flex items-end left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-in-out z-[500] ${
+            partyModeActive() ? "sm:left-1/2" : "sm:left-22p"
+          }`}
+        >
+          <img
+            src={profileSrc()}
+            alt="Addison"
+            class="w-full h-auto object-contain max-h-full animate-slide-up select-none"
+            draggable="false"
+            ref={imgRef}
+            onLoad={onImageLoad}
+          />
         </div>
       </Show>
       <Show when={imageLoaded()}>
-        <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} partyModeActive={partyModeActive()} myName={myName()} />
+        <Blurb
+          imgTop={topPoint()}
+          toggleChangelog={toggleChangelog}
+          sandwichMode={sandwichMode}
+          partyModeActive={partyModeActive()}
+          myName={myName()}
+        />
       </Show>
-      <Changelog changelogVisible={changelogVisible} setChangelogVisible={setChangelogVisible} toggleChangelog={toggleChangelog} />
+      <Changelog
+        changelogVisible={changelogVisible}
+        setChangelogVisible={setChangelogVisible}
+        toggleChangelog={toggleChangelog}
+      />
     </div>
   );
 };
