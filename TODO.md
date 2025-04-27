@@ -14,14 +14,10 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 - custom link animations & design
 - Go back feature for previous versions in changelog
 - Get someone to look at and edit my copy
-- Printer mode
 - More secrets
 - Handle system dark mode (something on mobile)
-- Recursive mode
-- Improved sandwich mode
 - navbar buttons stay highlighted when active
-- prefetch sandwich gif for faster loading in poor wifi
-- fix google search for previous versions (infrequent 404 problem)
+- Entire blurb replacement on various modes
 
 ## Version 1.2
 
