@@ -86,13 +86,14 @@ const Changelog: Component<Props> = (props) => {
             </p>
             <ChangelogVersionCard
               version="1.1"
-              description="Party mode"
+              description="Secrets and Improvements"
               changes={[
                 "Party mode",
                 "Printer mode",
                 "Recursion mode",
                 "Improved mobile layout",
                 "Google search improvements",
+                "Hash-based navigation",
                 "Miscellaneous improvements",
               ]}
               url=""
