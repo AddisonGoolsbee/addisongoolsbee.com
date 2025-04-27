@@ -13,36 +13,7 @@ import Changelog from "../components/Changelog";
 import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
-
-const RecursiveImageStack: Component<{
-  src: string;
-  recursionLevel: number;
-  ref: (el: HTMLImageElement) => void;
-  onLoad: () => void;
-}> = (props) => {
-  return (
-    <div class="relative w-full h-full">
-      <For each={Array(props.recursionLevel + 1)}>
-        {(_, index) => (
-          <img
-            src={props.src}
-            alt="Addison"
-            class={`w-full h-auto object-contain max-h-full animate-slide-up select-none absolute`}
-            style={{
-              bottom: index() === 0 ? "0" : `${index() * 12}px`,
-              left: index() === 0 ? "0" : `${index() * 12}px`,
-              "z-index": -index(),
-            }}
-            draggable="false"
-            ref={index() === 0 ? props.ref : undefined}
-            onLoad={index() === 0 ? props.onLoad : undefined}
-          />
-        )}
-      </For>
-    </div>
-  );
-};
-
+import RecursiveImageStack from "../components/RecursiveImageStack";
 const Home: Component = () => {
   useCanonical();
   let imgRef;
@@ -68,7 +39,8 @@ const Home: Component = () => {
   createEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const level = parseInt(params.get("recursion") || "0");
-    setRecursionLevel(Math.min(level, 25));
+    const isMobile = window.innerWidth < 640;
+    setRecursionLevel(Math.min(level, isMobile ? 20 : 50));
   });
 
   const handleLogoClick = () => {

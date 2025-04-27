@@ -16,7 +16,7 @@ const Party = () => {
       const centerRow = Math.floor(numRows / 2);
       const ballRadius = isMobile ? 40 : 60;
       const maxRowFactor = Math.pow(centerRow, 2);
-      const speed = isMobile ? 5 : 7;
+      const speed = isMobile ? 3 : 5;
       const sphereRadius = isMobile ? 25 : 20;
       const sphereHeightScale = isMobile ? 0.5 : 1;
 

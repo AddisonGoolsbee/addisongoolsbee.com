@@ -25,8 +25,9 @@ const config: Config = {
       },
       keyframes: {
         slideUp: {
-          "0%": { transform: "translateY(50%)" },
-          "100%": { transform: "translateY(0)" },
+          "0%": { transform: "translateY(50%)", opacity: "0" },
+          "50%": { opacity: "1" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
         },
         popIn: {
           "0%": {transform: "scale(0.5)" },

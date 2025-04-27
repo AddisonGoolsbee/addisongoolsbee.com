@@ -5,6 +5,7 @@ type Props = {
   recursionLevel: number;
   ref: (el: HTMLImageElement) => void;
   onLoad: () => void;
+  firstImageRef?: (el: HTMLImageElement) => void;
 };
 
 const RecursiveImageStack: Component<Props> = (props) => {
@@ -15,14 +16,20 @@ const RecursiveImageStack: Component<Props> = (props) => {
           <img
             src={props.src}
             alt="Addison"
-            class="w-full h-auto object-contain max-h-full animate-slide-up select-none absolute"
+            class="w-full h-auto object-contain max-h-full animate-slide-up select-none absolute opacity-0"
             style={{
-              bottom: index() === 0 ? "0" : `${index() * 12}px`,
-              left: index() === 0 ? "0" : `${index() * 12}px`,
+              bottom: index() === 0 ? "0" : `${index() * 20}px`,
+              left: index() === 0 ? "0" : `${index() * 20}px`,
               "z-index": -index(),
+              "animation-delay": `${index() * 0.1}s`,
             }}
             draggable="false"
-            ref={index() === 0 ? props.ref : undefined}
+            ref={(el) => {
+              if (index() === 0) {
+                props.ref?.(el);
+                props.firstImageRef?.(el);
+              }
+            }}
             onLoad={index() === 0 ? props.onLoad : undefined}
           />
         )}
