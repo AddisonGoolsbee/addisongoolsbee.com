@@ -5,6 +5,7 @@ import {
   createSignal,
   Show,
   createEffect,
+  For,
 } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
@@ -12,6 +13,35 @@ import Changelog from "../components/Changelog";
 import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
+
+const RecursiveImageStack: Component<{
+  src: string;
+  recursionLevel: number;
+  ref: (el: HTMLImageElement) => void;
+  onLoad: () => void;
+}> = (props) => {
+  return (
+    <div class="relative w-full h-full">
+      <For each={Array(props.recursionLevel + 1)}>
+        {(_, index) => (
+          <img
+            src={props.src}
+            alt="Addison"
+            class={`w-full h-auto object-contain max-h-full animate-slide-up select-none absolute`}
+            style={{
+              bottom: index() === 0 ? "0" : `${index() * 12}px`,
+              left: index() === 0 ? "0" : `${index() * 12}px`,
+              "z-index": -index(),
+            }}
+            draggable="false"
+            ref={index() === 0 ? props.ref : undefined}
+            onLoad={index() === 0 ? props.onLoad : undefined}
+          />
+        )}
+      </For>
+    </div>
+  );
+};
 
 const Home: Component = () => {
   useCanonical();
@@ -32,6 +62,22 @@ const Home: Component = () => {
   const [profileSrc, setProfileSrc] = createSignal(profileURL);
   const [myName, setMyName] = createSignal("Addison Goolsbee");
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
+  const [recursionLevel, setRecursionLevel] = createSignal(0);
+
+  // Read initial recursion level from URL
+  createEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const level = parseInt(params.get("recursion") || "0");
+    setRecursionLevel(Math.min(level, 25));
+  });
+
+  const handleLogoClick = () => {
+    const newLevel = Math.min(recursionLevel() + 1, 100);
+    setRecursionLevel(newLevel);
+    const url = new URL(window.location.href);
+    url.searchParams.set("recursion", newLevel.toString());
+    window.location.href = url.toString();
+  };
 
   onMount(() => {
     const img = new Image();
@@ -114,6 +160,7 @@ const Home: Component = () => {
       <Navbar
         toggleChangelog={toggleChangelog}
         togglePartyMode={togglePartyMode}
+        onLogoClick={handleLogoClick}
       />
 
       <Show when={isProfileLoaded()}>
@@ -122,11 +169,9 @@ const Home: Component = () => {
             partyModeActive() ? "sm:left-1/2" : "sm:left-22p"
           }`}
         >
-          <img
+          <RecursiveImageStack
             src={profileSrc()}
-            alt="Addison"
-            class="w-full h-auto object-contain max-h-full animate-slide-up select-none"
-            draggable="false"
+            recursionLevel={recursionLevel()}
             ref={imgRef}
             onLoad={onImageLoad}
           />

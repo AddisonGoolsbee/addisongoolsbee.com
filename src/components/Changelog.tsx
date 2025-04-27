@@ -17,9 +17,12 @@ type VersionProps = {
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
   return (
-    <A
-      class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-95 active:shadow-md block"
-      href={`/${props.url}`}
+    <button
+      class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-100 active:shadow-md block w-full text-left"
+      onClick={() => {
+        window.location.hash = `/${props.url}`;
+        window.location.search = "";
+      }}
     >
       <p class="text-lg font-bold text-gray-800 mt-1">
         Version {props.version}
@@ -30,7 +33,7 @@ const ChangelogVersionCard: Component<VersionProps> = (props) => {
           {(change) => <li class="text-gray-600 mb-1">{change}</li>}
         </For>
       </ul>
-    </A>
+    </button>
   );
 };
 
@@ -91,7 +94,7 @@ const Changelog: Component<Props> = (props) => {
                 "Improved mobile layout",
                 "Miscellaneous improvements",
               ]}
-              url="/"
+              url=""
             />
             <ChangelogVersionCard
               version="1.0"

@@ -3,12 +3,16 @@ import { Component } from "solid-js";
 type Props = {
   toggleChangelog: () => void;
   togglePartyMode: () => void;
+  onLogoClick: () => void;
 };
 
 const Navbar: Component<Props> = (props) => {
   return (
     <div class="flex flex-row items-center z-[2000] justify-between animate-navBar m-[0.95rem] sm:text-xl text-lg">
-      <div class="relative h-[60%] overflow-hidden cursor-pointer w-10 sm:w-12" onClick={() => (window.location.href = "/")}>
+      <div
+        class="relative h-[60%] overflow-hidden cursor-pointer w-10 sm:w-12 z-[2000]"
+        onClick={props.onLogoClick}
+      >
         <img
           src="/images/whiteLogo.svg"
           alt="logo"
