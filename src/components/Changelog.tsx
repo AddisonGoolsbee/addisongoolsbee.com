@@ -90,8 +90,9 @@ const Changelog: Component<Props> = (props) => {
               changes={[
                 "Party mode",
                 "Printer mode",
-                "Google search improvements",
+                "Recursion mode",
                 "Improved mobile layout",
+                "Google search improvements",
                 "Miscellaneous improvements",
               ]}
               url=""
