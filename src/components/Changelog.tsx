@@ -92,7 +92,7 @@ const Changelog: Component<Props> = (props) => {
                 "Printer mode",
                 "Recursion mode",
                 "Improved mobile layout",
-                "Google search improvements",
+                "Google search improvements & analytics",
                 "Hash-based navigation",
                 "Miscellaneous improvements",
               ]}
