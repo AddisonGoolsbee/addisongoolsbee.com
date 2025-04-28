@@ -57,3 +57,4 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 - fast mouse movement
 - alt click
 - if window becomes unreasonably narrow (only from inspect element), then permanently trigger something
+- DNS txt message
