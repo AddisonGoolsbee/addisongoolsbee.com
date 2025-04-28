@@ -7,6 +7,7 @@ const v0_2 = lazy(() => import("./previousVersions/0.2/App"));
 const v0_1 = lazy(() => import("./previousVersions/0.1/App"));
 
 export default function App() {
+
   return (
     <>
       <Route path="/" component={Home} />
