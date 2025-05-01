@@ -14,7 +14,7 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 - Handle system dark mode (something on mobile)
 - Entire blurb replacement on various modes
 - Update copy
-- High-five button
+- High-five button + ~how many unique people have visited the site
 
 ## Version 1.2
 
@@ -58,3 +58,5 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 - alt click
 - if window becomes unreasonably narrow (only from inspect element), then permanently trigger something
 - DNS txt message
+- Secret high five button (in addition to the normal one)
+- feedback button and it gives feedback but when you submit the feedback it makes a feedback noise thing
