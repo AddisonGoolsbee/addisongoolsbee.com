@@ -81,7 +81,11 @@ const Blurb: Component<Props> = (props) => {
                 Check out some of my projects
               </a>
               &nbsp;or take a look at my&nbsp;
-              <a href="/resume.pdf" class="link" target="_blank">
+              <a
+                href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+                class="link"
+                target="_blank"
+              >
                 resume
               </a>
               .
@@ -158,7 +162,11 @@ const Blurb: Component<Props> = (props) => {
             text="Email"
             icon={<FiMail />}
           />
-          <BlurbButton href="resume.pdf" text="Resume" icon={<FiFileText />} />
+          <BlurbButton
+            href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+            text="Resume"
+            icon={<FiFileText />}
+          />
         </div>
       </div>
     </div>
