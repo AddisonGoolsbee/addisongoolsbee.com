@@ -5,7 +5,6 @@ import {
   createSignal,
   Show,
   createEffect,
-  For,
 } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
