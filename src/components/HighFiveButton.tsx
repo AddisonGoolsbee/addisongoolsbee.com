@@ -68,7 +68,9 @@ export default function HighFiveButton(props: HighFiveButtonProps) {
       >
         High five
       </button>
-      <p class="text-md text-black mt-3">{count() ?? "0"} high fives</p>
+      <p class="text-md text-black mt-3">
+        {count()?.toLocaleString() ?? "0"} high fives
+      </p>
     </div>
   );
 }
