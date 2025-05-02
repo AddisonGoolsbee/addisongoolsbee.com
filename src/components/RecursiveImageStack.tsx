@@ -8,37 +8,49 @@ type Props = {
   firstImageRef?: (el: HTMLImageElement) => void;
 };
 
-const RecursiveImageStack: Component<Props> = (props) => {
-  return (
-    <div class="relative w-full h-full">
-      <For each={Array(props.recursionLevel + 1)}>
-        {(_, index) => (
-          <img
-            src={props.src}
-            alt="Addison"
-            class="w-full h-auto object-contain max-h-full animate-slide-up select-none absolute opacity-0"
-            loading="lazy"
-            decoding="async"
-            fetchpriority={index() === 0 ? "high" : "low"}
-            style={{
-              bottom: index() === 0 ? "0" : `${index() * 20}px`,
-              left: index() === 0 ? "0" : `${index() * 20}px`,
-              "z-index": -index(),
-              "animation-delay": `${index() * 0.1}s`,
-            }}
-            draggable="false"
-            ref={(el) => {
-              if (index() === 0) {
-                props.ref?.(el);
-                props.firstImageRef?.(el);
-              }
-            }}
-            onLoad={index() === 0 ? props.onLoad : undefined}
-          />
-        )}
-      </For>
-    </div>
-  );
-};
+const OFFSET = 20;
+
+const RecursiveImageStack: Component<Props> = (props) => (
+  <div class="relative w-full h-full select-none flex items-end">
+    <For each={Array(props.recursionLevel + 1)}>
+      {(_, index) => {
+        const wrapperStyle = `
+          transform: translate(${index() * OFFSET}px, ${-index() * OFFSET}px);
+          z-index: ${-index()};
+        `;
+        // const imgStyle = `animation-delay: ${index() * 0.1}s;`;
+        const imgStyle = `
+  bottom: ${index() * OFFSET}px;          /* vertical offset on the bitmap */
+  animation-delay: ${index() * 0.1}s;
+`;
+
+        return (
+          <div
+            style={wrapperStyle}
+            class="absolute will-change-transform w-full h-full overflow-hidden flex items-end"
+          >
+            <img
+              src={props.src}
+              alt="Addison"
+              class="w-full h-auto max-h-full object-contain opacity-0 animate-slide-up"
+              style={imgStyle}
+              loading="lazy"
+              decoding="async"
+              fetchpriority={index() === 0 ? "high" : "low"}
+              draggable="false"
+              ref={(el) => {
+                if (index() === 0) {
+                  props.ref?.(el);
+                  props.firstImageRef?.(el);
+                }
+              }}
+              onLoad={index() === 0 ? props.onLoad : undefined}
+            />
+          </div>
+        );
+      }}
+    </For>
+  </div>
+);
 
 export default RecursiveImageStack;
