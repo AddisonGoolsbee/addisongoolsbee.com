@@ -34,6 +34,7 @@ export default function HighFiveButton(props: HighFiveButtonProps) {
 
       // Play sound
       clapSound.currentTime = 0;
+      clapSound.volume = 0.15;
       clapSound
         .play()
         .catch((err) => console.error("Failed to play sound:", err));
@@ -64,7 +65,7 @@ export default function HighFiveButton(props: HighFiveButtonProps) {
       <button
         ref={buttonRef}
         class="bg-[#f1a860] transition-all duration-200 px-6 py-2 text-xl rounded-full shadow hover:scale-105 active:scale-100 font-semibold text-white"
-        onClick={handleClick}
+        onPointerDown={handleClick}
       >
         High five
       </button>
