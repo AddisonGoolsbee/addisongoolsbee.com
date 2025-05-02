@@ -61,3 +61,4 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 - Secret high five button (in addition to the normal one)
 - feedback button and it gives feedback but when you submit the feedback it makes a feedback noise thing
 - If you're in printer mode, all pdfs go to a troll print fax
+- Secret marker mode where you can draw on my face
