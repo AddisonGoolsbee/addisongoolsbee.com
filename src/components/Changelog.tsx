@@ -1,11 +1,11 @@
 import { type Component, For } from "solid-js";
 import { Transition } from "solid-transition-group";
-import { A } from "@solidjs/router";
 
 type Props = {
   changelogVisible: () => boolean;
   setChangelogVisible: () => void;
   toggleChangelog: () => void;
+  handleRecursion: () => void;
 };
 
 type VersionProps = {
@@ -13,6 +13,7 @@ type VersionProps = {
   description: string;
   changes: string[];
   url: string;
+  onRecursionClick?: () => void;
 };
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
@@ -20,8 +21,14 @@ const ChangelogVersionCard: Component<VersionProps> = (props) => {
     <button
       class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-100 active:shadow-md block w-full text-left"
       onClick={() => {
+        window.history.replaceState(null, "", window.location.pathname);
         window.location.hash = `/${props.url}`;
-        window.location.search = "";
+        if (props.onRecursionClick) {
+          console.log("recursion click");
+          props.onRecursionClick();
+        } else {
+          window.location.reload();
+        }
       }}
     >
       <p class="text-lg font-bold text-gray-800 mt-1">
@@ -68,7 +75,7 @@ const Changelog: Component<Props> = (props) => {
             class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]"
             ref={changelogRef}
           >
-            <p class="text-center font-medium text-xl mt-2 mb-5">Changelog</p>
+            <p class="text-center font-bold text-xl mt-2 mb-5">Changelog</p>
             <p class="text-sm text-gray-700 mb-8">
               Below is a comprehensive list of the changes to my website over
               time. The full source code is available on&nbsp;
@@ -89,7 +96,7 @@ const Changelog: Component<Props> = (props) => {
               description="Secrets and Improvements"
               changes={[
                 "Party mode",
-                "Printer mode",
+                "Printer mode & pdf spoof",
                 "Recursion mode",
                 "Improved mobile layout",
                 "High five button",
@@ -98,6 +105,7 @@ const Changelog: Component<Props> = (props) => {
                 "Miscellaneous improvements",
               ]}
               url=""
+              onRecursionClick={props.handleRecursion}
             />
             <ChangelogVersionCard
               version="1.0"
@@ -120,9 +128,9 @@ const Changelog: Component<Props> = (props) => {
               version="0.2"
               description="Host change, restarting from scratch"
               changes={[
-                "Hosting changed from Nixihost to GitHub Pages",
-                "Domain name forwards from Nixihost, through Cloudflare, to GitHub Pages",
                 "addisongoolsbee.com repository created",
+                "Hosting changed from Nixihost to GitHub Pages",
+                "Domain name shennanigans",
                 "Solid.js/TailwindCSS/Vite base for the website with a small message",
                 "GitHub action for deploying site",
               ]}
@@ -134,7 +142,6 @@ const Changelog: Component<Props> = (props) => {
               changes={[
                 "Domain name and hosting purchased from Nixihost",
                 "cPanel template website",
-                "Enforce HTTPS",
                 "Google Analytics",
               ]}
               url="v0_1"

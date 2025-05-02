@@ -42,7 +42,7 @@ const Home: Component = () => {
     setRecursionLevel(Math.min(level, isMobile ? 20 : 50));
   });
 
-  const handleLogoClick = () => {
+  const handleRecursion = () => {
     const newLevel = Math.min(recursionLevel() + 1, 100);
     setRecursionLevel(newLevel);
     const url = new URL(window.location.href);
@@ -131,7 +131,7 @@ const Home: Component = () => {
       <Navbar
         toggleChangelog={toggleChangelog}
         togglePartyMode={togglePartyMode}
-        onLogoClick={handleLogoClick}
+        handleRecursion={handleRecursion}
       />
 
       <Show when={isProfileLoaded()}>
@@ -161,6 +161,7 @@ const Home: Component = () => {
         changelogVisible={changelogVisible}
         setChangelogVisible={setChangelogVisible}
         toggleChangelog={toggleChangelog}
+        handleRecursion={handleRecursion}
       />
     </div>
   );
