@@ -39,11 +39,11 @@ const Home: Component = () => {
     const params = new URLSearchParams(window.location.search);
     const level = parseInt(params.get("recursion") || "0");
     const isMobile = window.innerWidth < 640;
-    setRecursionLevel(Math.min(level, isMobile ? 20 : 50));
+    setRecursionLevel(Math.min(level, isMobile ? 10 : 10));
   });
 
   const handleRecursion = () => {
-    const newLevel = Math.min(recursionLevel() + 1, 100);
+    const newLevel = Math.min(recursionLevel() + 1, 10);
     setRecursionLevel(newLevel);
     const url = new URL(window.location.href);
     url.searchParams.set("recursion", newLevel.toString());
