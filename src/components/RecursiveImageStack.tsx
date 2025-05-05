@@ -8,7 +8,8 @@ type Props = {
   firstImageRef?: (el: HTMLImageElement) => void;
 };
 
-const OFFSET = 20;
+const isMobile = window.innerWidth < 640;
+const OFFSET = isMobile ? 20 : 40;
 
 const RecursiveImageStack: Component<Props> = (props) => (
   <div class="relative w-full h-full select-none flex items-end">
