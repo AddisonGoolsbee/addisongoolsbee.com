@@ -5,24 +5,21 @@ crontab -e -> * * * * * osascript -e "set Volume 10" && say "a bomb has been pla
 
 ## Version 1.1
 
-- Make new git branch and implement standardized branching rules
 - Official color palette
 - custom font(s)
-- custom link animations & design
 - Go back feature for previous versions in changelog
-- More secrets
 - Handle system dark mode (something on mobile)
 - Entire blurb replacement on various modes
 - Update copy
-- High-five button + ~how many unique people have visited the site
 
 ## Version 1.2
 
-- PROJECTS PAGE
+- PROJECTS PAGE (but it's actually in the same page)
 - Check out a random project button
 - Even more secrets
 - Custom mouse effects
 - Something interesting button (leads to an interesting website)
+- keyboard combination secret thing (like konami code), visual to hint that there are secrets. Hide secrets everywhere: console, in the code, 404 page, right click, white text in changelog, dns txt message, copy message is the printer hint, command a selects some random characters which are also a combination, cookie message, and then the secrets are all sorts of fun things. Sometimes the hints are actually things to do (e.g. draw a star), sometimes just things to type.
 
 ## Future Additions
 
