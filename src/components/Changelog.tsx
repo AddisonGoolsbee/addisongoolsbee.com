@@ -10,6 +10,7 @@ type Props = {
 
 type VersionProps = {
   version: string;
+  date?: string;
   description: string;
   changes: string[];
   url: string;
@@ -31,9 +32,12 @@ const ChangelogVersionCard: Component<VersionProps> = (props) => {
         }
       }}
     >
-      <p class="text-lg font-bold text-gray-800 mt-1">
-        Version {props.version}
-      </p>
+      <div class="flex justify-between items-center flex-row">
+        <p class="text-lg font-bold text-gray-800 mt-1">
+          Version {props.version}
+        </p>
+        <p class="text-sm italic text-gray-600">{props.date}</p>
+      </div>
       <p class="text-sm text-gray-600">{props.description}</p>
       <ul class="list-outside list-disc mt-2 text-sm pl-3">
         <For each={props.changes}>
@@ -93,6 +97,7 @@ const Changelog: Component<Props> = (props) => {
             </p>
             <ChangelogVersionCard
               version="1.1"
+              date="May 3, 2025"
               description="Secrets and Improvements"
               changes={[
                 "Party mode",
@@ -109,6 +114,7 @@ const Changelog: Component<Props> = (props) => {
             />
             <ChangelogVersionCard
               version="1.0"
+              date="November 15, 2023"
               description="Fully-funcitonal MVP built in Solid.js"
               changes={[
                 "Home page layout: cutout of myself on left, blurb on right",
@@ -126,6 +132,7 @@ const Changelog: Component<Props> = (props) => {
             />
             <ChangelogVersionCard
               version="0.2"
+              date="October 18, 2023"
               description="Host change, restarting from scratch"
               changes={[
                 "addisongoolsbee.com repository created",
@@ -138,6 +145,7 @@ const Changelog: Component<Props> = (props) => {
             />
             <ChangelogVersionCard
               version="0.1"
+              date="August 30, 2023"
               description="Template-based site created in 1 hour"
               changes={[
                 "Domain name and hosting purchased from Nixihost",
