@@ -12,7 +12,7 @@ body {
     @apply cursor-pointer underline text-cyan-800 hover:text-cyan-950 visited:text-cyan-900;
   }
   .blurbButtons {
-    @apply relative z-20 text-white text-4xl transition-transform transform ;
+    @apply relative z-20 text-white text-4xl transition-transform transform;
   }
   .blurbButtons:hover {
     transform: scale(1.25);
