@@ -71,45 +71,44 @@ body {
   transform: translateX(100%);
 }
 
-
 /* Custom scrollbar */
 .scrollbar-custom::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .scrollbar-custom::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
   background-color: rgba(169, 169, 169, 1);
-  border-radius: 6px; 
+  border-radius: 6px;
 }
 
 /* For IE, Edge, and Firefox */
 .scrollbar-custom {
-  scrollbar-width: thin; 
-  scrollbar-color: darkgray transparent; 
+  scrollbar-width: thin;
+  scrollbar-color: darkgray transparent;
 }
 
 /* Custom scrollbar for non-transparent */
 .scrollbar-custom2::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .scrollbar-custom2::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 .scrollbar-custom2::-webkit-scrollbar-thumb {
   background-color: lightgray;
-  border-radius: 6px; 
+  border-radius: 6px;
 }
 
 /* For IE, Edge, and Firefox */
 .scrollbar-custom2 {
-  scrollbar-width: thin; 
-  scrollbar-color: gray transparent; 
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
 }
 
 .shrink-animation {
@@ -136,4 +135,13 @@ body {
   to {
     transform: scale(1);
   }
+}
+
+.flip-image {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-image.flipped {
+  transform: rotateY(360deg);
 }
