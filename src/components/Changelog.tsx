@@ -79,6 +79,12 @@ const Changelog: Component<Props> = (props) => {
             class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]"
             ref={changelogRef}
           >
+            <button
+              onClick={props.toggleChangelog}
+              class="absolute text-xl top-2 left-3 text-gray-600 hover:text-gray-800 transition-colors"
+            >
+              ✕
+            </button>
             <p class="text-center font-bold text-xl mt-2 mb-5">Changelog</p>
             <p class="text-sm text-gray-700 mb-8">
               Below is a comprehensive list of the changes to my website over
