@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,css,md,mdx,html,json,scss}",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -12,7 +15,7 @@ const config: Config = {
         "10p": "10%",
         "8vp": "8vh",
         "7vp": "7vh",
-        '22p': '22%',
+        "22p": "22%",
       },
       height: {
         "9/10": "90%",
@@ -21,7 +24,7 @@ const config: Config = {
         "11/20": "55%",
       },
       scale: {
-        '200': '2',
+        "200": "2",
       },
       keyframes: {
         slideUp: {
@@ -30,8 +33,8 @@ const config: Config = {
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
         popIn: {
-          "0%": {transform: "scale(0.5)" },
-          "100%": {transform: "scale(1)" },
+          "0%": { transform: "scale(0.5)" },
+          "100%": { transform: "scale(1)" },
         },
         logo: {
           "0%": { transform: "translateY(-150%)" },
@@ -42,29 +45,27 @@ const config: Config = {
           "100%": { transform: "translateX(0)" },
         },
         fadeIn: {
-          "0%": { opacity: '0' },
-          "100%": { opacit: '100' },
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
         navBar: {
           "0%": { transform: "translateY(-150%)" },
           "100%": { transform: "translateX(0)" },
-        }
+        },
       },
       animation: {
         "slide-up": "slideUp 1s ease-out forwards",
         "pop-in": "popIn 1s ease-out forwards",
-        "logo": "logo 1s ease-out both",
-        "changelog": "changelog 0.5s ease-out both",
+        logo: "logo 1s ease-out both",
+        changelog: "changelog 0.5s ease-out both",
         "changelog-close": "changelog 0.5s ease-in reverse both",
         "fade-in": "fadeIn 0.5s ease-out both",
         "fade-out": "fadeIn 0.5s reverse both",
-        "navBar": "navBar 0.9s ease-out backwards"
+        navBar: "navBar 0.9s ease-out backwards",
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };
 
 export default config;
