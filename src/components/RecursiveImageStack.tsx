@@ -35,7 +35,6 @@ const RecursiveImageStack: Component<Props> = (props) => (
               alt="Addison"
               class="w-full h-auto max-h-full object-contain opacity-0 animate-slide-up"
               style={imgStyle}
-              loading="lazy"
               decoding="async"
               fetchpriority={index() === 0 ? "high" : "low"}
               draggable="false"
