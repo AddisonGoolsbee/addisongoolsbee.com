@@ -76,7 +76,7 @@ const Changelog: Component<Props> = (props) => {
       >
         {props.changelogVisible() && (
           <div
-            class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-50 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]"
+            class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-100 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]"
             ref={changelogRef}
           >
             <button
@@ -85,26 +85,22 @@ const Changelog: Component<Props> = (props) => {
             >
               ✕
             </button>
-            <p class="text-center font-bold text-xl mt-2 mb-5">Changelog</p>
+            <p class="text-center font-bold text-2xl mt-2 mb-6">Changelog</p>
             <p class="text-sm text-gray-700 mb-8">
-              Below is a comprehensive list of the changes to my website over
-              time. The full source code is available on&nbsp;
+              Click the cards to see how the site used to be! The full source
+              code is available on&nbsp;
               <a
                 class="link"
                 href="https://github.com/addisongoolsbee/addisongoolsbee.com"
                 target="_blank"
               >
                 Github
-              </a>
-              <br />
-              <br />
-              You can click on any version to pull up a demo of what the site
-              used to look like
+              </a>.
             </p>
             <ChangelogVersionCard
-              version="1.1"
+              version="1.1 (Current)"
               date="May 3, 2025"
-              description="Secrets and Improvements"
+              description="Modes and Secrets"
               changes={[
                 "Party mode",
                 "Printer mode & pdf spoof",

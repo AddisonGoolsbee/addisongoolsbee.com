@@ -18,6 +18,5 @@ Build and deploy the website with: `npm run deploy`
 
 - personalsit.es
 - erikboesen.com
-- ericgit.me
 - bradfrost.com/
 - yoonicode.com
