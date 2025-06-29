@@ -43,11 +43,17 @@ const Home: Component = () => {
   });
 
   const handleRecursion = () => {
-    const newLevel = Math.min(recursionLevel() + 1, 10);
+    const currentLevel = recursionLevel();
+    const newLevel = Math.min(currentLevel + 1, 10);
     setRecursionLevel(newLevel);
     const url = new URL(window.location.href);
     url.searchParams.set("recursion", newLevel.toString());
     window.location.href = url.toString();
+
+    // Force reload if we're already at max recursion
+    if (currentLevel === 10) {
+      window.location.reload();
+    }
   };
 
   onMount(() => {
