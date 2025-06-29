@@ -8,7 +8,6 @@ crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has bee
 - Update blurb
 - Official color palette
 - custom font(s)
-- Go back feature for previous versions in changelog
 - Entire blurb replacement on various modes
 
 ## Version 1.2
