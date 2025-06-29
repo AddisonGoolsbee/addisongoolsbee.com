@@ -5,11 +5,11 @@ crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has bee
 
 ## Version 1.1 (Wrapping Up)
 
+- Update blurb
 - Official color palette
 - custom font(s)
 - Go back feature for previous versions in changelog
 - Entire blurb replacement on various modes
-- Update copy
 
 ## Version 1.2
 

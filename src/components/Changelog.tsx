@@ -5,7 +5,7 @@ type Props = {
   changelogVisible: () => boolean;
   setChangelogVisible: () => void;
   toggleChangelog: () => void;
-  handleRecursion: () => void;
+  handleRecursion?: () => void;
 };
 
 type VersionProps = {
