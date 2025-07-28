@@ -14,53 +14,63 @@ const SecretTypingOverlay = (props: Props) => {
   const [typed, setTyped] = createSignal("");
   const [visible, setVisible] = createSignal(false);
   const [fading, setFading] = createSignal(false);
+  const [pulsing, setPulsing] = createSignal(false);
 
   let timeout: ReturnType<typeof setTimeout> | undefined;
   let fadeTimeout: ReturnType<typeof setTimeout> | undefined;
+  let pulseTimeout: ReturnType<typeof setTimeout> | undefined;
 
   const resetTyping = () => {
+    console.log("Resetting typing");
     setTyped("");
     setVisible(false);
     setFading(false);
+    setPulsing(false);
   };
 
-const handleKey = (e: KeyboardEvent) => {
+  const handleKey = (e: KeyboardEvent) => {
     const key = e.key;
 
     // Ignore if metaKey or ctrlKey is held
     if (e.metaKey || e.ctrlKey) {
-        return;
+      return;
     }
 
     if (typed() === "" && key === " ") {
-        return; // Ignore if first key is space
+      return; // Ignore if first key is space
     }
 
     if (key.length === 1 && /^[\w\s\p{P}\p{S}]$/u.test(key)) {
-        setTyped((prev) => {
-            const next = prev + key.toLowerCase();
-            checkSecret(next);
-            return next;
-        });
-        setVisible(true);
-        setFading(false);
-        resetTimeout();
+      setTyped((prev) => {
+        const next = prev + key.toLowerCase();
+        checkSecret(next);
+        return next;
+      });
+      setVisible(true);
+      setFading(false);
+      resetTimeout();
     } else if (key === "Backspace") {
-        setTyped((prev) => {
-            const next = prev.slice(0, -1);
-            resetTimeout();
-            return next;
-        });
-    } else if (key === "Escape") {
-        resetTyping();
+      setTyped((prev) => {
+        const next = prev.slice(0, -1);
+        resetTimeout();
+        return next;
+      });
+    } else if (key === "Escape" || key === "Enter") {
+      resetTyping();
     }
-};
+  };
 
   const checkSecret = (word: string) => {
     for (const secret of props.secrets) {
       if (word === secret.word) {
+        // Trigger pulse effect
+        setPulsing(true);
+        clearTimeout(pulseTimeout);
+        pulseTimeout = setTimeout(() => {
+          setPulsing(false);
+        }, 1000); // Duration of pulse animation
+
         secret.onUnlock();
-        resetTyping();
         break;
       }
     }
@@ -84,6 +94,8 @@ const handleKey = (e: KeyboardEvent) => {
   onCleanup(() => {
     window.removeEventListener("keydown", handleKey);
     clearTimeout(timeout);
+    clearTimeout(fadeTimeout);
+    clearTimeout(pulseTimeout);
   });
 
   return (
@@ -95,13 +107,26 @@ const handleKey = (e: KeyboardEvent) => {
         transition={{ duration: 0.3 }}
         class="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
       >
-        <Motion.div
-          animate={{ opacity: fading() ? 0 : 1 }}
-          transition={{ duration: 0.6 }}
-          class="text-white text-5xl sm:text-7xl font-bold font-mono bg-black/50 px-6 py-4 rounded-lg"
-        >
-          {typed()}
-        </Motion.div>
+        <div class="relative flex items-center justify-center">
+          {/* Pulse background effect */}
+          <Show when={pulsing()}>
+            <Motion.div
+              initial={{ scale: 1, opacity: 0.5 }}
+              animate={{ scale: 1.4 , opacity: 0 }}
+              transition={{ duration: 1, easing: "ease-out" }}
+              class="absolute inset-0 bg-black rounded-lg"
+            />
+          </Show>
+
+          {/* Main text overlay */}
+          <Motion.div
+            animate={{ opacity: fading() ? 0 : 1 }}
+            transition={{ duration: 0.6 }}
+            class="text-white text-5xl sm:text-7xl font-bold font-mono bg-black/50 px-6 py-4 rounded-lg relative z-10"
+          >
+            {typed()}
+          </Motion.div>
+        </div>
       </Motion.div>
     </Show>
   );
