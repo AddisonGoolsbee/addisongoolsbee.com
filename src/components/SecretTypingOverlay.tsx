@@ -24,28 +24,37 @@ const SecretTypingOverlay = (props: Props) => {
     setFading(false);
   };
 
-  const handleKey = (e: KeyboardEvent) => {
+const handleKey = (e: KeyboardEvent) => {
     const key = e.key;
 
-    if (key.length === 1 && /^[a-zA-Z0-9]$/.test(key)) {
-      setTyped((prev) => {
-        const next = prev + key.toLowerCase();
-        checkSecret(next);
-        return next;
-      });
-      setVisible(true);
-      setFading(false);
-      resetTimeout();
-    } else if (key === "Backspace") {
-      setTyped((prev) => {
-        const next = prev.slice(0, -1);
-        resetTimeout();
-        return next;
-      });
-    } else if (key === "Escape") {
-      resetTyping();
+    // Ignore if metaKey or ctrlKey is held
+    if (e.metaKey || e.ctrlKey) {
+        return;
     }
-  };
+
+    if (typed() === "" && key === " ") {
+        return; // Ignore if first key is space
+    }
+
+    if (key.length === 1 && /^[\w\s\p{P}\p{S}]$/u.test(key)) {
+        setTyped((prev) => {
+            const next = prev + key.toLowerCase();
+            checkSecret(next);
+            return next;
+        });
+        setVisible(true);
+        setFading(false);
+        resetTimeout();
+    } else if (key === "Backspace") {
+        setTyped((prev) => {
+            const next = prev.slice(0, -1);
+            resetTimeout();
+            return next;
+        });
+    } else if (key === "Escape") {
+        resetTyping();
+    }
+};
 
   const checkSecret = (word: string) => {
     for (const secret of props.secrets) {
