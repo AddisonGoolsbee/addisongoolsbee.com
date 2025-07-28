@@ -13,6 +13,7 @@ import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
+import SecretTypingOverlay from "../components/SecretTypingOverlay";
 const Home: Component = () => {
   useCanonical();
   let imgRef;
@@ -129,6 +130,12 @@ const Home: Component = () => {
 
   return (
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
+      <SecretTypingOverlay
+        secrets={[
+          { word: "sandwich", onUnlock: sandwichMode },
+          { word: "party", onUnlock: togglePartyMode },
+        ]}
+      />
       <Show when={partyModeActive()}>
         <Party />
       </Show>
