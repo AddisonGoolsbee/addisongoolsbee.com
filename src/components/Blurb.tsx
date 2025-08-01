@@ -64,8 +64,7 @@ const Blurb: Component<Props> = (props) => {
             {blurbContent()}
           </div>
           <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">
-            This website has a few hidden secrets, try clicking "Addison
-            Goolsbee"
+            This website has a few hidden secrets, try clicking my name
           </p>
         </div>
         <div class="w-full bg-teal-800 bg-opacity-90 p-2 sm:p-5 flex justify-center space-x-7p rounded-b-sm sm:rounded-b-lg">

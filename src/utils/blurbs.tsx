@@ -82,8 +82,14 @@ export const DefaultBlurb = () => (
 export const BrieBlurb = () => (
   <>
     <p>
-      {" "}
-      Hey there! I'm
+      Hey there! I'm aobinsdafu and I don't consent to being on this website.
+      Also I'm a baddie.
     </p>
+    <a
+      href="https://github.com/addisongoolsbee/addisongoolsbee.com"
+      class="link"
+    >
+      The code is public
+    </a>
   </>
 );

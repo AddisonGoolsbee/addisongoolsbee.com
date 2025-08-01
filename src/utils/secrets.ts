@@ -1,6 +1,6 @@
 // import { sandwichMode, togglePartyMode } from "../pages/Home";
 
-import { sandwichMode } from "../signals/handlers";
+import { brie, sandwichMode } from "../signals/handlers";
 import { changelogVisible, partyModeActive, setChangelogVisible, setPartyModeActive } from "../signals/state";
 
 export interface Secret {
@@ -24,7 +24,7 @@ export const secrets: Secret[] = [
   },
   {
     hash: "49720cd8066641e8d16c08b1b68122a90ae50e07d08b89a7ec072e4a3ac6d92a",
-    onUnlock: () => void 0,
+    onUnlock: () => brie(),
     dynamicDecode: true,
   },
 ];      

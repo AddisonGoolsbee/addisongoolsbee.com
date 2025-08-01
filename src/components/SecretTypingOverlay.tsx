@@ -1,7 +1,9 @@
 import { createSignal, onCleanup, onMount, Show } from "solid-js";
 import { Motion } from "@motionone/solid";
-import { sha256 } from "../utils/hash";
+import { GLOBAL_SALT, sha256 } from "../utils/cryptography";
 import { secrets } from "../utils/secrets";
+
+import { setCurrentDecoderSecret } from "../signals/state";
 
 const SecretTypingOverlay = () => {
   const [typed, setTyped] = createSignal("");
@@ -53,7 +55,8 @@ const SecretTypingOverlay = () => {
   };
 
   const checkSecret = async (word: string) => {
-    const wordHash = await sha256(word); 
+    word = word.replace(/\s+/g, "");
+    const wordHash = await sha256(word);
     for (const secret of secrets) {
       if (wordHash === secret.hash) {
         setPulsing(true);
@@ -61,7 +64,9 @@ const SecretTypingOverlay = () => {
         pulseTimeout = setTimeout(() => {
           setPulsing(false);
         }, 1000); // Duration of pulse animation
-
+        if (secret.dynamicDecode) {
+          setCurrentDecoderSecret(GLOBAL_SALT + word);
+        }
         secret.onUnlock();
         break;
       }
