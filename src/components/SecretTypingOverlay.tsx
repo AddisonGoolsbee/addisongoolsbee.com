@@ -1,16 +1,9 @@
 import { createSignal, onCleanup, onMount, Show } from "solid-js";
 import { Motion } from "@motionone/solid";
+import { sha256 } from "../utils/hash";
+import { secrets } from "../utils/secrets";
 
-interface Secret {
-  word: string;
-  onUnlock: () => void;
-}
-
-interface Props {
-  secrets: Secret[];
-}
-
-const SecretTypingOverlay = (props: Props) => {
+const SecretTypingOverlay = () => {
   const [typed, setTyped] = createSignal("");
   const [visible, setVisible] = createSignal(false);
   const [fading, setFading] = createSignal(false);
@@ -21,7 +14,6 @@ const SecretTypingOverlay = (props: Props) => {
   let pulseTimeout: ReturnType<typeof setTimeout> | undefined;
 
   const resetTyping = () => {
-    console.log("Resetting typing");
     setTyped("");
     setVisible(false);
     setFading(false);
@@ -60,10 +52,10 @@ const SecretTypingOverlay = (props: Props) => {
     }
   };
 
-  const checkSecret = (word: string) => {
-    for (const secret of props.secrets) {
-      if (word === secret.word) {
-        // Trigger pulse effect
+  const checkSecret = async (word: string) => {
+    const wordHash = await sha256(word); 
+    for (const secret of secrets) {
+      if (wordHash === secret.hash) {
         setPulsing(true);
         clearTimeout(pulseTimeout);
         pulseTimeout = setTimeout(() => {
@@ -112,7 +104,7 @@ const SecretTypingOverlay = (props: Props) => {
           <Show when={pulsing()}>
             <Motion.div
               initial={{ scale: 1, opacity: 0.5 }}
-              animate={{ scale: 1.4 , opacity: 0 }}
+              animate={{ scale: 1.4, opacity: 0 }}
               transition={{ duration: 1, easing: "ease-out" }}
               class="absolute inset-0 bg-black rounded-lg"
             />
