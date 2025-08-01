@@ -2,16 +2,21 @@ import { createSignal, type Component, createEffect, onMount } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
 import BlurbButton from "./BlurbButton";
-import { DefaultBlurb } from "../utils/blurbs";
+import { defaultBlurb } from "../utils/blurbs";
 
-import { blurbContent, setBlurbContent } from "../signals/state";
+import {
+  blurbStart,
+  changelogVisible,
+  myName,
+  partyModeActive,
+  setBlurbStart,
+  setChangelogVisible,
+} from "../signals/state";
+import HighFiveButton from "./HighFiveButton";
+import { sandwichMode } from "../signals/handlers";
 
 type Props = {
   imgTop: number;
-  toggleChangelog: () => void;
-  sandwichMode: () => void;
-  partyModeActive: boolean;
-  myName: string;
 };
 
 const Blurb: Component<Props> = (props) => {
@@ -21,10 +26,10 @@ const Blurb: Component<Props> = (props) => {
   const isMobile = () => windowWidth() < 640;
 
   createEffect(() => {
-    if (props.partyModeActive || partyUnlocked()) {
+    if (partyModeActive() || partyUnlocked()) {
       setPartyUnlocked(true);
       const element = document.querySelector(".blurb-container");
-      if (props.partyModeActive) {
+      if (partyModeActive()) {
         element?.classList.remove("grow-animation");
         element?.classList.add("shrink-animation");
       } else {
@@ -35,7 +40,7 @@ const Blurb: Component<Props> = (props) => {
   });
 
   onMount(() => {
-    setBlurbContent(<DefaultBlurb />);
+    setBlurbStart(defaultBlurb);
 
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -55,13 +60,91 @@ const Blurb: Component<Props> = (props) => {
               {isMobile() ? <br /> : ""}
               <span
                 class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 sm:ml-2"
-                onClick={props.sandwichMode}
+                onClick={sandwichMode}
               >
-                {props.myName}
+                {myName()}
               </span>
             </p>
             <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
-            {blurbContent()}
+            <p>
+              {blurbStart()}
+            </p>
+            <br />
+            <p>
+              I'm a fullstack developer with a particular interest in system
+              design/development. I love building things—useful applications,
+              extremely useless applications, video games, physical devices,
+              water jug art installations, and more.&nbsp;
+              <a
+                href="https://github.com/addisongoolsbee"
+                target="_blank"
+                class="link"
+              >
+                Check out some of my projects
+              </a>
+              &nbsp;or take a look at my&nbsp;
+              <a
+                href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
+                class="link"
+                target="_blank"
+              >
+                resume
+              </a>
+              .
+            </p>
+            <br />
+            <p>
+              When I'm not busy wrestling with code or reveling in my
+              five-gallon water jug collection, I like to indulge in the finer
+              things in life—debating philosophy until 3 AM, juggling, foraging
+              for wild mushrooms, and feeding my Alibaba shopping addiction.
+            </p>
+            <br />
+            <p>
+              Aside from coding, my other pursuits have included being the
+              cofounder of Pineapple Soap Co., president of the&nbsp;
+              <a
+                href="https://yalecomputersociety.org"
+                class="link"
+                target="_blank"
+              >
+                Yale Computer Society
+              </a>
+              , in a&nbsp;
+              <a
+                href="https://campuspress.yale.edu/danceworks/"
+                class="link"
+                target="_blank"
+              >
+                dance group
+              </a>
+              , and a number of various other clubs on campus.
+            </p>
+            <br />
+            <p>
+              This website was written in Solid.js and Tailwind CSS.&nbsp;
+              <a
+                href="https://github.com/addisongoolsbee/addisongoolsbee.com"
+                class="link"
+              >
+                The code is public
+              </a>
+              .
+            </p>
+            <br />
+            <p>
+              Feeling nostalgic? See previous iterations of my website&nbsp;
+              <a
+                onClick={() => setChangelogVisible(!changelogVisible())}
+                class="link"
+              >
+                here
+              </a>
+              .
+            </p>
+            <div class="flex justify-center mt-6 sm:mt-12">
+              <HighFiveButton key="highfive" />
+            </div>
           </div>
           <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">
             This website has a few hidden secrets, try clicking my name
@@ -84,7 +167,7 @@ const Blurb: Component<Props> = (props) => {
             icon={<FiMail />}
           />
           <BlurbButton
-            href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+            href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
             text="Resume"
             icon={<FiFileText />}
           />

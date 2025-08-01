@@ -15,9 +15,19 @@ import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
 import SecretTypingOverlay from "../components/SecretTypingOverlay";
 
-import { profileSrc, setProfileSrc, myName, setMyName, changelogVisible, setChangelogVisible, partyModeActive, setPartyModeActive, setBlurbContent } from "../signals/state";
+import {
+  profileSrc,
+  setProfileSrc,
+  myName,
+  setMyName,
+  changelogVisible,
+  setChangelogVisible,
+  partyModeActive,
+  setPartyModeActive,
+  setBlurbStart,
+} from "../signals/state";
 import { sandwichMode } from "../signals/handlers";
-import { DefaultBlurb } from "../utils/blurbs";
+import { defaultBlurb } from "../utils/blurbs";
 
 const Home: Component = () => {
   useCanonical();
@@ -78,7 +88,7 @@ const Home: Component = () => {
   const handlePrint = () => {
     setProfileSrc(printerURL);
     setMyName("Printer");
-    setBlurbContent(<DefaultBlurb />);
+    setBlurbStart(defaultBlurb);
   };
 
   const updateTopPoint = () => {
@@ -136,10 +146,6 @@ const Home: Component = () => {
       <Show when={imageLoaded()}>
         <Blurb
           imgTop={topPoint()}
-          toggleChangelog={toggleChangelog}
-          sandwichMode={sandwichMode}
-          partyModeActive={partyModeActive()}
-          myName={myName()}
         />
       </Show>
       <Changelog

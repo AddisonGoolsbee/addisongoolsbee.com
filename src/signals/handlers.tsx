@@ -2,10 +2,10 @@ import {
   myName,
   setMyName,
   setProfileSrc,
-  setBlurbContent,
+  setBlurbStart,
   currentDecoderSecret,
 } from "./state";
-import { BrieBlurb, DefaultBlurb } from "../utils/blurbs";
+import { brieBlurb, defaultBlurb } from "../utils/blurbs";
 import { decryptWithPassword } from "../utils/cryptography";
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -21,7 +21,7 @@ export const sandwichMode = () => {
   setProfileSrc(newSrc);
   const newName = myName() === "Sandwich" ? "Addison Goolsbee" : "Sandwich";
   setMyName(newName);
-  setBlurbContent(<DefaultBlurb />);
+  setBlurbStart(defaultBlurb);
 };
 
 export const brie = async () => {
@@ -35,5 +35,9 @@ export const brie = async () => {
     currentDecoderSecret()
   );
   setMyName(newName);
-  setBlurbContent(<BrieBlurb />);
+  const newBlurb = await decryptWithPassword(
+    brieBlurb,
+    currentDecoderSecret()
+  );
+  setBlurbStart(newBlurb);
 };
