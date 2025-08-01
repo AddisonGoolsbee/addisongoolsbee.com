@@ -15,22 +15,18 @@ import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
 import SecretTypingOverlay from "../components/SecretTypingOverlay";
 
-import { profileSrc, setProfileSrc, myName, setMyName } from "../signals/state";
+import { profileSrc, setProfileSrc, myName, setMyName, changelogVisible, setChangelogVisible, partyModeActive, setPartyModeActive } from "../signals/state";
 import { sandwichMode } from "../signals/handlers";
 
 const Home: Component = () => {
   useCanonical();
   let imgRef;
 
-  const addisonProfileURL = "/images/profile.webp";
   const sandwichURL = "/images/sandwich.webp";
-  const sandwichGifURL = "/images/sandwich.gif";
   const printerURL = "/images/printer.png";
 
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
-  const [changelogVisible, setChangelogVisible] = createSignal(false);
-  const [partyModeActive, setPartyModeActive] = createSignal(false);
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
   const [recursionLevel, setRecursionLevel] = createSignal(0);
 
@@ -106,8 +102,6 @@ const Home: Component = () => {
   const togglePartyMode = () => {
     setPartyModeActive(!partyModeActive());
   };
-
- 
 
   return (
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
