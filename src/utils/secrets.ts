@@ -6,6 +6,7 @@ import { changelogVisible, partyModeActive, setChangelogVisible, setPartyModeAct
 export interface Secret {
   hash: string;
   onUnlock: () => void; 
+  dynamicDecode?: boolean;
 }
 
 export const secrets: Secret[] = [
@@ -19,6 +20,11 @@ export const secrets: Secret[] = [
   },
   {
     hash: "678d17c5cc93650ae1103104773895cce95b38cba1eea62bc678701a6961b8f5",
-    onUnlock: () => setPartyModeActive(!partyModeActive()), 
+    onUnlock: () => setPartyModeActive(!partyModeActive()),
+  },
+  {
+    hash: "49720cd8066641e8d16c08b1b68122a90ae50e07d08b89a7ec072e4a3ac6d92a",
+    onUnlock: () => void 0,
+    dynamicDecode: true,
   },
 ];      
