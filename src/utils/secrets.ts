@@ -1,11 +1,16 @@
 // import { sandwichMode, togglePartyMode } from "../pages/Home";
 
-import { brie, sandwichMode } from "../signals/handlers";
-import { changelogVisible, partyModeActive, setChangelogVisible, setPartyModeActive } from "../signals/state";
+import { brie, carbonara, sandwichMode } from "../signals/handlers";
+import {
+  changelogVisible,
+  partyModeActive,
+  setChangelogVisible,
+  setPartyModeActive,
+} from "../signals/state";
 
 export interface Secret {
   hash: string;
-  onUnlock: () => void; 
+  onUnlock: () => void;
   dynamicDecode?: boolean;
 }
 
@@ -27,4 +32,9 @@ export const secrets: Secret[] = [
     onUnlock: () => brie(),
     dynamicDecode: true,
   },
-];      
+  {
+    hash: "e024e33d8db99e959fd85c1b38c28fb7abbace536365db956009060733d38c9b",
+    onUnlock: () => carbonara(),
+    dynamicDecode: true,
+  },
+];

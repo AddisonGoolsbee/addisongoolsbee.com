@@ -45,3 +45,15 @@ export const brie = async () => {
     console.error(error);
   }
 };
+
+export const carbonara = async () => {
+  try {
+    const link = await decryptWithPassword(
+      "1fe475d0667b7aa49932d3dfb4e1b5763eb88d75f4405fc09dee131b5cc961e36366664c48a02435a0d4c089ba51aa1c573324f6e4253bc96fe2eda63dbb0b46a56c153cb8355c128cef057693c683df1622b3cc7c4fa9d4591b0b9945c1f838ca954b5508097dfca3a093206986bd2280505e40ce652ae3e77abf",
+      currentDecoderSecret()
+    );
+    window.open(link, "_blank");
+  } catch (error) {
+    console.error("Failed to unlock carbonara secret:", error);
+  }
+}
