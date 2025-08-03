@@ -4,6 +4,8 @@ import {
   setProfileSrc,
   setBlurbStart,
   currentDecoderSecret,
+  isBlurry,
+  setIsBlurry
 } from "./state";
 import { brieBlurb, defaultBlurb } from "../utils/blurbs";
 import { decryptWithPassword } from "../utils/cryptography";
@@ -55,5 +57,24 @@ export const carbonara = async () => {
     window.open(link, "_blank");
   } catch (error) {
     console.error("Failed to unlock carbonara secret:", error);
+  }
+}
+
+export const cremebrulee = async () => {
+  try {
+    const newBlurb = await decryptWithPassword(
+      "f249ab4ab0b1dc6eaa9932d1ecc9bbd1a2d34638951c7c702aae7bff16e4de7d84e506e6d924358f723bf436aa1900de64767576cfa4b054dfdd53144323d573243a139efc01",
+      currentDecoderSecret()
+    );
+    setBlurbStart(newBlurb);
+    const newName = await decryptWithPassword(
+      "8cfe20a759d28689943f98cea4faa0af43cc9bacadefaed4088b369a7c77261f94c9fc19d9cab8be953efca0997ecf18a4610286ccd64f",
+      currentDecoderSecret()
+    );
+    setMyName(newName);
+    setIsBlurry(!isBlurry());
+
+  } catch (error) {
+    console.error("Failed to unlock cremebrulee secret:", error);
   }
 }

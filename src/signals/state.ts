@@ -8,3 +8,4 @@ export const [partyModeActive, setPartyModeActive] = createSignal(false);
 export const [currentDecoderSecret, setCurrentDecoderSecret] = createSignal<
   string | null
 >(null);
+export const [isBlurry, setIsBlurry] = createSignal(false);

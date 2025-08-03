@@ -1,6 +1,9 @@
-// import { sandwichMode, togglePartyMode } from "../pages/Home";
-
-import { brie, carbonara, sandwichMode } from "../signals/handlers";
+import {
+  brie,
+  carbonara,
+  sandwichMode,
+  cremebrulee,
+} from "../signals/handlers";
 import {
   changelogVisible,
   partyModeActive,
@@ -35,6 +38,11 @@ export const secrets: Secret[] = [
   {
     hash: "e024e33d8db99e959fd85c1b38c28fb7abbace536365db956009060733d38c9b",
     onUnlock: () => carbonara(),
+    dynamicDecode: true,
+  },
+  {
+    hash: "037525c583a2ca4e3a5ff24c475b9d6070e2314c6295674b6a87b1ad5f61afc7",
+    onUnlock: () => cremebrulee(),
     dynamicDecode: true,
   },
 ];

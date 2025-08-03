@@ -78,6 +78,8 @@ const Home: Component = () => {
     window.addEventListener("resize", updateTopPoint);
     window.addEventListener("beforeprint", handlePrint);
     updateTopPoint();
+
+    console.log("blurry face");
   });
 
   onCleanup(() => {

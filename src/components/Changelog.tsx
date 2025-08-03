@@ -104,7 +104,7 @@ const Changelog: Component<Props> = (props) => {
               version="1.2 (In Progress)"
               date="August 2025"
               description="Secrets"
-              changes={["Encrypted password system"]}
+              changes={["Encrypted password system", "One gazillion secrets"]}
               url=""
               onRecursionClick={props.handleRecursion}
             />
