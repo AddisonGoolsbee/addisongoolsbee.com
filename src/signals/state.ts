@@ -10,3 +10,4 @@ export const [currentDecoderSecret, setCurrentDecoderSecret] = createSignal<
 >(null);
 export const [isBlurry, setIsBlurry] = createSignal(false);
 export const [isRainbowName, setIsRainbowName] = createSignal(false);
+export const [particleEmoji, setParticleEmoji] = createSignal("");

@@ -4,6 +4,7 @@ import {
   carbonara,
   cremebrulee,
   eggshell,
+  pancake,
 } from "../signals/handlers";
 import {
   changelogVisible,
@@ -49,6 +50,11 @@ export const secrets: Secret[] = [
   {
     hash: "08d25679c37f07b2605a15537c7f5338f020c5887c35a46469aa51bd3e189b53",
     onUnlock: () => eggshell(),
+    dynamicDecode: true,
+  },
+  {
+    hash: "1716131c789f581164846ebe440c4edc7a315f35b96efe7cc0083a2900cde67f",
+    onUnlock: () => pancake(),
     dynamicDecode: true,
   },
 ];
