@@ -22,12 +22,10 @@ const ChangelogVersionCard: Component<VersionProps> = (props) => {
     <button
       class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-100 active:shadow-md block w-full text-left"
       onClick={() => {
-        const shouldRecurse =
-          props.onRecursionClick &&
-          window.location.hash.endsWith("#/" + props.url);
         window.history.replaceState(null, "", window.location.pathname);
         window.location.hash = `/${props.url}`;
-        if (shouldRecurse) {
+        if (props.onRecursionClick) {
+          console.log("recursion click");
           props.onRecursionClick();
         } else {
           window.location.reload();
@@ -97,21 +95,12 @@ const Changelog: Component<Props> = (props) => {
                 target="_blank"
               >
                 Github
-              </a>
-              .
+              </a>.
             </p>
             <ChangelogVersionCard
-              version="1.2 (In Progress)"
-              date="August 2025"
-              description="Secrets"
-              changes={["Encrypted password system"]}
-              url=""
-              onRecursionClick={props.handleRecursion}
-            />
-            <ChangelogVersionCard
-              version="1.1"
-              date="May 2025"
-              description="Stuff"
+              version="1.1 (Current)"
+              date="May 3, 2025"
+              description="Modes and Secrets"
               changes={[
                 "Party mode",
                 "Printer mode & pdf spoof",
@@ -122,13 +111,13 @@ const Changelog: Component<Props> = (props) => {
                 "Hash-based navigation",
                 "Miscellaneous improvements",
               ]}
-              url="v1_1"
+              url=""
               onRecursionClick={props.handleRecursion}
             />
             <ChangelogVersionCard
               version="1.0"
-              date="November 2023"
-              description="Fully-functional MVP built in Solid.js"
+              date="November 15, 2023"
+              description="Fully-funcitonal MVP built in Solid.js"
               changes={[
                 "Home page layout: cutout of myself on left, blurb on right",
                 "Rewritten blurb",
@@ -145,7 +134,7 @@ const Changelog: Component<Props> = (props) => {
             />
             <ChangelogVersionCard
               version="0.2"
-              date="October 2023"
+              date="October 18, 2023"
               description="Host change, restarting from scratch"
               changes={[
                 "addisongoolsbee.com repository created",
@@ -158,7 +147,7 @@ const Changelog: Component<Props> = (props) => {
             />
             <ChangelogVersionCard
               version="0.1"
-              date="August 2023"
+              date="August 30, 2023"
               description="Template-based site created in 1 hour"
               changes={[
                 "Domain name and hosting purchased from Nixihost",
