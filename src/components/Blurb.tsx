@@ -57,18 +57,22 @@ const Blurb: Component<Props> = (props) => {
           <div class="p-5p">
             <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
               My name is
-              {isMobile() ? <br /> : ""}
+              {isMobile() ? (
+                <br />
+              ) : (
+                <span
+                  style={{ display: "inline-block", width: "0.3em" }}
+                ></span>
+              )}
               <span
-                class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 sm:ml-2"
+                class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105"
                 onClick={sandwichMode}
               >
                 {myName()}
               </span>
             </p>
             <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
-            <p>
-              {blurbStart()}
-            </p>
+            <p>{blurbStart()}</p>
             <br />
             <p>
               I'm a fullstack developer with a particular interest in system
