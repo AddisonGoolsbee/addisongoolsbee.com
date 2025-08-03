@@ -13,24 +13,31 @@ import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
+import SecretTypingOverlay from "../components/SecretTypingOverlay";
+
+import {
+  profileSrc,
+  setProfileSrc,
+  myName,
+  setMyName,
+  changelogVisible,
+  setChangelogVisible,
+  partyModeActive,
+  setPartyModeActive,
+  setBlurbStart,
+} from "../signals/state";
+import { sandwichMode } from "../signals/handlers";
+import { defaultBlurb } from "../utils/blurbs";
+
 const Home: Component = () => {
   useCanonical();
   let imgRef;
 
-  const profileURL = "/images/profile.webp";
   const sandwichURL = "/images/sandwich.webp";
-  const sandwichGifURL = "/images/sandwich.gif";
   const printerURL = "/images/printer.png";
-
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
-  const [changelogVisible, setChangelogVisible] = createSignal(false);
-  const [partyModeActive, setPartyModeActive] = createSignal(false);
-  const [printerModeActive, setPrinterModeActive] = createSignal(false);
-  const [profileSrc, setProfileSrc] = createSignal(profileURL);
-  const [myName, setMyName] = createSignal("Addison Goolsbee");
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
   const [recursionLevel, setRecursionLevel] = createSignal(0);
 
@@ -79,9 +86,9 @@ const Home: Component = () => {
   });
 
   const handlePrint = () => {
-    setPrinterModeActive(true);
     setProfileSrc(printerURL);
     setMyName("Printer");
+    setBlurbStart(defaultBlurb);
   };
 
   const updateTopPoint = () => {
@@ -108,27 +115,9 @@ const Home: Component = () => {
     setPartyModeActive(!partyModeActive());
   };
 
-  const sandwichMode = () => {
-    if (printerModeActive()) {
-      setPrinterModeActive(false);
-      setProfileSrc(profileURL);
-      setMyName("Addison Goolsbee");
-      return;
-    }
-    const newSrc =
-      profileSrc() === profileURL
-        ? isSafari
-          ? sandwichGifURL
-          : sandwichURL
-        : profileURL;
-    setProfileSrc(newSrc);
-    const newName =
-      myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
-    setMyName(newName);
-  };
-
   return (
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
+      <SecretTypingOverlay />
       <Show when={partyModeActive()}>
         <Party />
       </Show>
@@ -157,10 +146,6 @@ const Home: Component = () => {
       <Show when={imageLoaded()}>
         <Blurb
           imgTop={topPoint()}
-          toggleChangelog={toggleChangelog}
-          sandwichMode={sandwichMode}
-          partyModeActive={partyModeActive()}
-          myName={myName()}
         />
       </Show>
       <Changelog

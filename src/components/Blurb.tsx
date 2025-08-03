@@ -1,15 +1,22 @@
-import { createSignal, type Component, createEffect } from "solid-js";
+import { createSignal, type Component, createEffect, onMount } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
 import BlurbButton from "./BlurbButton";
+import { defaultBlurb } from "../utils/blurbs";
+
+import {
+  blurbStart,
+  changelogVisible,
+  myName,
+  partyModeActive,
+  setBlurbStart,
+  setChangelogVisible,
+} from "../signals/state";
 import HighFiveButton from "./HighFiveButton";
+import { sandwichMode } from "../signals/handlers";
 
 type Props = {
   imgTop: number;
-  toggleChangelog: () => void;
-  sandwichMode: () => void;
-  partyModeActive: boolean;
-  myName: string;
 };
 
 const Blurb: Component<Props> = (props) => {
@@ -19,10 +26,10 @@ const Blurb: Component<Props> = (props) => {
   const isMobile = () => windowWidth() < 640;
 
   createEffect(() => {
-    if (props.partyModeActive || partyUnlocked()) {
+    if (partyModeActive() || partyUnlocked()) {
       setPartyUnlocked(true);
       const element = document.querySelector(".blurb-container");
-      if (props.partyModeActive) {
+      if (partyModeActive()) {
         element?.classList.remove("grow-animation");
         element?.classList.add("shrink-animation");
       } else {
@@ -32,8 +39,9 @@ const Blurb: Component<Props> = (props) => {
     }
   });
 
-  // Update windowWidth on window resize
-  createEffect(() => {
+  onMount(() => {
+    setBlurbStart(defaultBlurb);
+
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -52,20 +60,14 @@ const Blurb: Component<Props> = (props) => {
               {isMobile() ? <br /> : ""}
               <span
                 class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 sm:ml-2"
-                onClick={props.sandwichMode}
+                onClick={sandwichMode}
               >
-                {props.myName}
+                {myName()}
               </span>
             </p>
             <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
             <p>
-              {" "}
-              Hey there! I'm a{" "}
-              {props.myName === "Addison Goolsbee"
-                ? "soon-to-be software engineer"
-                : props.myName.toLowerCase()}{" "}
-              living in Seattle. Welcome to my
-              website!{" "}
+              {blurbStart()}
             </p>
             <br />
             <p>
@@ -82,7 +84,7 @@ const Blurb: Component<Props> = (props) => {
               </a>
               &nbsp;or take a look at my&nbsp;
               <a
-                href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+                href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
                 class="link"
                 target="_blank"
               >
@@ -132,7 +134,10 @@ const Blurb: Component<Props> = (props) => {
             <br />
             <p>
               Feeling nostalgic? See previous iterations of my website&nbsp;
-              <a onClick={props.toggleChangelog} class="link">
+              <a
+                onClick={() => setChangelogVisible(!changelogVisible())}
+                class="link"
+              >
                 here
               </a>
               .
@@ -142,8 +147,7 @@ const Blurb: Component<Props> = (props) => {
             </div>
           </div>
           <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">
-            This website has a few hidden secrets, try clicking "Addison
-            Goolsbee"
+            This website has a few hidden secrets, try clicking my name
           </p>
         </div>
         <div class="w-full bg-teal-800 bg-opacity-90 p-2 sm:p-5 flex justify-center space-x-7p rounded-b-sm sm:rounded-b-lg">
@@ -163,7 +167,7 @@ const Blurb: Component<Props> = (props) => {
             icon={<FiMail />}
           />
           <BlurbButton
-            href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+            href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
             text="Resume"
             icon={<FiFileText />}
           />
