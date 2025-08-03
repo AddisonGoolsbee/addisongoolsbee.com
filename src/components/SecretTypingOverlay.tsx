@@ -25,13 +25,12 @@ const SecretTypingOverlay = () => {
   const handleKey = (e: KeyboardEvent) => {
     const key = e.key;
 
-    // Ignore if metaKey or ctrlKey is held
     if (e.metaKey || e.ctrlKey) {
       return;
     }
 
     if (typed() === "" && key === " ") {
-      return; // Ignore if first key is space
+      return;
     }
 
     if (key.length === 1 && /^[\w\s\p{P}\p{S}]$/u.test(key)) {
@@ -46,7 +45,7 @@ const SecretTypingOverlay = () => {
     } else if (key === "Backspace") {
       setTyped((prev) => {
         const next = prev.slice(0, -1);
-        setFading(false); // Stop fading when backspacing
+        setFading(false);
         resetTimeout();
         return next;
       });
@@ -64,11 +63,22 @@ const SecretTypingOverlay = () => {
         clearTimeout(pulseTimeout);
         pulseTimeout = setTimeout(() => {
           setPulsing(false);
-        }, 1000); // Duration of pulse animation
+        }, 600); // Duration of pulse animation
         if (secret.dynamicDecode) {
           setCurrentDecoderSecret(GLOBAL_SALT + word);
         }
         secret.onUnlock();
+
+        // Start fading immediately after finding secret
+        clearTimeout(timeout);
+        clearTimeout(fadeTimeout);
+        setTimeout(() => {
+          setFading(true);
+          fadeTimeout = setTimeout(() => {
+            resetTyping();
+          }, 300); // matches fade duration
+        }, 400); // Start fading after pulse animation begins
+
         break;
       }
     }
@@ -106,17 +116,15 @@ const SecretTypingOverlay = () => {
         class="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
       >
         <div class="relative flex items-center justify-center">
-          {/* Pulse background effect */}
           <Show when={pulsing()}>
             <Motion.div
               initial={{ scale: 1, opacity: 0.5 }}
-              animate={{ scale: 1.4, opacity: 0 }}
+              animate={{ scale: 1.3, opacity: 0 }}
               transition={{ duration: 1, easing: "ease-out" }}
               class="absolute inset-0 bg-black rounded-lg"
             />
           </Show>
 
-          {/* Main text overlay */}
           <Motion.div
             animate={{ opacity: fading() ? 0 : 1 }}
             transition={{ duration: 0.3 }}
