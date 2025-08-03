@@ -5,7 +5,9 @@ import {
   setBlurbStart,
   currentDecoderSecret,
   isBlurry,
-  setIsBlurry
+  setIsBlurry,
+  setIsRainbowName,
+  isRainbowName
 } from "./state";
 import { brieBlurb, defaultBlurb } from "../utils/blurbs";
 import { decryptWithPassword } from "../utils/cryptography";
@@ -76,5 +78,17 @@ export const cremebrulee = async () => {
 
   } catch (error) {
     console.error("Failed to unlock cremebrulee secret:", error);
+  }
+}
+
+export const eggshell = async () => {
+  try {
+    setBlurbStart(defaultBlurb);
+    setMyName("Addison Goolsbee");
+    setProfileSrc("/images/profile.webp");
+    setIsRainbowName(!isRainbowName());
+
+  } catch (error) {
+    console.error("Failed to unlock eggshell secret:", error);
   }
 }

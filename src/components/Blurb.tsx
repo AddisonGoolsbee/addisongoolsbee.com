@@ -7,6 +7,7 @@ import { defaultBlurb } from "../utils/blurbs";
 import {
   blurbStart,
   changelogVisible,
+  isRainbowName,
   myName,
   partyModeActive,
   setBlurbStart,
@@ -22,6 +23,7 @@ type Props = {
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   const [partyUnlocked, setPartyUnlocked] = createSignal(false);
+  const [rainbowOffset, setRainbowOffset] = createSignal(0);
 
   const isMobile = () => windowWidth() < 640;
 
@@ -37,6 +39,24 @@ const Blurb: Component<Props> = (props) => {
         element?.classList.add("grow-animation");
       }
     }
+  });
+
+  createEffect(() => {
+    let animationId: number;
+
+    if (isRainbowName()) {
+      const animate = () => {
+        setRainbowOffset((prev) => (prev + 2) % 360);
+        animationId = requestAnimationFrame(animate);
+      };
+      animationId = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   });
 
   onMount(() => {
@@ -64,12 +84,35 @@ const Blurb: Component<Props> = (props) => {
                   style={{ display: "inline-block", width: "0.3em" }}
                 ></span>
               )}
-              <span
-                class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105"
-                onClick={sandwichMode}
-              >
-                {myName()}
-              </span>
+              {isRainbowName() ? (
+                <span
+                  class="inline-block font-medium cursor-pointer"
+                  onClick={sandwichMode}
+                  style={{ display: "inline-flex" }}
+                >
+                  {myName()
+                    .split("")
+                    .map((char, i) => (
+                      <span
+                        style={{
+                          color: `hsl(${
+                            (i * 360) / myName().length + rainbowOffset()
+                          }, 80%, 50%)`,
+                          "white-space": "pre",
+                        }}
+                      >
+                        {char}
+                      </span>
+                    ))}
+                </span>
+              ) : (
+                <span
+                  class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105"
+                  onClick={sandwichMode}
+                >
+                  {myName()}
+                </span>
+              )}
             </p>
             <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
             <p>{blurbStart()}</p>

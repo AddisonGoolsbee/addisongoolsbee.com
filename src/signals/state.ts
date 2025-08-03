@@ -9,3 +9,4 @@ export const [currentDecoderSecret, setCurrentDecoderSecret] = createSignal<
   string | null
 >(null);
 export const [isBlurry, setIsBlurry] = createSignal(false);
+export const [isRainbowName, setIsRainbowName] = createSignal(false);

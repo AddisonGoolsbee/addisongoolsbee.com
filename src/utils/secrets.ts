@@ -1,8 +1,9 @@
 import {
+  sandwichMode,
   brie,
   carbonara,
-  sandwichMode,
   cremebrulee,
+  eggshell,
 } from "../signals/handlers";
 import {
   changelogVisible,
@@ -43,6 +44,11 @@ export const secrets: Secret[] = [
   {
     hash: "037525c583a2ca4e3a5ff24c475b9d6070e2314c6295674b6a87b1ad5f61afc7",
     onUnlock: () => cremebrulee(),
+    dynamicDecode: true,
+  },
+  {
+    hash: "08d25679c37f07b2605a15537c7f5338f020c5887c35a46469aa51bd3e189b53",
+    onUnlock: () => eggshell(),
     dynamicDecode: true,
   },
 ];
