@@ -46,6 +46,7 @@ const SecretTypingOverlay = () => {
     } else if (key === "Backspace") {
       setTyped((prev) => {
         const next = prev.slice(0, -1);
+        setFading(false); // Stop fading when backspacing
         resetTimeout();
         return next;
       });
@@ -80,7 +81,7 @@ const SecretTypingOverlay = () => {
       setFading(true);
       fadeTimeout = setTimeout(() => {
         resetTyping();
-      }, 200); // matches fade duration
+      }, 300); // matches fade duration
     }, 1000);
   };
 
@@ -118,7 +119,7 @@ const SecretTypingOverlay = () => {
           {/* Main text overlay */}
           <Motion.div
             animate={{ opacity: fading() ? 0 : 1 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
             class="text-white text-5xl sm:text-7xl font-bold font-mono bg-black/50 px-6 py-4 rounded-lg relative z-10"
           >
             {typed()}

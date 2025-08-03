@@ -3,6 +3,8 @@
 PUT THIS SOMEWHERE I'LL REMEMBER
 crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has been planted"
 
+This stuff below needs to be redone it's out of date
+
 ## Version 1.1 (Wrapping Up)
 
 - Update blurb
