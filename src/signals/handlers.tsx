@@ -8,7 +8,8 @@ import {
   setIsBlurry,
   setIsRainbowName,
   isRainbowName,
-  setParticleEmoji
+  setParticleEmoji,
+  particleEmoji,
 } from "./state";
 import { brieBlurb, defaultBlurb } from "../utils/blurbs";
 import { decryptWithPassword } from "../utils/cryptography";
@@ -100,7 +101,12 @@ export const pancake = async () => {
       "5b9d01ba01e779641e653e4b7256d50ac6e2ad59bfbdc242eddcf228b3cfbbd2f2fb9339c727068e1b4dc83f003c7d7767894e1701ad0d82c2",
       currentDecoderSecret()
     );
-    setParticleEmoji(newParticleEmoji);
+    if (newParticleEmoji == particleEmoji()) {
+      setParticleEmoji("");
+    } else {
+      setParticleEmoji(newParticleEmoji);
+    }
+    console.log(particleEmoji());
   } catch (error) {
     console.error("Failed to unlock pancake secret:", error);
   }

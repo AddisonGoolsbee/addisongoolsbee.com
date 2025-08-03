@@ -152,6 +152,7 @@ const Particles: Component = () => {
 
   createEffect(() => {
     // Clear existing particles when emoji mode changes
+    particleEmoji(); // Track the signal
     particles.length = 0;
     currentAmount = 0;
   });
