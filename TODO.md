@@ -24,6 +24,7 @@ crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has bee
 
 - auto-update with new github projects
 - Playable Unity games
+- Recursion allows 50+
 
 ## Really Unnecessary
 
