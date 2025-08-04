@@ -64,9 +64,7 @@ const SecretTypingOverlay = () => {
         pulseTimeout = setTimeout(() => {
           setPulsing(false);
         }, 600); // Duration of pulse animation
-        if (secret.dynamicDecode) {
-          setCurrentDecoderSecret(GLOBAL_SALT + word);
-        }
+        setCurrentDecoderSecret(GLOBAL_SALT + word);
         secret.onUnlock();
 
         // Start fading immediately after finding secret
