@@ -25,7 +25,6 @@ const RecursiveImageStack: Component<Props> = (props) => {
   bottom: ${index() * OFFSET}px;          /* vertical offset on the bitmap */
   animation-delay: ${index() * 0.1}s;
 `;
-
           return (
             <div
               style={wrapperStyle}

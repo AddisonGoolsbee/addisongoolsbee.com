@@ -62,7 +62,7 @@ export const carbonara = async () => {
   } catch (error) {
     console.error("Failed to unlock carbonara secret:", error);
   }
-}
+};
 
 export const cremebrulee = async () => {
   try {
@@ -77,11 +77,10 @@ export const cremebrulee = async () => {
     );
     setMyName(newName);
     setIsBlurry(!isBlurry());
-
   } catch (error) {
     console.error("Failed to unlock cremebrulee secret:", error);
   }
-}
+};
 
 export const eggshell = async () => {
   try {
@@ -89,11 +88,10 @@ export const eggshell = async () => {
     setMyName("Addison Goolsbee");
     setProfileSrc("/images/profile.webp");
     setIsRainbowName(!isRainbowName());
-
   } catch (error) {
     console.error("Failed to unlock eggshell secret:", error);
   }
-}
+};
 
 export const pancake = async () => {
   try {
@@ -110,7 +108,9 @@ export const pancake = async () => {
   } catch (error) {
     console.error("Failed to unlock pancake secret:", error);
   }
-}
+};
+
+let kumquatTriggers = 0;
 
 export const kumquat = async () => {
   const image = await decryptWithPassword(
@@ -154,6 +154,24 @@ export const kumquat = async () => {
     img.style.top = `${y}px`;
     requestAnimationFrame(animate);
   }
-
   requestAnimationFrame(animate);
-}
+
+  kumquatTriggers++;
+  if (kumquatTriggers % 10 === 0) {
+    const newBlurb = await decryptWithPassword(
+      "8d4ffc771260240dd30e925b81f8527ce462112b3821c44d98f7d9237bc674b34ebc87fed5532ce4ecbb57e046f40e63c3d1ca8a7adf0b40",
+      currentDecoderSecret()
+    );
+    setBlurbStart(newBlurb);
+    const newName = await decryptWithPassword(
+      "740f64c46cb6640b48f5351cbb55eebe98e948d6ac5e56a9ae563fa17f818f2fc11b8125c62d1152865f6e4fb5a92c5cd0ebf5",
+      currentDecoderSecret()
+    );
+    setMyName(newName);
+    const newProfileSrc = await decryptWithPassword(
+      "7862662757bf235b0a81c6048b35444957c8fc23acc9252bf3bff8643c7677cdd438a6a9c81775ba5c342de5d2aefed2f4479327b787db2a4be61a2ed7d8fb9ca458bae52141f8c411d0f7c5ceb9230edfeb8acd4f",
+      currentDecoderSecret()
+    );
+    setProfileSrc(newProfileSrc);
+  }
+};
