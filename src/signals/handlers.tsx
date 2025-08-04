@@ -10,12 +10,25 @@ import {
   isRainbowName,
   setParticleEmoji,
   particleEmoji,
+  setPartyModeActive,
+  setChangelogVisible,
 } from "./state";
 import { brieBlurb, defaultBlurb } from "../utils/blurbs";
 import { decryptWithPassword } from "../utils/cryptography";
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const addisonImage = "/images/profile.webp";
+
+export const reset = () => {
+  setBlurbStart(defaultBlurb);
+  setMyName("Addison Goolsbee");
+  setProfileSrc(addisonImage);
+  setIsRainbowName(false);
+  setIsBlurry(false);
+  setParticleEmoji("");
+  setPartyModeActive(false);
+  setChangelogVisible(false);
+}
 
 export const sandwichMode = () => {
   const newSrc =
@@ -86,7 +99,7 @@ export const eggshell = async () => {
   try {
     setBlurbStart(defaultBlurb);
     setMyName("Addison Goolsbee");
-    setProfileSrc("/images/profile.webp");
+    setProfileSrc(addisonImage);
     setIsRainbowName(!isRainbowName());
   } catch (error) {
     console.error("Failed to unlock eggshell secret:", error);

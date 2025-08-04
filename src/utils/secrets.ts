@@ -1,5 +1,6 @@
 import {
   sandwichMode,
+  reset,
   brie,
   carbonara,
   cremebrulee,
@@ -55,5 +56,9 @@ export const secrets: Secret[] = [
   {
     hash: "32d1abff5e189d2736c4a126c7da616f51a7f569bdd2572354898c21a0271446",
     onUnlock: () => kumquat(),
+  },
+  {
+    hash: "a00649668afccad4ce6cb6a8249a4ade8898e98395648b79e0f53c12945b72bc",
+    onUnlock: () => reset(),
   },
 ];
