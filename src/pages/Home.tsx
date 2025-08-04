@@ -28,6 +28,7 @@ import {
 } from "../signals/state";
 import { sandwichMode } from "../signals/handlers";
 import { defaultBlurb } from "../utils/blurbs";
+import KumquatHint from "../components/KumquatHint";
 
 const Home: Component = () => {
   useCanonical();
@@ -120,6 +121,7 @@ const Home: Component = () => {
   return (
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
       <SecretTypingOverlay />
+      <KumquatHint />
       <Show when={partyModeActive()}>
         <Party />
       </Show>
