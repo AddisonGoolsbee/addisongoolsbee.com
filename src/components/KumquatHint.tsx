@@ -2,21 +2,29 @@ import { Component } from "solid-js";
 
 const code = "__._ .._ .. __ _... .._ ...";
 
+const Dot = () => {
+  return <div class="w-1 h-1 bg-white/50"></div>;
+};
+
+const Dash = () => {
+  return <div class="w-1 h-3 bg-white/50"></div>;
+};
+
+const Space = () => {
+  return <div class="w-1 h-1"></div>;
+}
+
 const KumquatHint: Component = () => {
   return (
-    <div class="fixed left-2 top-1/2 transform -translate-y-1/2 rotate-90 text-white/50 z-[1000] font-mono whitespace-pre origin-left">
+    <div class="fixed left-0 top-1/2 -translate-y-1/2 text-white/50 z-[1000] flex flex-col gap-1">
       {Array.from(code).map((char, idx) => {
         if (char === ".") {
-          const isPairStart = code[idx + 1] === ".";
-          return <span class={`relative top-1 ${isPairStart ? "-mr-1" : ""}`}>.</span>;
+          return <Dot />;
         }
         if (char === "_") {
-          const isPairStart = code[idx + 1] === "_";
-          return (
-            <span class={`inline-block ${isPairStart ? "pr-1" : ""}`}>_</span>
-          );
+          return <Dash />;
         }
-        return <span>{char}</span>;
+        return <Space />;
       })}
     </div>
   );
