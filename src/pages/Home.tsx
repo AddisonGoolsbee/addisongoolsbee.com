@@ -26,8 +26,7 @@ import {
   setPartyModeActive,
   setBlurbStart,
 } from "../signals/state";
-import { sandwichMode } from "../signals/handlers";
-import { defaultBlurb } from "../utils/blurbs";
+import { defaultBlurb } from "../signals/handlers";
 import KumquatHint from "../components/KumquatHint";
 
 const Home: Component = () => {

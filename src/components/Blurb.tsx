@@ -2,7 +2,7 @@ import { createSignal, type Component, createEffect, onMount } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
 import BlurbButton from "./BlurbButton";
-import { defaultBlurb } from "../utils/blurbs";
+import { defaultBlurb } from "../signals/handlers";
 
 import {
   blurbStart,
