@@ -14,9 +14,9 @@ To test as a static site: `npm run build && npm run serve`
 
 Build and deploy the website with: `npm run deploy`
 
-### Inspirations
+### Some Inspirations
 
 - personalsit.es
 - erikboesen.com
-- bradfrost.com/
+- bradfrost.com
 - yoonicode.com

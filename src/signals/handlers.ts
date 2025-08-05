@@ -170,12 +170,9 @@ export const kumquat = async () => {
     requestAnimationFrame(animate);
   }
   requestAnimationFrame(animate);
-  honkSound.currentTime = 0;
-  honkSound.volume = 0.5;
-  honkSound.play().catch((err) => console.error("Failed to play sound:", err));
 
   kumquatTriggers++;
-  if (kumquatTriggers % 10 === 0) {
+  if (kumquatTriggers % 2 === 0) {
     const newBlurb = await decryptWithPassword(
       "8d4ffc771260240dd30e925b81f8527ce462112b3821c44d98f7d9237bc674b34ebc87fed5532ce4ecbb57e046f40e63c3d1ca8a7adf0b40",
       currentDecoderSecret()
@@ -191,5 +188,19 @@ export const kumquat = async () => {
       currentDecoderSecret()
     );
     setProfileSrc(newProfileSrc);
+    honkSound.currentTime = 0;
+    honkSound.volume = 0.7;
+    honkSound.playbackRate = 0.2;
+
+    honkSound
+      .play()
+      .catch((err) => console.error("Failed to play sound:", err));
+  } else {
+    honkSound.currentTime = 0;
+    honkSound.volume = 0.5;
+    honkSound.playbackRate = 1;
+    honkSound
+      .play()
+      .catch((err) => console.error("Failed to play sound:", err));
   }
 };
