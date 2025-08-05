@@ -1,4 +1,4 @@
-import { createSignal, JSX } from "solid-js";
+import { createSignal } from "solid-js";
 
 export const [profileSrc, setProfileSrc] = createSignal("/images/profile.webp");
 export const [myName, setMyName] = createSignal("Addison Goolsbee");
@@ -11,3 +11,4 @@ export const [currentDecoderSecret, setCurrentDecoderSecret] = createSignal<
 export const [isBlurry, setIsBlurry] = createSignal(false);
 export const [isRainbowName, setIsRainbowName] = createSignal(false);
 export const [particleEmoji, setParticleEmoji] = createSignal("");
+export const [recursionLevel, setRecursionLevel] = createSignal(0);

@@ -56,6 +56,10 @@ const config: Config = {
           "0%": { transform: "translateY(-150%)" },
           "100%": { transform: "translateX(0)" },
         },
+        slideDownOut: {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(100vh)", opacity: "0" },
+        },
       },
       animation: {
         "slide-up": "slideUp 1s ease-out forwards",
@@ -66,6 +70,7 @@ const config: Config = {
         "changelog-close": "changelog 0.5s ease-in reverse both",
         "fade-in": "fadeIn 0.5s ease-out both",
         "fade-out": "fadeIn 0.5s reverse both",
+        "slide-down-out": "slideDownOut 0.8s ease-in-out forwards",
         navBar: "navBar 0.9s ease-out backwards",
       },
     },

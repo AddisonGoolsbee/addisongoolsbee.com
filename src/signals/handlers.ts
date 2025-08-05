@@ -1,6 +1,7 @@
 import {
   myName,
   setMyName,
+  profileSrc,
   setProfileSrc,
   setBlurbStart,
   currentDecoderSecret,
@@ -12,6 +13,7 @@ import {
   particleEmoji,
   setPartyModeActive,
   setChangelogVisible,
+  setRecursionLevel,
 } from "./state";
 import { decryptWithPassword } from "../utils/cryptography";
 
@@ -20,26 +22,56 @@ const addisonImage = "/images/profile.webp";
 export const defaultBlurb =
   "Hey there! I'm a soon-to-be software engineer living in Seattle. Welcome to my website!";
 
+export const animateProfileSrc = async (newSrc: string) => {
+  if (newSrc === profileSrc()) {
+    return;
+  }
 
+  const profileImages = document.querySelectorAll('img[alt="Addison"]');
+
+  if (profileImages.length > 0) {
+    profileImages.forEach((img) => {
+      img.classList.remove("animate-slide-up");
+      img.classList.add("animate-slide-down-out");
+    });
+
+    await new Promise((resolve) => setTimeout(resolve, 800));
+  }
+
+  setProfileSrc(newSrc);
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  const newProfileImages = document.querySelectorAll('img[alt="Addison"]');
+  newProfileImages.forEach((img) => {
+    img.classList.remove("animate-slide-down-out");
+    img.classList.add("animate-slide-up");
+  });
+};
 export const reset = () => {
   setBlurbStart(defaultBlurb);
   setMyName("Addison Goolsbee");
-  setProfileSrc(addisonImage);
+  animateProfileSrc(addisonImage);
   setIsRainbowName(false);
   setIsBlurry(false);
   setParticleEmoji("");
   setPartyModeActive(false);
   setChangelogVisible(false);
-}
+  setRecursionLevel(0);
+  if (window && window.location && window.history) {
+    const url =
+      window.location.origin + window.location.pathname + window.location.hash;
+    window.history.replaceState({}, document.title, url);
+  }
+};
 
-export const sandwichMode = () => {
+export const sandwich = () => {
   const newSrc =
     myName() === "Sandwich"
       ? addisonImage
       : isSafari
       ? "/images/sandwich.gif"
       : "/images/sandwich.webp";
-  setProfileSrc(newSrc);
+  animateProfileSrc(newSrc);
   const newName = myName() === "Sandwich" ? "Addison Goolsbee" : "Sandwich";
   setMyName(newName);
   setBlurbStart(defaultBlurb);
@@ -51,7 +83,7 @@ export const brie = async () => {
       "ad6db69d9aec241e93d42a621d07c0ba4d26a2f44b032abe2f718f670806b5d524dd44183f4ab15d193e734de55acd01a5dd2d3030ad2ee10dd4e7599fc77b1e5c8727c98d54ba314d94e5c9cc918d1d1b9129",
       currentDecoderSecret()
     );
-    setProfileSrc(newProfileSrc);
+    animateProfileSrc(newProfileSrc);
     const newName = await decryptWithPassword(
       "5562f5aa8bcf22ac15b05428a4ce5cbd9ef66347cc442b0da187209c11e9dbbf12bae55cd09a217819d9992ee4755d03cec774738b03",
       currentDecoderSecret()
@@ -101,7 +133,7 @@ export const eggshell = async () => {
   try {
     setBlurbStart(defaultBlurb);
     setMyName("Addison Goolsbee");
-    setProfileSrc(addisonImage);
+    animateProfileSrc(addisonImage);
     setIsRainbowName(!isRainbowName());
   } catch (error) {
     console.error("Failed to unlock eggshell secret:", error);
@@ -189,7 +221,7 @@ export const kumquat = async () => {
       "7862662757bf235b0a81c6048b35444957c8fc23acc9252bf3bff8643c7677cdd438a6a9c81775ba5c342de5d2aefed2f4479327b787db2a4be61a2ed7d8fb9ca458bae52141f8c411d0f7c5ceb9230edfeb8acd4f",
       currentDecoderSecret()
     );
-    setProfileSrc(newProfileSrc);
+    animateProfileSrc(newProfileSrc);
     honkSound.currentTime = 0;
     honkSound.volume = 0.7;
     honkSound.playbackRate = 0.2;

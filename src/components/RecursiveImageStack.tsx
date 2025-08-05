@@ -1,9 +1,8 @@
 import { type Component, For } from "solid-js";
-import { isBlurry } from "../signals/state";
+import { isBlurry, recursionLevel } from "../signals/state";
 
 type Props = {
   src: string;
-  recursionLevel: number;
   ref: (el: HTMLImageElement) => void;
   onLoad: () => void;
   firstImageRef?: (el: HTMLImageElement) => void;
@@ -15,7 +14,7 @@ const OFFSET = isMobile ? 20 : 40;
 const RecursiveImageStack: Component<Props> = (props) => {
   return (
     <div class="relative w-full h-full select-none flex items-end">
-      <For each={Array(props.recursionLevel + 1)}>
+      <For each={Array(recursionLevel() + 1)}>
         {(_, index) => {
           const wrapperStyle = `
           transform: translate(${index() * OFFSET}px, ${-index() * OFFSET}px);
@@ -33,7 +32,7 @@ const RecursiveImageStack: Component<Props> = (props) => {
               <img
                 src={props.src}
                 alt="Addison"
-                class="w-full h-auto max-h-full object-contain opacity-0 animate-slide-up"
+                class="w-full h-auto max-h-full object-contain opacity-0 animate-slide-up transition-opacity duration-500"
                 style={`${baseImgStyle} filter: ${
                   isBlurry() ? "blur(8px)" : "none"
                 };`}

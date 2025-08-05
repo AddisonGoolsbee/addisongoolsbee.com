@@ -1,5 +1,5 @@
 import {
-  sandwichMode,
+  sandwich,
   reset,
   brie,
   carbonara,
@@ -23,7 +23,7 @@ export interface Secret {
 export const secrets: Secret[] = [
   {
     hash: "defd366dfb7858db279a4bedcf8fa6be6195b6ad817fd38504e52406c3dc797a",
-    onUnlock: sandwichMode,
+    onUnlock: sandwich,
   },
   {
     hash: "d201cbb3301653ecc4764d351c73afa79420b5c5c471673e7bef06aa9c82cb94",

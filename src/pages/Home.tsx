@@ -25,6 +25,8 @@ import {
   partyModeActive,
   setPartyModeActive,
   setBlurbStart,
+  setRecursionLevel,
+  recursionLevel,
 } from "../signals/state";
 import { defaultBlurb } from "../signals/handlers";
 import KumquatHint from "../components/KumquatHint";
@@ -39,7 +41,7 @@ const Home: Component = () => {
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
-  const [recursionLevel, setRecursionLevel] = createSignal(0);
+
 
   // Read initial recursion level from URL
   createEffect(() => {
@@ -140,7 +142,6 @@ const Home: Component = () => {
         >
           <RecursiveImageStack
             src={profileSrc()}
-            recursionLevel={recursionLevel()}
             ref={imgRef}
             onLoad={onImageLoad}
           />

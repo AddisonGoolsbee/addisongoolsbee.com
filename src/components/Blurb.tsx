@@ -14,7 +14,7 @@ import {
   setChangelogVisible,
 } from "../signals/state";
 import HighFiveButton from "./HighFiveButton";
-import { sandwichMode } from "../signals/handlers";
+import { sandwich } from "../signals/handlers";
 
 type Props = {
   imgTop: number;
@@ -87,7 +87,7 @@ const Blurb: Component<Props> = (props) => {
               {isRainbowName() ? (
                 <span
                   class="inline-block font-medium cursor-pointer"
-                  onClick={sandwichMode}
+                  onClick={sandwich}
                   style={{ display: "inline-flex" }}
                 >
                   {myName()
@@ -108,7 +108,7 @@ const Blurb: Component<Props> = (props) => {
               ) : (
                 <span
                   class="text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105"
-                  onClick={sandwichMode}
+                  onClick={sandwich}
                 >
                   {myName()}
                 </span>
