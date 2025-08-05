@@ -172,9 +172,9 @@ export const kumquat = async () => {
   requestAnimationFrame(animate);
 
   kumquatTriggers++;
-  if (kumquatTriggers % 2 === 0) {
+  if (kumquatTriggers % 10 === 0) {
     const newBlurb = await decryptWithPassword(
-      "8d4ffc771260240dd30e925b81f8527ce462112b3821c44d98f7d9237bc674b34ebc87fed5532ce4ecbb57e046f40e63c3d1ca8a7adf0b40",
+      "6a70a356222bbf6b3c322591a8b0c21c9552814771a75594f35792f15b415a0eea6765e4f4516160762f3eeafca83742278cadbbd40f",
       currentDecoderSecret()
     );
     setBlurbStart(newBlurb);

@@ -3,15 +3,15 @@ import { Component } from "solid-js";
 const code = "__._ .._ .. __ _... .._ ...";
 
 const Dot = () => {
-  return <div class="w-1 h-1 bg-white/50"></div>;
+  return <div class="w-0.5 h-1 bg-white/50"></div>;
 };
 
 const Dash = () => {
-  return <div class="w-1 h-3 bg-white/50"></div>;
+  return <div class="w-0.5 h-3 bg-white/50"></div>;
 };
 
 const Space = () => {
-  return <div class="w-1 h-1"></div>;
+  return <div class="h-1"></div>;
 }
 
 const KumquatHint: Component = () => {
