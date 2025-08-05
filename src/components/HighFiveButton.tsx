@@ -28,10 +28,6 @@ export default function HighFiveButton(props: HighFiveButtonProps) {
 
   const handleClick = async () => {
     try {
-      const res = await fetch(`${baseUrl}/hit/${domain}/${props.key}`);
-      const data = await res.json();
-      setCount(data.value);
-
       // Play sound
       clapSound.currentTime = 0;
       clapSound.volume = 0.15;
@@ -55,6 +51,10 @@ export default function HighFiveButton(props: HighFiveButtonProps) {
           zIndex: 500000,
         });
       }
+
+      const res = await fetch(`${baseUrl}/hit/${domain}/${props.key}`);
+      const data = await res.json();
+      setCount(data.value);
     } catch (err) {
       console.error("Failed to increment count:", err);
     }
