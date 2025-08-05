@@ -124,6 +124,8 @@ export const pancake = async () => {
 };
 
 let kumquatTriggers = 0;
+const honkSound = new Audio("/sounds/honk.mp3");
+honkSound.load();
 
 export const kumquat = async () => {
   const image = await decryptWithPassword(
@@ -168,6 +170,9 @@ export const kumquat = async () => {
     requestAnimationFrame(animate);
   }
   requestAnimationFrame(animate);
+  honkSound.currentTime = 0;
+  honkSound.volume = 0.5;
+  honkSound.play().catch((err) => console.error("Failed to play sound:", err));
 
   kumquatTriggers++;
   if (kumquatTriggers % 10 === 0) {
