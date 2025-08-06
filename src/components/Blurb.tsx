@@ -37,6 +37,31 @@ const Blurb: Component<Props> = (props) => {
   const isMobile = () => windowWidth() < 640;
   let scrollableContainerRef: HTMLDivElement;
 
+  const RainbowText = (props: {
+    text: string;
+    additionalClasses?: string;
+    onClick?: () => void;
+  }) => (
+    <span
+      class={`inline-block font-medium ${props.additionalClasses || ""}`}
+      onClick={props.onClick}
+      style={{ display: "inline-flex" }}
+    >
+      {props.text.split("").map((char, i) => (
+        <span
+          style={{
+            color: `hsl(${
+              (i * 360) / props.text.length + rainbowOffset()
+            }, 80%, 50%)`,
+            "white-space": "pre",
+          }}
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+
   createEffect(() => {
     if (partyModeActive() || partyUnlocked()) {
       setPartyUnlocked(true);
@@ -104,26 +129,11 @@ const Blurb: Component<Props> = (props) => {
             <span style={{ display: "inline-block", width: "0.3em" }}></span>
           )}
           {isRainbowName() ? (
-            <span
-              class="inline-block font-medium cursor-pointer transform duration-300 hover:scale-105"
+            <RainbowText
+              text={myName()}
+              additionalClasses="cursor-pointer transform duration-300 hover:scale-105"
               onClick={sandwich}
-              style={{ display: "inline-flex" }}
-            >
-              {myName()
-                .split("")
-                .map((char, i) => (
-                  <span
-                    style={{
-                      color: `hsl(${
-                        (i * 360) / myName().length + rainbowOffset()
-                      }, 80%, 50%)`,
-                      "white-space": "pre",
-                    }}
-                  >
-                    {char}
-                  </span>
-                ))}
-            </span>
+            />
           ) : (
             <span
               class={`text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105 ${
@@ -224,30 +234,9 @@ const Blurb: Component<Props> = (props) => {
     <div class="p-5p">
       <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
         {isRainbowName() ? (
-          <span
-            class="inline-block font-medium"
-            style={{ display: "inline-flex" }}
-          >
-            {"Secrets".split("").map((char, i) => (
-              <span
-                style={{
-                  color: `hsl(${
-                    (i * 360) / myName().length + rainbowOffset()
-                  }, 80%, 50%)`,
-                  "white-space": "pre",
-                }}
-              >
-                {char}
-              </span>
-            ))}
-          </span>
+          <RainbowText text="Secrets" />
         ) : (
-          <span
-            class={`text-teal-800 inline-block font-medium cursor-pointer transform duration-300 hover:scale-105`}
-            onClick={sandwich}
-          >
-            {"Secrets"}
-          </span>
+          <span class={`text-teal-800 inline-block font-medium`}>Secrets</span>
         )}
       </p>
       <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
