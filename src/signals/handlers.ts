@@ -19,7 +19,7 @@ import { decryptWithPassword } from "../utils/cryptography";
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const addisonImage = "/images/profile.webp";
-export const defaultBlurb =
+export const defaultBlurbStart =
   "Hey there! I'm a soon-to-be software engineer living in Seattle. Welcome to my website!";
 
 export const animateProfileSrc = async (newSrc: string) => {
@@ -48,7 +48,7 @@ export const animateProfileSrc = async (newSrc: string) => {
   });
 };
 export const reset = () => {
-  setBlurbStart(defaultBlurb);
+  setBlurbStart(defaultBlurbStart);
   setMyName("Addison Goolsbee");
   animateProfileSrc(addisonImage);
   setIsRainbowName(false);
@@ -74,7 +74,7 @@ export const sandwich = () => {
   animateProfileSrc(newSrc);
   const newName = myName() === "Sandwich" ? "Addison Goolsbee" : "Sandwich";
   setMyName(newName);
-  setBlurbStart(defaultBlurb);
+  setBlurbStart(defaultBlurbStart);
 };
 
 export const brie = async () => {
@@ -131,7 +131,7 @@ export const cremebrulee = async () => {
 
 export const eggshell = async () => {
   try {
-    setBlurbStart(defaultBlurb);
+    setBlurbStart(defaultBlurbStart);
     setMyName("Addison Goolsbee");
     animateProfileSrc(addisonImage);
     setIsRainbowName(!isRainbowName());

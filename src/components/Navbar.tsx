@@ -4,6 +4,8 @@ import {
   toggleChangelog,
   partyModeActive,
   changelogVisible,
+  setBlurbType,
+  blurbType,
 } from "../signals/state";
 
 type Props = {
@@ -29,6 +31,13 @@ const Navbar: Component<Props> = (props) => {
         />
       </div>
       <div class="flex flex-row items-center space-x-2 sm:space-x-6 sm:pr-4">
+        <button
+          class="navbarButton"
+          onClick={() => setBlurbType(blurbType() === "secrets" ? "default" : "secrets")}
+          classList={{ "border-b-4": blurbType() === "secrets", "text-transparent": blurbType() !== "secrets" }}
+        >
+          secrets
+        </button>
         <button
           class="navbarButton"
           onClick={togglePartyMode}

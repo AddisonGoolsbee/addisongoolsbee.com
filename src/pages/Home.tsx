@@ -28,7 +28,7 @@ import {
   setRecursionLevel,
   recursionLevel,
 } from "../signals/state";
-import { defaultBlurb } from "../signals/handlers";
+import { defaultBlurbStart } from "../signals/handlers";
 import KumquatHint from "../components/KumquatHint";
 
 const Home: Component = () => {
@@ -41,7 +41,6 @@ const Home: Component = () => {
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
   const [isProfileLoaded, setIsProfileLoaded] = createSignal(false);
-
 
   // Read initial recursion level from URL
   createEffect(() => {
@@ -92,7 +91,7 @@ const Home: Component = () => {
   const handlePrint = () => {
     setProfileSrc(printerURL);
     setMyName("Printer");
-    setBlurbStart(defaultBlurb);
+    setBlurbStart(defaultBlurbStart);
   };
 
   const updateTopPoint = () => {
@@ -120,9 +119,7 @@ const Home: Component = () => {
       </Show>
       <Particles />
 
-      <Navbar
-        handleRecursion={handleRecursion}
-      />
+      <Navbar handleRecursion={handleRecursion} />
 
       <Show when={isProfileLoaded()}>
         <div
@@ -138,13 +135,9 @@ const Home: Component = () => {
         </div>
       </Show>
       <Show when={imageLoaded()}>
-        <Blurb
-          imgTop={topPoint()}
-        />
+        <Blurb imgTop={topPoint()} />
       </Show>
-      <Changelog
-        handleRecursion={handleRecursion}
-      />
+      <Changelog handleRecursion={handleRecursion} />
     </div>
   );
 };
