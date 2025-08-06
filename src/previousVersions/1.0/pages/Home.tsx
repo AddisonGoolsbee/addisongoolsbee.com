@@ -80,7 +80,7 @@ const Home: Component = () => {
       <Show when={imageLoaded()}>
         <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} myName={myName()} />
       </Show>
-      <Changelog changelogVisible={changelogVisible} setChangelogVisible={setChangelogVisible} toggleChangelog={toggleChangelog} />
+      <Changelog />
     </div>
   );
 };

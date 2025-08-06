@@ -1,14 +1,11 @@
 import { createSignal, onMount } from "solid-js";
 import Changelog from "./Changelog";
 import { Show } from "solid-js";
+import { toggleChangelog } from "../signals/state";
 
 export const FakeChangelog = () => {
   const [changelogVisible, setChangelogVisible] = createSignal(false);
   const [buttonVisible, setButtonVisible] = createSignal(false);
-
-  const toggleChangelog = () => {
-    setChangelogVisible(!changelogVisible());
-  };
 
   onMount(() => {
     setTimeout(() => {
@@ -26,11 +23,7 @@ export const FakeChangelog = () => {
           changelog
         </button>
       </Show>
-      <Changelog
-        changelogVisible={changelogVisible}
-        setChangelogVisible={setChangelogVisible}
-        toggleChangelog={toggleChangelog}
-      />
+      <Changelog />
     </>
   );
 };

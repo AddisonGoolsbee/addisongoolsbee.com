@@ -164,9 +164,6 @@ const Home: Component = () => {
         />
       </Show>
       <Changelog
-        changelogVisible={changelogVisible}
-        setChangelogVisible={setChangelogVisible}
-        toggleChangelog={toggleChangelog}
         handleRecursion={handleRecursion}
       />
     </div>

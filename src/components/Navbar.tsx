@@ -1,8 +1,7 @@
 import { Component } from "solid-js";
+import { togglePartyMode, toggleChangelog } from "../signals/state";
 
 type Props = {
-  toggleChangelog: () => void;
-  togglePartyMode: () => void;
   handleRecursion: () => void;
 };
 
@@ -25,10 +24,10 @@ const Navbar: Component<Props> = (props) => {
         />
       </div>
       <div class="flex flex-row items-center space-x-2 sm:space-x-6 sm:pr-4">
-        <button class="navbarButton" onClick={props.togglePartyMode}>
+        <button class="navbarButton" onClick={togglePartyMode}>
           party
         </button>
-        <button class="navbarButton" onClick={props.toggleChangelog}>
+        <button class="navbarButton" onClick={toggleChangelog}>
           changelog
         </button>
       </div>

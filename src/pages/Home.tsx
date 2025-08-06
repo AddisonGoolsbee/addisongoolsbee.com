@@ -111,14 +111,6 @@ const Home: Component = () => {
     setImageLoaded(true);
   };
 
-  const toggleChangelog = () => {
-    setChangelogVisible(!changelogVisible());
-  };
-
-  const togglePartyMode = () => {
-    setPartyModeActive(!partyModeActive());
-  };
-
   return (
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
       <SecretTypingOverlay />
@@ -129,8 +121,6 @@ const Home: Component = () => {
       <Particles />
 
       <Navbar
-        toggleChangelog={toggleChangelog}
-        togglePartyMode={togglePartyMode}
         handleRecursion={handleRecursion}
       />
 
@@ -153,9 +143,6 @@ const Home: Component = () => {
         />
       </Show>
       <Changelog
-        changelogVisible={changelogVisible}
-        setChangelogVisible={setChangelogVisible}
-        toggleChangelog={toggleChangelog}
         handleRecursion={handleRecursion}
       />
     </div>

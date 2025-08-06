@@ -12,3 +12,11 @@ export const [isBlurry, setIsBlurry] = createSignal(false);
 export const [isRainbowName, setIsRainbowName] = createSignal(false);
 export const [particleEmoji, setParticleEmoji] = createSignal("");
 export const [recursionLevel, setRecursionLevel] = createSignal(0);
+
+export const toggleChangelog = () => {
+  setChangelogVisible(!changelogVisible());
+};
+
+export const togglePartyMode = () => {
+  setPartyModeActive(!partyModeActive());
+};

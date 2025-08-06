@@ -1,10 +1,8 @@
 import { type Component, For } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { changelogVisible, toggleChangelog } from "../signals/state";
 
 type Props = {
-  changelogVisible: () => boolean;
-  setChangelogVisible: () => void;
-  toggleChangelog: () => void;
   handleRecursion?: () => void;
 };
 
@@ -76,13 +74,13 @@ const Changelog: Component<Props> = (props) => {
           a.finished.then(done);
         }}
       >
-        {props.changelogVisible() && (
+        {changelogVisible() && (
           <div
             class="fixed top-0 right-0 w-1/3 min-w-[330px] h-full bg-gray-100 p-5 overflow-y-auto overflow-x-hidden scrollbar-custom2 max-h-fit z-[3000]"
             ref={changelogRef}
           >
             <button
-              onClick={props.toggleChangelog}
+              onClick={toggleChangelog}
               class="absolute text-xl top-2 left-3 text-gray-600 hover:text-gray-800 transition-colors"
             >
               ✕
@@ -104,7 +102,10 @@ const Changelog: Component<Props> = (props) => {
               version="1.2 (In Progress)"
               date="August 2025"
               description="Secrets"
-              changes={["Encrypted password system", "One gazillion secrets, such as bicycle man"]}
+              changes={[
+                "Encrypted password system",
+                "One gazillion secrets, such as bicycle man",
+              ]}
               url=""
               onRecursionClick={props.handleRecursion}
             />
@@ -183,12 +184,10 @@ const Changelog: Component<Props> = (props) => {
           a.finished.then(done);
         }}
       >
-        {props.changelogVisible() && (
+        {changelogVisible() && (
           <div
             class="absolute w-full h-full top-0 left-0 bg-black z-[2500] opacity-30"
-            onClick={() => {
-              props.toggleChangelog();
-            }}
+            onClick={toggleChangelog}
           ></div>
         )}
       </Transition>
