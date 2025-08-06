@@ -24,8 +24,10 @@ const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
   const [partyUnlocked, setPartyUnlocked] = createSignal(false);
   const [rainbowOffset, setRainbowOffset] = createSignal(0);
+  const [popped, setPopped] = createSignal(false);
 
   const isMobile = () => windowWidth() < 640;
+  let scrollableContainerRef: HTMLDivElement;
 
   createEffect(() => {
     if (partyModeActive() || partyUnlocked()) {
@@ -67,13 +69,25 @@ const Blurb: Component<Props> = (props) => {
     return () => window.removeEventListener("resize", handleResize);
   });
 
+  createEffect(() => {
+    blurbStart();
+    setPopped(true);
+    scrollableContainerRef?.scrollTo({ top: 0, behavior: "smooth" });
+
+    const id = setTimeout(() => setPopped(false), 500);
+    return () => clearTimeout(id);
+  });
+
   return (
     <div
       class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`}
       style={{ bottom: `${props.imgTop + 10}px` }}
     >
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
-        <div class="text-black text-sm sm:text-base bg-white bg-opacity-70 z-10 rounded-t-sm sm:rounded-t-lg shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between">
+        <div
+          ref={(el) => (scrollableContainerRef = el!)}
+          class="text-black text-sm sm:text-base bg-white bg-opacity-70 z-10 rounded-t-sm sm:rounded-t-lg shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between"
+        >
           <div class="p-5p">
             <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
               My name is
@@ -115,7 +129,7 @@ const Blurb: Component<Props> = (props) => {
               )}
             </p>
             <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
-            <p>{blurbStart()}</p>
+            <p class={popped() ? "animate-pop-blurb" : ""}>{blurbStart()}</p>
             <br />
             <p>
               I'm a fullstack developer with a particular interest in system

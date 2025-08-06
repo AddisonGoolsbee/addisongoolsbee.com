@@ -60,6 +60,10 @@ const config: Config = {
           "0%": { transform: "translateY(0)", opacity: "1" },
           "100%": { transform: "translateY(100vh)", opacity: "0" },
         },
+        popBlurb: {
+          "0%": { backgroundColor: "rgba(255, 255, 255, 0.4)" },
+          "100%": { backgroundColor: "transparent" },
+        }
       },
       animation: {
         "slide-up": "slideUp 1s ease-out forwards",
@@ -72,6 +76,7 @@ const config: Config = {
         "fade-out": "fadeIn 0.5s reverse both",
         "slide-down-out": "slideDownOut 0.8s ease-in-out forwards",
         navBar: "navBar 0.9s ease-out backwards",
+        "pop-blurb": "popBlurb 1s ease-out forwards",
       },
     },
   },
