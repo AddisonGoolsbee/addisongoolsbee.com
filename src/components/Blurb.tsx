@@ -240,6 +240,47 @@ const Blurb: Component<Props> = (props) => {
         )}
       </p>
       <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
+      <p class="mb-4">
+        Nice job finding this! I've filled my website with a <em>lot</em> of
+        secrets. Can you uncover them all?
+      </p>
+      <p class="mb-4">
+        Most secrets are unlocked with a password—try typing 'bicycle man'. If
+        on a phone, shake it to summon the keyboard, but beware, many puzzles
+        are best tackled on a full-sized screen.
+      </p>
+      <p class="mb-4">
+        Some secrets require a bit of technical know-how. Hover over a tech-hint
+        to reveal a 🛠️ icon. Try it out:{" "}
+        <span title="🛠️">there exists a secret buried in a network packet</span>
+      </p>
+      <p>
+        To keep you on the right trail, here's where <em>not</em> to look:
+      </p>
+      <ul class="space-y-2 ml-4 mt-2 mb-4">
+        <li>
+          <span class="font-bold">The Code:</span> Everything is encrypted, no
+          clues are in the code or previous commits.
+          {/* <span class="italic text-gray-400 text-xs" title="🛠️">
+            Except for one.
+          </span> */}
+        </li>
+        <li>
+          <span class="font-bold">Previous Versions:</span> Older versions of
+          the website in the changelog have no extra hints.
+        </li>
+        <li>
+          <span class="font-bold">Other Websites:</span> It's all here unless a
+          hint says otherwise.
+        </li>
+      </ul>
+      <p class="mb-4">
+        Please keep the secrets secret—unless you're secretly trying to attract
+        more hunters 😉.
+      </p>
+      <p>
+        Go explore! Maybe there are some secrets hidden in this very page...
+      </p>
     </div>
   );
 
