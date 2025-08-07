@@ -33,6 +33,10 @@ const SecretTypingOverlay = () => {
       return;
     }
 
+    const active = document.activeElement as HTMLElement | null;
+    if (active && active !== document.body) active.blur();
+    e.preventDefault();
+
     if (key.length === 1 && /^[\w\s\p{P}\p{S}]$/u.test(key)) {
       setTyped((prev) => {
         const next = prev + key.toLowerCase();
