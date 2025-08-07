@@ -21,6 +21,8 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const addisonImage = "/images/profile.webp";
 export const defaultBlurbStart =
   "Hey there! I'm a soon-to-be software engineer living in Seattle. Welcome to my website!";
+let gnocchiLoopActive = false;
+let gnocchiLoopTimeout: ReturnType<typeof setTimeout> | null = null;
 
 export const animateProfileSrc = async (newSrc: string) => {
   if (newSrc === profileSrc()) {
@@ -61,6 +63,11 @@ export const reset = () => {
     const url =
       window.location.origin + window.location.pathname + window.location.hash;
     window.history.replaceState({}, document.title, url);
+  }
+  gnocchiLoopActive = false;
+  if (gnocchiLoopTimeout) {
+    clearTimeout(gnocchiLoopTimeout);
+    gnocchiLoopTimeout = null;
   }
 };
 
@@ -158,8 +165,8 @@ export const pancake = async () => {
 };
 
 let kumquatTriggers = 0;
-const honkSound = new Audio("/sounds/honk.mp3");
-honkSound.load();
+const kumquatSound = new Audio("/sounds/kumquat.mp3");
+kumquatSound.load();
 
 export const kumquat = async () => {
   const image = await decryptWithPassword(
@@ -222,19 +229,55 @@ export const kumquat = async () => {
       currentDecoderSecret()
     );
     animateProfileSrc(newProfileSrc);
-    honkSound.currentTime = 0;
-    honkSound.volume = 0.7;
-    honkSound.playbackRate = 0.2;
+    kumquatSound.currentTime = 0;
+    kumquatSound.volume = 0.7;
+    kumquatSound.playbackRate = 0.2;
 
-    honkSound
+    kumquatSound
       .play()
       .catch((err) => console.error("Failed to play sound:", err));
   } else {
-    honkSound.currentTime = 0;
-    honkSound.volume = 0.5;
-    honkSound.playbackRate = 1;
-    honkSound
+    kumquatSound.currentTime = 0;
+    kumquatSound.volume = 0.5;
+    kumquatSound.playbackRate = 1;
+    kumquatSound
       .play()
       .catch((err) => console.error("Failed to play sound:", err));
   }
 };
+
+const gnocchiSound = new Audio("/sounds/gnocchi.mp3");
+gnocchiSound.load();
+export const gnocchi = async () => {
+  try {
+    const newProfileSrc = await decryptWithPassword(
+      "943028d6e4c1f6d13eb0e2bb088bcd3456d65e56c378432971402747090ac1a7c99ec5024b77a6b90d04cdfb806eeaa151bb25353ad518584bb1c4be3436df932970ae160eccabc1376c6533016a36ea9ace95",
+      currentDecoderSecret()
+    );
+    animateProfileSrc(newProfileSrc);
+    gnocchiSound.currentTime = 0;
+    gnocchiSound.volume = 0.7;
+    gnocchiSound
+      .play()
+      .catch((err) => console.error("Failed to play sound:", err));
+    if (!gnocchiLoopActive) {
+      gnocchiLoopActive = true;
+      scheduleGnocchiLoop();
+    }
+  } catch (error) {
+    console.error("Failed to unlock gnocchi secret:", error);
+  }
+};
+
+function scheduleGnocchiLoop() {
+  const delay = Math.random() * (10_000 - 5_000) + 5_000;
+  gnocchiLoopTimeout = setTimeout(async () => {
+    try {
+      gnocchiSound.currentTime = 0;
+      await gnocchiSound.play();
+    } catch (e) {
+      console.error("Gnocchi play failed:", e);
+    }
+    if (gnocchiLoopActive) scheduleGnocchiLoop();
+  }, delay);
+}

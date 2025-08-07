@@ -7,6 +7,7 @@ import {
   eggshell,
   pancake,
   kumquat,
+  gnocchi,
 } from "../signals/handlers";
 import {
   changelogVisible,
@@ -60,5 +61,9 @@ export const secrets: Secret[] = [
   {
     hash: "a00649668afccad4ce6cb6a8249a4ade8898e98395648b79e0f53c12945b72bc",
     onUnlock: () => reset(),
+  },
+  {
+    hash: "d417d021f3f3bbb5a0d86ec88187316ae9d9e7a5a8902c26fad644d806f34908",
+    onUnlock: () => gnocchi(),
   },
 ];

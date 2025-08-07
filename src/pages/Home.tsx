@@ -18,12 +18,8 @@ import SecretTypingOverlay from "../components/SecretTypingOverlay";
 import {
   profileSrc,
   setProfileSrc,
-  myName,
   setMyName,
-  changelogVisible,
-  setChangelogVisible,
   partyModeActive,
-  setPartyModeActive,
   setBlurbStart,
   setRecursionLevel,
   recursionLevel,
@@ -79,6 +75,8 @@ const Home: Component = () => {
     window.addEventListener("resize", updateTopPoint);
     window.addEventListener("beforeprint", handlePrint);
     updateTopPoint();
+
+    fetch("/manifest.json")
 
     console.log("blurry face");
   });

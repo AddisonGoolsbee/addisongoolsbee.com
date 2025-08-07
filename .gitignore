@@ -4,4 +4,4 @@ dist
 temp*
 secrets.md
 .secrets
-scripts
+secret
