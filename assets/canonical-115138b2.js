@@ -1,1 +1,0 @@
-import{q as a,b as t}from"./index-8758340f.js";function e(){const o=a();t(()=>{const n=document.getElementById("canonical-link");n&&(n.href=`https://addisongoolsbee.com${o.pathname}`)})}export{e as u};
