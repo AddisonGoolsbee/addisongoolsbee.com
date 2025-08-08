@@ -246,8 +246,8 @@ const Blurb: Component<Props> = (props) => {
       </p>
       <p class="mb-4">
         Most secrets are unlocked with a password—try typing 'bicycle man'. If
-        on a phone, shake it to summon the keyboard, but beware, many puzzles
-        are best tackled on a full-sized screen.
+        you're on a phone, triple tap me to summon the keyboard, but beware,
+        many puzzles are best tackled on a full-sized screen.
       </p>
       <p class="mb-4">
         Some secrets require a bit of technical know-how. Hover over a tech-hint

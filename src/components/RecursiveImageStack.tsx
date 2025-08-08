@@ -1,4 +1,4 @@
-import { type Component, For } from "solid-js";
+import { type Component, createSignal, For, Show } from "solid-js";
 import { isBlurry, recursionLevel } from "../signals/state";
 
 type Props = {
@@ -12,8 +12,43 @@ const isMobile = window.innerWidth < 640;
 const OFFSET = isMobile ? 20 : 40;
 
 const RecursiveImageStack: Component<Props> = (props) => {
+  const [showInput, setShowInput] = createSignal(false);
+
+  const handleTripleTap = () => {
+    const now = Date.now();
+    if (!(handleTripleTap as any).taps) (handleTripleTap as any).taps = [];
+    const taps: number[] = (handleTripleTap as any).taps;
+    while (taps.length && now - taps[0] > 500) taps.shift();
+    taps.push(now);
+
+    if (taps.length >= 3) {
+      setShowInput(!showInput());
+      (handleTripleTap as any).taps = [];
+      setTimeout(() => document.getElementById("secret-input")?.focus(), 0);
+    }
+  };
+
   return (
-    <div class="relative w-full h-full select-none flex items-end">
+    <div
+      class="relative w-full h-full select-none flex items-end"
+      onTouchEnd={handleTripleTap}
+    >
+      <Show when={showInput()}>
+        <div class="absolute top-80 inset-0 flex items-center justify-center z-30">
+          <input
+            id="secret-input"
+            type="text"
+            class="w-3/4 bg-black bg-opacity-50 text-white p-2 rounded border-none focus:ring-0"
+            placeholder="Type secret here..."
+            onBlur={() => setShowInput(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                (e.target as HTMLInputElement).value = "";
+              }
+            }}
+          />
+        </div>
+      </Show>
       <For each={Array(recursionLevel() + 1)}>
         {(_, index) => {
           const wrapperStyle = `

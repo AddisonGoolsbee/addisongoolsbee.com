@@ -22,21 +22,30 @@ const SecretTypingOverlay = () => {
     setPulsing(false);
   };
 
+  const isEditableEl = (el: Element | null) =>
+    !!el && !!el.closest?.('input, textarea, [contenteditable="true"]');
+
   const handleKey = (e: KeyboardEvent) => {
-    const key = e.key;
-
-    if (e.metaKey || e.ctrlKey) {
-      return;
-    }
-
-    if (typed() === "" && key === " ") {
-      return;
-    }
-
+    // If the user is typing in any editable (including your secret input), don't interfere
+    const target = e.target as Element | null;
     const active = document.activeElement as HTMLElement | null;
-    if (active && active !== document.body) active.blur();
+
+    if (
+      isEditableEl(target) ||
+      (active && (isEditableEl(active) || active.id === "secret-input"))
+    ) {
+      return; // let typing happen normally
+    }
+
+    if (e.metaKey || e.ctrlKey) return;
+
+    // prevent "start with space"
+    if (typed() === "" && e.key === " ") return;
+
+    // From here on, you're in "global secret capture" mode (no focused input).
     e.preventDefault();
 
+    const key = e.key;
     if (key.length === 1 && /^[\w\s\p{P}\p{S}]$/u.test(key)) {
       setTyped((prev) => {
         const next = prev + key.toLowerCase();
@@ -57,6 +66,7 @@ const SecretTypingOverlay = () => {
       resetTyping();
     }
   };
+
 
   const checkSecret = async (word: string) => {
     word = word.replace(/\s+/g, "");
@@ -97,9 +107,35 @@ const SecretTypingOverlay = () => {
     }, 1000);
   };
 
-  onMount(() => {
-    window.addEventListener("keydown", handleKey);
+onMount(() => {
+  window.addEventListener("keydown", handleKey);
+
+  const mirror = (e: Event) => {
+    const target = e.target as HTMLInputElement | null;
+    if (!target || target.id !== "secret-input") return;
+
+    const raw = target.value;
+
+    // Show exactly what they typed
+    setTyped(raw);
+    setVisible(raw.length > 0);
+    setFading(false);
+    resetTimeout();
+
+    // Normalize for secret matching (matches your desktop path)
+    const normalized = raw.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
+
+    void checkSecret(normalized);
+  };
+
+  window.addEventListener("input", mirror, { passive: true });
+
+  onCleanup(() => {
+    window.removeEventListener("keydown", handleKey);
+    window.removeEventListener("input", mirror);
   });
+});
+
 
   onCleanup(() => {
     window.removeEventListener("keydown", handleKey);
