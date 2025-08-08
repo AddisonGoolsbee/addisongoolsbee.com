@@ -16,11 +16,10 @@ import {
   setRecursionLevel,
 } from "./state";
 import { decryptWithPassword } from "../utils/cryptography";
+import { defaultBlurbStart } from "../components/Blurb";
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const addisonImage = "/images/profile.webp";
-export const defaultBlurbStart =
-  "Hey there! I'm a soon-to-be software engineer living in Seattle. Welcome to my website!";
 let gnocchiLoopActive = false;
 let gnocchiLoopTimeout: ReturnType<typeof setTimeout> | null = null;
 

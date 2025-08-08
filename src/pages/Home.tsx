@@ -24,7 +24,7 @@ import {
   setRecursionLevel,
   recursionLevel,
 } from "../signals/state";
-import { defaultBlurbStart } from "../signals/handlers";
+import { defaultBlurbStart } from "../components/Blurb";
 import KumquatHint from "../components/KumquatHint";
 
 const Home: Component = () => {

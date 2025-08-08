@@ -9,7 +9,6 @@ import {
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
 import BlurbButton from "./BlurbButton";
-import { defaultBlurbStart } from "../signals/handlers";
 
 import {
   blurbStart,
@@ -27,6 +26,9 @@ import { sandwich } from "../signals/handlers";
 type Props = {
   imgTop: number;
 };
+
+export const defaultBlurbStart =
+  "Hey there! I'm a soon-to-be software engineer living in Seattle with an obsession for system design and making stuff—sometimes useful, sometimes gloriously pointless. I've built web apps, video games, physical gadgets, five gallon water jug 'art installations', and whatever else my curiosity demands.";
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -146,31 +148,9 @@ const Blurb: Component<Props> = (props) => {
           )}
         </p>
         <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
-        <p class={popped() ? "animate-pop-blurb" : ""}>{blurbStart()}</p>
-        <br />
-        <p>
-          I'm a fullstack developer with a particular interest in system
-          design/development. I love building things—useful applications,
-          extremely useless applications, video games, physical devices, water
-          jug art installations, and more.&nbsp;
-          <a
-            href="https://github.com/addisongoolsbee"
-            target="_blank"
-            class="link"
-          >
-            Check out some of my projects
-          </a>
-          &nbsp;or take a look at my&nbsp;
-          <a
-            href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
-            class="link"
-            target="_blank"
-          >
-            resume
-          </a>
-          .
+        <p class={`mb-4 ${popped() ? "animate-pop-blurb" : ""}`}>
+          {blurbStart()}
         </p>
-        <br />
         <p>
           When I'm not busy wrestling with code or reveling in my five-gallon
           water jug collection, I like to indulge in the finer things in
