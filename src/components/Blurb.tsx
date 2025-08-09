@@ -237,11 +237,11 @@ const Blurb: Component<Props> = (props) => {
         you're on a phone, triple tap me to summon the keyboard, but beware,
         many puzzles are best tackled on a full-sized screen.
       </p>
-      <p class="mb-4">
+      {/* <p class="mb-4">
         Some secrets require a bit of technical know-how. Hover over a tech-hint
         to reveal a 🛠️ icon. Try it out:{" "}
         <span title="🛠️">there exists a secret buried in a network request</span>
-      </p>
+      </p> */}
       <p>
         To keep you on the right trail, here's where <em>not</em> to look:
       </p>
@@ -262,12 +262,8 @@ const Blurb: Component<Props> = (props) => {
           hint says otherwise.
         </li>
       </ul>
-      <p class="mb-4">
-        Please keep the secrets secret—unless you're secretly trying to attract
-        more hunters 😉.
-      </p>
       <p>
-        Go explore! Maybe there are some secrets hidden in this very page...
+        Maybe there are some secrets hidden in this very page...
       </p>
     </div>
   );
