@@ -24,7 +24,7 @@ body {
     white-space: nowrap;
   }
   .navbarButton {
-    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 sm:hover:border-b-4 border-white;
+    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 sm:hover:border-b-4 border-white font-medium;
   }
 }
 

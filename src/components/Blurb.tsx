@@ -123,7 +123,7 @@ const Blurb: Component<Props> = (props) => {
   const DefaultBlurb = () => (
     <>
       <div class="p-5p">
-        <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-normal text-center sm:text-left">
+        <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-tight  text-center sm:text-left">
           My name is
           {isMobile() ? (
             <br />
@@ -147,7 +147,7 @@ const Blurb: Component<Props> = (props) => {
             </span>
           )}
         </p>
-        <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
+        <div class="border-t-2 border-black w-full mt-3 mb-4 sm:mt-5 sm:mb-6"></div>
         <p class={`mb-4 ${popped() ? "animate-pop-blurb" : ""}`}>
           {blurbStart()}
         </p>
@@ -206,7 +206,7 @@ const Blurb: Component<Props> = (props) => {
           <HighFiveButton key="highfive" />
         </div>
       </div>
-      <p class="italic bottom-0 text-gray-400 text-xs text-center p-1">
+      <p class="italic bottom-0 text-gray-400 text-[0.5rem] sm:text-xs text-center p-1">
         This website has a few hidden secrets, try clicking my name
       </p>
     </>
@@ -270,14 +270,14 @@ const Blurb: Component<Props> = (props) => {
     <div
       class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`}
       style={{
-      transition: "bottom 1s cubic-bezier(0.4, 0, 0.2, 1)",
+      transition: "bottom 1s ease-out",
       bottom: `${props.imgTop + 10}px`,
       }}
     >
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
         <div
           ref={(el) => (scrollableContainerRef = el!)}
-          class="text-black text-sm sm:text-base bg-white bg-opacity-70 z-10 rounded-t-sm sm:rounded-t-lg shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between"
+          class="text-black text-sm sm:text-base bg-white bg-opacity-70 z-10 rounded-t-md sm:rounded-t-lg shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between"
         >
           <Show when={blurbType() === "default"}>
             <DefaultBlurb />
@@ -286,7 +286,7 @@ const Blurb: Component<Props> = (props) => {
             <SecretsBlurb />
           </Show>
         </div>
-        <div class="w-full bg-teal-800 bg-opacity-90 p-2 sm:p-5 flex justify-center space-x-7p rounded-b-sm sm:rounded-b-lg">
+        <div class="w-full bg-teal-800 bg-opacity-90 p-3 sm:p-5 flex justify-center space-x-7p rounded-b-md sm:rounded-b-lg">
           <BlurbButton
             href="https://www.linkedin.com/in/addisongoolsbee"
             text="LinkedIn"

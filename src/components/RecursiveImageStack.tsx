@@ -62,12 +62,12 @@ const RecursiveImageStack: Component<Props> = (props) => {
           return (
             <div
               style={wrapperStyle}
-              class="absolute will-change-transform w-full h-full overflow-hidden flex items-end"
+              class="absolute will-change-transform w-full h-full overflow-hidden flex items-end justify-center"
             >
               <img
                 src={props.src}
                 alt="Addison"
-                class="w-full h-auto max-h-full object-contain opacity-0 animate-slide-up transition-opacity duration-500"
+                class="w-5/6 sm:w-full h-auto max-h-full object-contain opacity-0 animate-slide-up transition-opacity duration-500"
                 style={`${baseImgStyle} filter: ${
                   isBlurry() ? "blur(8px)" : "none"
                 };`}
