@@ -50,7 +50,7 @@ body {
     }
   }
   .navbarButton {
-    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 border-white font-medium;
+    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 border-white font-medium  py-[0.1rem] sm:py-0;
   }
 
   /* Show hover only on devices that have a real hover (mouse/trackpad) */
