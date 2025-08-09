@@ -28,7 +28,7 @@ type Props = {
 };
 
 export const defaultBlurbStart =
-  "Hey there! I'm a soon-to-be software engineer living in Seattle with an obsession for system design and making stuff—sometimes useful, sometimes gloriously pointless. I've built web apps, video games, physical gadgets, five gallon water jug 'art installations', and whatever else my curiosity demands.";
+  "Hey there! I'm a soon-to-be software engineer living in Seattle. I'm a full stack developer with an obsession for system design and making stuff—sometimes useful, sometimes gloriously pointless. I've built web apps, video games, physical gadgets, five gallon water jug 'art installations', and whatever else my curiosity demands.";
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -151,16 +151,24 @@ const Blurb: Component<Props> = (props) => {
         <p class={`mb-4 ${popped() ? "animate-pop-blurb" : ""}`}>
           {blurbStart()}
         </p>
-        <p>
-          When I'm not busy wrestling with code or reveling in my five-gallon
-          water jug collection, I like to indulge in the finer things in
-          life—debating philosophy until 3 AM, juggling, foraging for wild
-          mushrooms, and feeding my Alibaba shopping addiction.
+        <p class="mb-4">
+          This site follows one of my favorite design principles: everything in
+          one screen. The page itself never scrolls, but buttons and scrollable
+          sub-sections let me pack in more content. Oh, and I <em>love</em>{" "}
+          easter eggs.
         </p>
-        <br />
-        <p>
-          Aside from coding, my other pursuits have included being the cofounder
-          of Pineapple Soap Co., president of the&nbsp;
+        <p class="mb-4">
+          When I'm not coding, you might find me hiking, juggling, foraging for
+          mushrooms, or pursuing one of my increasingly strange sidequests. I've
+          also co-founded a soap company, created a viral popularity ranking{" "}
+          <a
+            href="https://yaledailynews.com/blog/2025/04/13/yales-facemash-students-react-to-site-ranking-yalies-popularity/"
+            class="link"
+            target="_blank"
+          >
+            website
+          </a>
+          , led the{" "}
           <a
             href="https://yalecomputersociety.org"
             class="link"
@@ -168,38 +176,32 @@ const Blurb: Component<Props> = (props) => {
           >
             Yale Computer Society
           </a>
-          , in a&nbsp;
+          , and danced on stage with{" "}
           <a
             href="https://campuspress.yale.edu/danceworks/"
             class="link"
             target="_blank"
           >
-            dance group
+            Danceworks
           </a>
-          , and a number of various other clubs on campus.
         </p>
-        <br />
-        <p>
-          This website was written in Solid.js and Tailwind CSS.&nbsp;
+        <p class="mb-4">
+          This website was written in Solid.js, and the {" "}
           <a
             href="https://github.com/addisongoolsbee/addisongoolsbee.com"
             class="link"
           >
-            The code is public
+            code is public
           </a>
-          .
-        </p>
-        <br />
-        <p>
-          Feeling nostalgic? See previous iterations of my website&nbsp;
+          . If you're curious, you can even{" "}
           <a
             onClick={() => setChangelogVisible(!changelogVisible())}
             class="link"
           >
-            here
-          </a>
-          .
+            see past versions of the site
+          </a> to witness its evolution.
         </p>
+      
         <div class="flex justify-center mt-6 sm:mt-12">
           <HighFiveButton key="highfive" />
         </div>
