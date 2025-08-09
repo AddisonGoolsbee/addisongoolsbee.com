@@ -99,11 +99,11 @@ const Changelog: Component<Props> = (props) => {
               .
             </p>
             <ChangelogVersionCard
-              version="1.2 (In Progress)"
+              version="1.2 (WIP)"
               date="August 2025"
               description="Secrets"
               changes={[
-                "Hidden secrets page",
+                "Hidden secrets tab",
                 "Encrypted password system",
                 "One billion secrets (more or less)",
                 "New blurb",
