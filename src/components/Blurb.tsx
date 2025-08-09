@@ -159,7 +159,8 @@ const Blurb: Component<Props> = (props) => {
         </p>
         <p class="mb-4">
           When I'm not coding, you might find me hiking, juggling, foraging for
-          mushrooms, or pursuing one of my increasingly strange sidequests. I've
+          mushrooms,{" "}
+          <span class="text-xs">or locked away in a dark room playing video games.</span> I've
           also co-founded a soap company, created a viral popularity ranking{" "}
           <a
             href="https://yaledailynews.com/blog/2025/04/13/yales-facemash-students-react-to-site-ranking-yalies-popularity/"
@@ -184,24 +185,26 @@ const Blurb: Component<Props> = (props) => {
           >
             Danceworks
           </a>
+          .
         </p>
         <p class="mb-4">
-          This website was written in Solid.js, and the {" "}
+          This website was written in Solid.js, and the{" "}
           <a
             href="https://github.com/addisongoolsbee/addisongoolsbee.com"
             class="link"
           >
             code is public
           </a>
-          . If you're curious, you can even{" "}
+          . Feeling nostalgic? You can see{" "}
           <a
             onClick={() => setChangelogVisible(!changelogVisible())}
             class="link"
           >
-            see past versions of the site
-          </a> to witness its evolution.
+            past versions of the site
+          </a>{" "}
+          in the changelog.
         </p>
-      
+
         <div class="flex justify-center mt-6 sm:mt-12">
           <HighFiveButton key="highfive" />
         </div>
@@ -270,8 +273,8 @@ const Blurb: Component<Props> = (props) => {
     <div
       class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`}
       style={{
-      transition: "bottom 1s ease-out",
-      bottom: `${props.imgTop + 10}px`,
+        transition: "bottom 1s ease-out",
+        bottom: `${props.imgTop + 10}px`,
       }}
     >
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
