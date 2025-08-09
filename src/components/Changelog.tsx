@@ -106,6 +106,7 @@ const Changelog: Component<Props> = (props) => {
                 "Hidden secrets page",
                 "Encrypted password system",
                 "One billion secrets (more or less)",
+                "New blurb",
               ]}
               url=""
               onRecursionClick={props.handleRecursion}

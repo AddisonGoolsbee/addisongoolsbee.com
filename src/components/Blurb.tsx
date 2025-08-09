@@ -28,7 +28,7 @@ type Props = {
 };
 
 export const defaultBlurbStart =
-  "Hey there! I'm a soon-to-be software engineer living in Seattle. I'm a full stack developer with an obsession for system design and making stuff—sometimes useful, sometimes gloriously pointless. I've built web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
+  "Hey there! I'm a soon-to-be software engineer living in Seattle with an obsession for system design and building stuff—sometimes useful, sometimes gloriously pointless. I've made web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -160,8 +160,11 @@ const Blurb: Component<Props> = (props) => {
         <p class="mb-4">
           When I'm not coding, you might find me hiking, juggling, foraging for
           mushrooms,{" "}
-          <span class="text-xs">or locked away in a dark room playing video games.</span> I've
-          also co-founded a soap company, created a viral popularity ranking{" "}
+          <span class="text-xs">
+            or locked away in a dark room playing video games.
+          </span>{" "}
+          I've also co-founded a soap company, created a viral popularity
+          ranking{" "}
           <a
             href="https://yaledailynews.com/blog/2025/04/13/yales-facemash-students-react-to-site-ranking-yalies-popularity/"
             class="link"
