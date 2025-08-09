@@ -28,7 +28,7 @@ type Props = {
 };
 
 export const defaultBlurbStart =
-  "Hey there! I'm a soon-to-be software engineer living in Seattle with an obsession for system design and building stuff—sometimes useful, sometimes gloriously pointless. I've made web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
+  "Hey there! I'm a soon-to-be software engineer in Seattle with a love for building stuff. I've made web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
