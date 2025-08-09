@@ -106,7 +106,7 @@ const Blurb: Component<Props> = (props) => {
 
   let first = true;
   createEffect(() => {
-    const v = blurbStart(); // subscribe
+    blurbStart();
 
     if (first) {
       first = false;
@@ -269,7 +269,10 @@ const Blurb: Component<Props> = (props) => {
   return (
     <div
       class={`absolute top-[75px] sm:top-0 flex flex-row justify-end sm:bottom-0 sm:h-full sm:items-center`}
-      style={{ bottom: `${props.imgTop + 10}px` }}
+      style={{
+      transition: "bottom 1s cubic-bezier(0.4, 0, 0.2, 1)",
+      bottom: `${props.imgTop + 10}px`,
+      }}
     >
       <div class="blurb-container w-full flex flex-col animate-pop-in transition-all z-[600] sm:max-h-[75dvh] mx-7 sm:mx-0 sm:ml-[45dvw] 2xl:ml-[40dvw] sm:mr-[5dvw] 2xl:mr-[12.5dvh]">
         <div
