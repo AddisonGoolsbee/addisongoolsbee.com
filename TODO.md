@@ -6,8 +6,8 @@ crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has bee
 ## Version 1.2
 
 - One bazillion secrets
-- Update blurb
 - Fix high five placement, changelog clickable must be more obvious
+- Make low-data load faster
 
 ## Version 1.3
 

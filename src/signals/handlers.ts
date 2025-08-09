@@ -28,8 +28,10 @@ export const animateProfileSrc = async (newSrc: string) => {
     return;
   }
 
-  const profileImages = document.querySelectorAll('img[alt="Addison"]');
+  const profileImages =
+    document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
 
+  // Animate current images sliding down/out
   if (profileImages.length > 0) {
     profileImages.forEach((img) => {
       img.classList.remove("animate-slide-up");
@@ -39,15 +41,34 @@ export const animateProfileSrc = async (newSrc: string) => {
     await new Promise((resolve) => setTimeout(resolve, 800));
   }
 
+  // Set the new src
   setProfileSrc(newSrc);
 
-  await new Promise((resolve) => setTimeout(resolve, 50));
-  const newProfileImages = document.querySelectorAll('img[alt="Addison"]');
+  // Wait until ALL new images are loaded
+  const newProfileImages =
+    document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
+
+  await Promise.all(
+    Array.from(newProfileImages).map((img) => {
+      return new Promise<void>((resolve) => {
+        if (img.complete && img.naturalWidth !== 0) {
+          resolve(); // already loaded
+        } else {
+          img.addEventListener("load", () => resolve(), { once: true });
+          img.addEventListener("error", () => resolve(), { once: true }); // fail gracefully
+        }
+      });
+    })
+  );
+
+  // Now trigger slide-up animation
   newProfileImages.forEach((img) => {
     img.classList.remove("animate-slide-down-out");
     img.classList.add("animate-slide-up");
   });
 };
+
+
 export const reset = () => {
   setBlurbStart(defaultBlurbStart);
   setMyName("Addison Goolsbee");
