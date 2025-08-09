@@ -1,1 +1,0 @@
-import{f as o,r as t,_ as e}from"./index-773dc0cf.js";const r=t(()=>e(()=>import("./Home-b6d1a8b9.js"),["assets/Home-b6d1a8b9.js","assets/index-773dc0cf.js","assets/index-00dc7af9.css","assets/index-29893296.js","assets/Changelog-46c05057.js"]));function _(){return o(r,{})}export{_ as default};
