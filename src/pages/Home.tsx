@@ -76,7 +76,7 @@ const Home: Component = () => {
     window.addEventListener("beforeprint", handlePrint);
     updateTopPoint();
 
-    fetch("/manifest.json")
+    fetch("/suspicious.json")
 
     console.log("blurry face");
   });

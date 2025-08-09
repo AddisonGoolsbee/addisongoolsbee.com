@@ -240,7 +240,7 @@ const Blurb: Component<Props> = (props) => {
       <p class="mb-4">
         Some secrets require a bit of technical know-how. Hover over a tech-hint
         to reveal a 🛠️ icon. Try it out:{" "}
-        <span title="🛠️">there exists a secret buried in a network packet</span>
+        <span title="🛠️">there exists a secret buried in a network request</span>
       </p>
       <p>
         To keep you on the right trail, here's where <em>not</em> to look:
