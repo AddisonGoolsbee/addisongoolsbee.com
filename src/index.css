@@ -14,17 +14,57 @@ body {
   .blurbButtons {
     @apply relative z-20 text-white text-4xl transition-transform transform;
   }
-  .blurbButtons:hover {
-    transform: scale(1.25);
+
+  /* Real hover devices (mouse/trackpad) */
+  @media (hover: hover) and (pointer: fine) {
+    .blurbButtons:hover {
+      transform: scale(1.25);
+    }
   }
+
+  /* Touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .blurbButtons:active {
+      transform: scale(1.25);
+    }
+  }
+
   .blurbButtonLabel {
-    @apply absolute top-14 px-2 text-sm text-white rounded opacity-0 transition-opacity group-hover:opacity-90 z-40;
+    @apply absolute top-14 px-2 text-sm text-white rounded opacity-0 transition-opacity z-40;
     transform: translateX(-50%);
     left: 50%;
     white-space: nowrap;
   }
+
+  /* Only show hover tooltip on devices with hover (mouse, trackpad) */
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .blurbButtonLabel {
+      @apply opacity-90;
+    }
+  }
+
+  /* On touch devices, show it while pressing */
+  @media (hover: none) and (pointer: coarse) {
+    .group:active .blurbButtonLabel {
+      @apply opacity-90;
+    }
+  }
   .navbarButton {
-    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 sm:hover:border-b-4 border-white font-medium;
+    @apply text-white cursor-pointer z-[2000] p-2 transform duration-100 border-white font-medium;
+  }
+
+  /* Show hover only on devices that have a real hover (mouse/trackpad) */
+  @media (hover: hover) and (pointer: fine) {
+    .navbarButton:hover {
+      @apply border-b-4;
+    }
+  }
+
+  /* On touch devices, give a tap feedback instead of sticky hover */
+  @media (hover: none) and (pointer: coarse) {
+    .navbarButton:active {
+      @apply border-b-4;
+    }
   }
 }
 
