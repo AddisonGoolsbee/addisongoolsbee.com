@@ -13,6 +13,8 @@ import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
+import { toggleChangelog } from "../../../signals/state";
+
 const Home: Component = () => {
   useCanonical();
   let imgRef;
@@ -26,7 +28,6 @@ const Home: Component = () => {
 
   const [topPoint, setTopPoint] = createSignal(window.innerHeight);
   const [imageLoaded, setImageLoaded] = createSignal(false);
-  const [changelogVisible, setChangelogVisible] = createSignal(false);
   const [partyModeActive, setPartyModeActive] = createSignal(false);
   const [printerModeActive, setPrinterModeActive] = createSignal(false);
   const [profileSrc, setProfileSrc] = createSignal(profileURL);
@@ -98,10 +99,6 @@ const Home: Component = () => {
   const onImageLoad = () => {
     updateTopPoint();
     setImageLoaded(true);
-  };
-
-  const toggleChangelog = () => {
-    setChangelogVisible(!changelogVisible());
   };
 
   const togglePartyMode = () => {
