@@ -14,7 +14,8 @@ type Props = {
 
 const Navbar: Component<Props> = (props) => {
   const handleLogoClick = () => {
-    props.handleRecursion();
+    // props.handleRecursion();
+    window.location.reload();
   };
 
   return (
