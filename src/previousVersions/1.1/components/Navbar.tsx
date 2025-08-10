@@ -29,7 +29,7 @@ const Navbar: Component<Props> = (props) => {
           party
         </button>
         <button class="navbarButton" onClick={props.toggleChangelog}>
-          changelog
+          version 1.1
         </button>
       </div>
     </div>

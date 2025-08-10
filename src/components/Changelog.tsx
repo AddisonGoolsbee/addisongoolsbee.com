@@ -16,9 +16,19 @@ type VersionProps = {
 };
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
+  // Check if the current hash matches this card's url and handle the root case
+  const isActive =
+    typeof window !== "undefined" &&
+    (
+      (props.url === "" && window.location.hash === "#/") ||
+      (props.url && window.location.hash.endsWith(`#/${props.url}`))
+    );
+
   return (
     <button
-      class="p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-100 active:shadow-md block w-full text-left"
+      class={`p-3 select-none bg-white shadow-lg rounded-lg mb-10 cursor-pointer transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-2xl active:scale-100 active:shadow-md block w-full text-left ${
+        isActive ? "ring-4 ring-teal-600" : ""
+      }`}
       onClick={() => {
         const shouldRecurse =
           props.onRecursionClick &&
