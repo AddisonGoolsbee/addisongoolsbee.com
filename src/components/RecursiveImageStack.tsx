@@ -49,7 +49,7 @@ const RecursiveImageStack: Component<Props> = (props) => {
           />
         </div>
       </Show>
-      <For each={Array(recursionLevel() + 1)}>
+      <For each={Array(Math.max(recursionLevel(), 0) + 1)}>
         {(_, index) => {
           const wrapperStyle = `
           transform: translate(${index() * OFFSET}px, ${-index() * OFFSET}px);
