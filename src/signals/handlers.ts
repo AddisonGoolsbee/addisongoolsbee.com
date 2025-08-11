@@ -14,6 +14,8 @@ import {
   setPartyModeActive,
   setChangelogVisible,
   setRecursionLevel,
+  setSecretMessage,
+  setSecretMessageVisible,
 } from "./state";
 import { decryptWithPassword } from "../utils/cryptography";
 import { defaultBlurbStart } from "../components/Blurb";
@@ -68,6 +70,18 @@ export const animateProfileSrc = async (newSrc: string) => {
   });
 };
 
+let secretTimer: number | undefined;
+
+export function showSecretMessage(text: string, duration = 3000, fadeMs = 300) {
+  setSecretMessage(text);
+  setSecretMessageVisible(true);
+
+  if (secretTimer) clearTimeout(secretTimer);
+  secretTimer = window.setTimeout(() => {
+    setSecretMessageVisible(false);
+    window.setTimeout(() => setSecretMessage(""), fadeMs);
+  }, duration);
+}
 
 export const reset = () => {
   setBlurbStart(defaultBlurbStart);

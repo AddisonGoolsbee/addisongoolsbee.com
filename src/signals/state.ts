@@ -15,6 +15,8 @@ export const [recursionLevel, setRecursionLevel] = createSignal(0);
 export const [blurbType, setBlurbType] = createSignal<"default" | "secrets">(
   "default"
 );
+export const [secretMessage, setSecretMessage] = createSignal<string>("hello");
+export const [secretMessageVisible, setSecretMessageVisible] = createSignal(false);
 
 export const toggleChangelog = () => {
   setChangelogVisible(!changelogVisible());

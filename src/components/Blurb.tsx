@@ -5,6 +5,8 @@ import {
   onMount,
   onCleanup,
   Show,
+  Switch,
+  Match,
 } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
@@ -21,7 +23,7 @@ import {
   setChangelogVisible,
 } from "../signals/state";
 import HighFiveButton from "./HighFiveButton";
-import { sandwich } from "../signals/handlers";
+import { sandwich, showSecretMessage } from "../signals/handlers";
 
 type Props = {
   imgTop: number;
@@ -35,6 +37,9 @@ const Blurb: Component<Props> = (props) => {
   const [partyUnlocked, setPartyUnlocked] = createSignal(false);
   const [rainbowOffset, setRainbowOffset] = createSignal(0);
   const [popped, setPopped] = createSignal(false);
+  const [showSecretHint, setShowSecretHint] = createSignal(false);
+  let secretTimer: number | undefined;
+  onCleanup(() => secretTimer && clearTimeout(secretTimer));
 
   const isMobile = () => windowWidth() < 640;
   let scrollableContainerRef: HTMLDivElement;
@@ -121,7 +126,7 @@ const Blurb: Component<Props> = (props) => {
   });
 
   const DefaultBlurb = () => (
-    <>
+    <div>
       <div class="p-5p">
         <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-tight  text-center sm:text-left">
           My name is
@@ -155,7 +160,14 @@ const Blurb: Component<Props> = (props) => {
           This site follows one of my favorite design principles: everything in
           one screen. The page itself never scrolls, but buttons and scrollable
           sub-sections let me pack in more content. Oh, and I <em>love</em>{" "}
-          easter eggs.
+          <span
+            class="cursor-pointer"
+            onClick={() => {
+              showSecretMessage("Have you found the secrets tab?");
+            }}
+          >
+            easter eggs.
+          </span>
         </p>
         <p class="mb-4">
           When I'm not coding, you might find me hiking, juggling, foraging for
@@ -215,7 +227,7 @@ const Blurb: Component<Props> = (props) => {
       <p class="italic bottom-0 text-gray-400 text-[0.5rem] sm:text-xs text-center p-1">
         This website has a few hidden secrets, try clicking my name
       </p>
-    </>
+    </div>
   );
 
   const SecretsBlurb = () => (
@@ -262,9 +274,7 @@ const Blurb: Component<Props> = (props) => {
           hint says otherwise.
         </li>
       </ul>
-      <p>
-        Maybe there are some secrets hidden in this very page...
-      </p>
+      <p>Maybe there are some secrets hidden in this very page...</p>
     </div>
   );
 
@@ -281,12 +291,14 @@ const Blurb: Component<Props> = (props) => {
           ref={(el) => (scrollableContainerRef = el!)}
           class="text-black text-sm sm:text-base bg-white bg-opacity-70 z-10 rounded-t-md sm:rounded-t-lg shadow-2xl flex-grow overflow-y-auto overflow-x-hidden scrollbar-custom max-h-fit flex flex-col justify-between"
         >
-          <Show when={blurbType() === "default"}>
-            <DefaultBlurb />
-          </Show>
-          <Show when={blurbType() === "secrets"}>
-            <SecretsBlurb />
-          </Show>
+          <Switch fallback={<DefaultBlurb />}>
+            <Match when={blurbType() === "default"}>
+              <DefaultBlurb />
+            </Match>
+            <Match when={blurbType() === "secrets"}>
+              <SecretsBlurb />
+            </Match>
+          </Switch>
         </div>
         <div class="w-full bg-teal-800 bg-opacity-90 p-3 sm:p-5 flex justify-center space-x-7p rounded-b-md sm:rounded-b-lg">
           <BlurbButton

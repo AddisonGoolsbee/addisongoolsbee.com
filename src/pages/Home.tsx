@@ -26,6 +26,7 @@ import {
 } from "../signals/state";
 import { defaultBlurbStart } from "../components/Blurb";
 import KumquatHint from "../components/KumquatHint";
+import SecretMessage from "../components/SecretMessage";
 
 const Home: Component = () => {
   useCanonical();
@@ -112,6 +113,7 @@ const Home: Component = () => {
     <div class="h-[100dvh] overflow-hidden relative bg-gray-800">
       <SecretTypingOverlay />
       <KumquatHint />
+      <SecretMessage />
       <Show when={partyModeActive()}>
         <Party />
       </Show>
