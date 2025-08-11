@@ -64,8 +64,7 @@ const Blurb: Component<Props> = (props) => {
               {props.myName === "Addison Goolsbee"
                 ? "soon-to-be software engineer"
                 : props.myName.toLowerCase()}{" "}
-              living in Seattle. Welcome to my
-              website!{" "}
+              living in Seattle. Welcome to my website!{" "}
             </p>
             <br />
             <p>
@@ -82,7 +81,11 @@ const Blurb: Component<Props> = (props) => {
               </a>
               &nbsp;or take a look at my&nbsp;
               <a
-                href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+                href={
+                  props.myName === "Printer"
+                    ? "printer.pdf"
+                    : "resumes/resume1.1.pdf"
+                }
                 class="link"
                 target="_blank"
               >
@@ -163,7 +166,11 @@ const Blurb: Component<Props> = (props) => {
             icon={<FiMail />}
           />
           <BlurbButton
-            href={props.myName === "Printer" ? "printer.pdf" : "resume.pdf"}
+            href={
+              props.myName === "Printer"
+                ? "printer.pdf"
+                : "resumes/resume1.1.pdf"
+            }
             text="Resume"
             icon={<FiFileText />}
           />
