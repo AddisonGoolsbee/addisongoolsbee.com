@@ -1,13 +1,4 @@
-import {
-  createSignal,
-  type Component,
-  createEffect,
-  onMount,
-  onCleanup,
-  Show,
-  Switch,
-  Match,
-} from "solid-js";
+import { createSignal, type Component, createEffect, onMount, onCleanup, Show, Switch, Match } from "solid-js";
 import { FaBrandsLinkedin, FaBrandsGithub } from "solid-icons/fa";
 import { FiMail, FiFileText } from "solid-icons/fi";
 import BlurbButton from "./BlurbButton";
@@ -30,7 +21,7 @@ type Props = {
 };
 
 export const defaultBlurbStart =
-  "Hey there! I'm a soon-to-be software engineer in Seattle with a love for building stuff. I've made web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
+  "Hey there! I'm an Amazon software engineer living in Seattle with a love for building stuff. I've made web apps, video games, physical gadgets, five gallon water jug 'art installations', and more.";
 
 const Blurb: Component<Props> = (props) => {
   const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
@@ -44,11 +35,7 @@ const Blurb: Component<Props> = (props) => {
   const isMobile = () => windowWidth() < 640;
   let scrollableContainerRef: HTMLDivElement;
 
-  const RainbowText = (props: {
-    text: string;
-    additionalClasses?: string;
-    onClick?: () => void;
-  }) => (
+  const RainbowText = (props: { text: string; additionalClasses?: string; onClick?: () => void }) => (
     <span
       class={`inline-block font-medium ${props.additionalClasses || ""}`}
       onClick={props.onClick}
@@ -57,9 +44,7 @@ const Blurb: Component<Props> = (props) => {
       {props.text.split("").map((char, i) => (
         <span
           style={{
-            color: `hsl(${
-              (i * 360) / props.text.length + rainbowOffset()
-            }, 80%, 50%)`,
+            color: `hsl(${(i * 360) / props.text.length + rainbowOffset()}, 80%, 50%)`,
             "white-space": "pre",
           }}
         >
@@ -130,11 +115,7 @@ const Blurb: Component<Props> = (props) => {
       <div class="p-5p">
         <p class="text-2xl sm:text-3xl font-normal sm:font-light leading-tight  text-center sm:text-left">
           My name is
-          {isMobile() ? (
-            <br />
-          ) : (
-            <span style={{ display: "inline-block", width: "0.3em" }}></span>
-          )}
+          {isMobile() ? <br /> : <span style={{ display: "inline-block", width: "0.3em" }}></span>}
           {isRainbowName() ? (
             <RainbowText
               text={myName()}
@@ -153,13 +134,27 @@ const Blurb: Component<Props> = (props) => {
           )}
         </p>
         <div class="border-t-2 border-black w-full mt-3 mb-4 sm:mt-5 sm:mb-6"></div>
-        <p class={`mb-4 ${popped() ? "animate-pop-blurb" : ""}`}>
-          {blurbStart()}
-        </p>
+        <p class={`mb-4 ${popped() ? "animate-pop-blurb" : ""}`}>{blurbStart()}</p>
         <p class="mb-4">
-          This site follows one of my favorite design principles: everything in
-          one screen. The page itself never scrolls, but buttons and scrollable
-          sub-sections let me pack in more content. Oh, and I <em>love</em>{" "}
+          When I'm not coding, you might find me hiking, juggling, foraging for mushrooms,{" "}
+          <span class="text-xs">or locked away in a dark room playing video games.</span> I've also co-founded a soap
+          company, created a viral{" "}
+          <a
+            href="https://yaledailynews.com/blog/2025/04/13/yales-facemash-students-react-to-site-ranking-yalies-popularity/"
+            class="link"
+            target="_blank"
+          >
+            popularity ranking website
+          </a>
+          , led the{" "}
+          <a href="https://yalecomputersociety.org" class="link" target="_blank">
+            Yale Computer Society
+          </a>
+          , and danced on stage with{" "}
+          <a href="https://campuspress.yale.edu/danceworks/" class="link" target="_blank">
+            Danceworks
+          </a>
+          . Oh, and I <em>love</em>{" "}
           <span
             class="cursor-pointer"
             onClick={() => {
@@ -170,54 +165,11 @@ const Blurb: Component<Props> = (props) => {
           </span>
         </p>
         <p class="mb-4">
-          When I'm not coding, you might find me hiking, juggling, foraging for
-          mushrooms,{" "}
-          <span class="text-xs">
-            or locked away in a dark room playing video games.
-          </span>{" "}
-          I've also co-founded a soap company, created a viral popularity
-          ranking{" "}
-          <a
-            href="https://yaledailynews.com/blog/2025/04/13/yales-facemash-students-react-to-site-ranking-yalies-popularity/"
-            class="link"
-            target="_blank"
-          >
-            website
-          </a>
-          , led the{" "}
-          <a
-            href="https://yalecomputersociety.org"
-            class="link"
-            target="_blank"
-          >
-            Yale Computer Society
-          </a>
-          , and danced on stage with{" "}
-          <a
-            href="https://campuspress.yale.edu/danceworks/"
-            class="link"
-            target="_blank"
-          >
-            Danceworks
-          </a>
-          .
-        </p>
-        <p class="mb-4">
-          This website was written in Solid.js, and the{" "}
-          <a
-            href="https://github.com/addisongoolsbee/addisongoolsbee.com"
-            class="link"
-          >
-            code is public
-          </a>
-          . Feeling nostalgic? You can see{" "}
-          <a
-            onClick={() => setChangelogVisible(!changelogVisible())}
-            class="link"
-          >
+          Feeling nostalgic? You can see{" "}
+          <a onClick={() => setChangelogVisible(!changelogVisible())} class="link">
             past versions of the site
           </a>{" "}
-          in the changelog.
+          in the changelog menu.
         </p>
 
         <div class="flex justify-center mt-6 sm:mt-12">
@@ -241,13 +193,11 @@ const Blurb: Component<Props> = (props) => {
       </p>
       <div class="border-t-2 border-black w-full mt-2 mb-3 sm:mt-5 sm:mb-6"></div>
       <p class="mb-4">
-        Nice job finding this! I've filled my website with a <em>lot</em> of
-        secrets. Can you uncover them all?
+        Nice job finding this! I've filled my website with a <em>lot</em> of secrets. Can you uncover them all?
       </p>
       <p class="mb-4">
-        Most secrets are unlocked with a password—try typing 'bicycle man'. If
-        you're on a phone, triple tap me to summon the keyboard, but beware,
-        many puzzles are best tackled on a full-sized screen.
+        Most secrets are unlocked with a password—try typing 'bicycle man'. If you're on a phone, triple tap me to
+        summon the keyboard, but beware, many puzzles are best tackled on a full-sized screen.
       </p>
       {/* <p class="mb-4">
         Some secrets require a bit of technical know-how. Hover over a tech-hint
@@ -259,19 +209,18 @@ const Blurb: Component<Props> = (props) => {
       </p>
       <ul class="space-y-2 ml-4 mt-2 mb-4">
         <li>
-          <span class="font-bold">The Code:</span> Everything is encrypted, no
-          clues are in the code or previous commits.
+          <span class="font-bold">The Code:</span> Everything is encrypted, no clues are in the code or previous
+          commits.
           {/* <span class="italic text-gray-400 text-xs" title="🛠️">
             Except for one.
           </span> */}
         </li>
         <li>
-          <span class="font-bold">Previous Versions:</span> Older versions of
-          the website in the changelog have no extra hints.
+          <span class="font-bold">Previous Versions:</span> Older versions of the website in the changelog have no extra
+          hints.
         </li>
         <li>
-          <span class="font-bold">Other Websites:</span> It's all here unless a
-          hint says otherwise.
+          <span class="font-bold">Other Websites:</span> It's all here unless a hint says otherwise.
         </li>
       </ul>
       <p>Maybe there are some secrets hidden in this very page...</p>
@@ -301,21 +250,9 @@ const Blurb: Component<Props> = (props) => {
           </Switch>
         </div>
         <div class="w-full bg-teal-800 bg-opacity-90 p-3 sm:p-5 flex justify-center space-x-7p rounded-b-md sm:rounded-b-lg">
-          <BlurbButton
-            href="https://www.linkedin.com/in/addisongoolsbee"
-            text="LinkedIn"
-            icon={<FaBrandsLinkedin />}
-          />
-          <BlurbButton
-            href="https://github.com/addisongoolsbee"
-            text="GitHub"
-            icon={<FaBrandsGithub />}
-          />
-          <BlurbButton
-            href="mailto:addisongoolsbee@gmail.com"
-            text="Email"
-            icon={<FiMail />}
-          />
+          <BlurbButton href="https://www.linkedin.com/in/addisongoolsbee" text="LinkedIn" icon={<FaBrandsLinkedin />} />
+          <BlurbButton href="https://github.com/addisongoolsbee" text="GitHub" icon={<FaBrandsGithub />} />
+          <BlurbButton href="mailto:addisongoolsbee@gmail.com" text="Email" icon={<FiMail />} />
           <BlurbButton
             href={myName() === "Printer" ? "printer.pdf" : "resume.pdf"}
             text="Resume"
