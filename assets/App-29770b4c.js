@@ -1,0 +1,1 @@
+import{g as o,v as t,_ as e}from"./index-d512cbdd.js";const r=t(()=>e(()=>import("./Home-2d9f8611.js"),["assets/Home-2d9f8611.js","assets/index-d512cbdd.js","assets/index-29766030.css","assets/index-f8f28661.js","assets/confetti.module-2da4c0ae.js","assets/Changelog-ce02712a.js"]));function _(){return o(r,{})}export{_ as default};
