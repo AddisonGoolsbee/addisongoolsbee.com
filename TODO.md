@@ -30,8 +30,3 @@ crontab -e -> \* \* \* \* \* osascript -e "set Volume 10" && say "a bomb has bee
 - auto-update with new github projects
 - Playable Unity games
 - Recursion allows 50+
-
-## Really Unnecessary
-
-- Handle that system dark mode thing (android mobile on hugo's phone)
-- Make it work for deprecated versions of safari
