@@ -31,6 +31,20 @@
       background-color: #1f2937;
     }
   </style>
+  <script>
+    // If we were redirected from /404.html (static host SPA fallback),
+    // restore the intended path before the router initializes.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var p = params.get('p');
+      if (!p) return;
+
+      var q = params.get('q');
+      var h = params.get('h');
+      var newUrl = p + (q ? ('?' + decodeURIComponent(q)) : '') + (h ? ('#' + decodeURIComponent(h)) : '');
+      window.history.replaceState(null, '', newUrl);
+    })();
+  </script>
 </head>
 
 <body>

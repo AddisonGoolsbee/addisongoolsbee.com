@@ -93,7 +93,7 @@ export const reset = () => {
   setChangelogVisible(false);
   setRecursionLevel(0);
   if (window && window.location && window.history) {
-    const url = window.location.origin + window.location.pathname + window.location.hash;
+    const url = window.location.origin + window.location.pathname + window.location.search;
     window.history.replaceState({}, document.title, url);
   }
   gnocchiLoopActive = false;

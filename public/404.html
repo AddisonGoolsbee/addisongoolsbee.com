@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script>
+        // SPA fallback for static hosts (e.g. GitHub Pages).
+        // Redirect unknown paths to /?p=<path>&q=<query>&h=<hash>
+        // Then `index.html` restores it before React Router runs.
+        (function () {
+            var l = window.location;
+            var path = l.pathname;
+            var search = l.search ? l.search.substring(1) : "";
+            var hash = l.hash ? l.hash.substring(1) : "";
+
+            var redirectUrl =
+                l.origin +
+                "/?p=" +
+                encodeURIComponent(path) +
+                (search ? "&q=" + encodeURIComponent(search) : "") +
+                (hash ? "&h=" + encodeURIComponent(hash) : "");
+
+            window.location.replace(redirectUrl);
+        })();
+    </script>
+</head>
+
+<body>
+    <noscript>This site requires JavaScript.</noscript>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 import { type Component, For } from "solid-js";
 import { Transition } from "solid-transition-group";
 import { changelogVisible, toggleChangelog } from "../signals/state";
+import { useLocation, useNavigate } from "@solidjs/router";
 
 type Props = {
   handleRecursion?: () => void;
@@ -16,13 +17,10 @@ type VersionProps = {
 };
 
 const ChangelogVersionCard: Component<VersionProps> = (props) => {
-  // Check if the current hash matches this card's url and handle the root case
-  const isActive =
-    typeof window !== "undefined" &&
-    (
-      (props.url === "" && window.location.hash === "#/") ||
-      (props.url && window.location.hash.endsWith(`#/${props.url}`))
-    );
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isActive = props.url === "" ? location.pathname === "/" : location.pathname.endsWith(`/${props.url}`);
 
   return (
     <button
@@ -30,39 +28,27 @@ const ChangelogVersionCard: Component<VersionProps> = (props) => {
         isActive ? "ring-4 ring-teal-600" : ""
       }`}
       onClick={() => {
-        const shouldRecurse =
-          props.onRecursionClick &&
-          window.location.hash.endsWith("#/" + props.url);
-        window.history.replaceState(null, "", window.location.pathname);
-        window.location.hash = `/${props.url}`;
-        if (shouldRecurse) {
-          props.onRecursionClick();
-        } else {
-          window.location.reload();
-        }
+        const targetPath = props.url ? `/${props.url}` : "/";
+        const shouldRecurse = props.onRecursionClick && location.pathname === targetPath;
+        navigate(targetPath);
+        if (shouldRecurse) props.onRecursionClick();
+        toggleChangelog();
       }}
     >
       <div class="flex justify-between items-center flex-row">
-        <p class="text-lg font-bold text-gray-800 mt-1">
-          Version {props.version}
-        </p>
+        <p class="text-lg font-bold text-gray-800 mt-1">Version {props.version}</p>
         <p class="text-sm italic text-gray-600">{props.date}</p>
       </div>
       <p class="text-sm text-gray-600">{props.description}</p>
       <ul class="list-outside list-disc mt-2 text-sm pl-3">
-        <For each={props.changes}>
-          {(change) => <li class="text-gray-600 mb-1">{change}</li>}
-        </For>
+        <For each={props.changes}>{(change) => <li class="text-gray-600 mb-1">{change}</li>}</For>
       </ul>
     </button>
   );
 };
 
 const Changelog: Component<Props> = (props) => {
-  const changelogKeyframes = [
-    { transform: "translateX(100%)" },
-    { transform: "translateX(0%)" },
-  ];
+  const changelogKeyframes = [{ transform: "translateX(100%)" }, { transform: "translateX(0%)" }];
   const changelogAnimation = { duration: 600, easing: "ease-in-out" };
   const dimmerKeyFrames = [{ opacity: "0" }, { opacity: "0.3" }];
   const dimmerAnimation = { duration: 600, easing: "ease-in-out" };
@@ -97,13 +83,8 @@ const Changelog: Component<Props> = (props) => {
             </button>
             <p class="text-center font-bold text-2xl mt-2 mb-6">Changelog</p>
             <p class="text-sm text-gray-700 mb-8">
-              Click the cards to see how the site used to be! The full source
-              code is available on&nbsp;
-              <a
-                class="link"
-                href="https://github.com/addisongoolsbee/addisongoolsbee.com"
-                target="_blank"
-              >
+              Click the cards to see how the site used to be! The full source code is available on&nbsp;
+              <a class="link" href="https://github.com/addisongoolsbee/addisongoolsbee.com" target="_blank">
                 Github
               </a>
               .
@@ -197,10 +178,7 @@ const Changelog: Component<Props> = (props) => {
         }}
       >
         {changelogVisible() && (
-          <div
-            class="absolute w-full h-full top-0 left-0 bg-black z-[2500] opacity-30"
-            onClick={toggleChangelog}
-          ></div>
+          <div class="absolute w-full h-full top-0 left-0 bg-black z-[2500] opacity-30" onClick={toggleChangelog}></div>
         )}
       </Transition>
     </div>
