@@ -4,15 +4,15 @@ My personal website
 
 ## Usage
 
-Install dependencies with: `npm i`
+Install dependencies with: `pnpm i`
 
-To run in development mode: `npm start`
+To run in development mode: `pnpm run dev`
 
-To test as a static site: `npm run build && npm run serve`
+To test as a static site: `pnpm run build && pnpm run serve`
 
 ## Deployment
 
-Build and deploy the website with: `npm run deploy`
+Build and deploy the website with: `pnpm run deploy`
 
 ### Some Inspirations
 
