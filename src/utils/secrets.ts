@@ -9,6 +9,7 @@ import {
   kumquat,
   gnocchi,
   waffle,
+  cheesecake0,
 } from "../signals/handlers";
 import {
   changelogVisible,
@@ -70,5 +71,9 @@ export const secrets: Secret[] = [
   {
     hash: "d417d021f3f3bbb5a0d86ec88187316ae9d9e7a5a8902c26fad644d806f34908",
     onUnlock: () => gnocchi(),
+  },
+  {
+    hash: "d67193170a4bbfacff5a347099bf95d45591d23ce87a580308c7e4a5af01fd0c",
+    onUnlock: () => cheesecake0(),
   },
 ];

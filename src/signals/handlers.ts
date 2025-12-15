@@ -10,7 +10,6 @@ import {
   setIsRainbowName,
   isRainbowName,
   setParticleEmoji,
-  particleEmoji,
   setPartyModeActive,
   setChangelogVisible,
   setRecursionLevel,
@@ -310,3 +309,16 @@ function scheduleGnocchiLoop() {
     if (gnocchiLoopActive) scheduleGnocchiLoop();
   }, delay);
 }
+
+export const cheesecake0 = async () => {
+  const name = await decryptWithPassword(
+    "80123f70aade2eea45f6654dad5eef2551fe9e2deca67b2bf4b48cf769f0578be0e144b99d424be3df445157d604101bd5d5a2a9ce8d",
+    currentDecoderSecret()
+  );
+  const blurb = await decryptWithPassword(
+    "a2f79d3240a046d3c7500085e91100b3765129851b6fa397469eb5e994ee22ffb2d67b984fd1759fc001609e42e9f02bcd2eef463973df29acff345a18c2851d3c4f7d76617701c67a9b4c47016311d3260f203b1b434a5ed5ac48e893a39ecd6c77f21e8407ec5443891cfa5d2fcf448ef6f9cc8ffd77cb6cd101f59b062163a915e864caf9f4fbec7321e3e0237693def76b08f044d94b98520610b6695f90e17f228b1553cfe9521e35f468720be247da",
+    currentDecoderSecret()
+  );
+  setMyName(name);
+  setBlurbStart(blurb);
+};
