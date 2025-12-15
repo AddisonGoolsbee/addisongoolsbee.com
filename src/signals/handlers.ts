@@ -16,6 +16,7 @@ import {
   setRecursionLevel,
   setSecretMessage,
   setSecretMessageVisible,
+  setParticleImageSrc,
 } from "./state";
 import { decryptWithPassword } from "../utils/cryptography";
 import { defaultBlurbStart } from "../components/Blurb";
@@ -30,8 +31,7 @@ export const animateProfileSrc = async (newSrc: string) => {
     return;
   }
 
-  const profileImages =
-    document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
+  const profileImages = document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
 
   // Animate current images sliding down/out
   if (profileImages.length > 0) {
@@ -47,8 +47,7 @@ export const animateProfileSrc = async (newSrc: string) => {
   setProfileSrc(newSrc);
 
   // Wait until ALL new images are loaded
-  const newProfileImages =
-    document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
+  const newProfileImages = document.querySelectorAll<HTMLImageElement>('img[alt="Addison"]');
 
   await Promise.all(
     Array.from(newProfileImages).map((img) => {
@@ -94,8 +93,7 @@ export const reset = () => {
   setChangelogVisible(false);
   setRecursionLevel(0);
   if (window && window.location && window.history) {
-    const url =
-      window.location.origin + window.location.pathname + window.location.hash;
+    const url = window.location.origin + window.location.pathname + window.location.hash;
     window.history.replaceState({}, document.title, url);
   }
   gnocchiLoopActive = false;
@@ -106,12 +104,7 @@ export const reset = () => {
 };
 
 export const sandwich = () => {
-  const newSrc =
-    myName() === "Sandwich"
-      ? addisonImage
-      : isSafari
-      ? "/images/sandwich.gif"
-      : "/images/sandwich.webp";
+  const newSrc = myName() === "Sandwich" ? addisonImage : isSafari ? "/images/sandwich.gif" : "/images/sandwich.webp";
   animateProfileSrc(newSrc);
   const newName = myName() === "Sandwich" ? "Addison Goolsbee" : "Sandwich";
   setMyName(newName);
@@ -187,14 +180,22 @@ export const pancake = async () => {
       "5b9d01ba01e779641e653e4b7256d50ac6e2ad59bfbdc242eddcf228b3cfbbd2f2fb9339c727068e1b4dc83f003c7d7767894e1701ad0d82c2",
       currentDecoderSecret()
     );
-    if (newParticleEmoji == particleEmoji()) {
-      setParticleEmoji("");
-    } else {
-      setParticleEmoji(newParticleEmoji);
-    }
-    console.log(particleEmoji());
+    setParticleEmoji(newParticleEmoji);
   } catch (error) {
     console.error("Failed to unlock pancake secret:", error);
+  }
+};
+
+export const waffle = async () => {
+  try {
+    const imageSrc = await decryptWithPassword(
+      "a6bee6a25b4e16dc1f88f0caa95d06eb4e7e235eedc2007aa1c0b5bce8662b29f0f3b3d654471c9372677061cdf448e8c48496ad603d21ef6d3500d516dbf0c2cf530e09b1b68e70bfaec72a5c0a09006c6b8e",
+      currentDecoderSecret()
+    );
+    setParticleEmoji("");
+    setParticleImageSrc(imageSrc);
+  } catch (error) {
+    console.error("Failed to unlock waffle secret:", error);
   }
 };
 
@@ -267,16 +268,12 @@ export const kumquat = async () => {
     kumquatSound.volume = 0.7;
     kumquatSound.playbackRate = 0.2;
 
-    kumquatSound
-      .play()
-      .catch((err) => console.error("Failed to play sound:", err));
+    kumquatSound.play().catch((err) => console.error("Failed to play sound:", err));
   } else {
     kumquatSound.currentTime = 0;
     kumquatSound.volume = 0.5;
     kumquatSound.playbackRate = 1;
-    kumquatSound
-      .play()
-      .catch((err) => console.error("Failed to play sound:", err));
+    kumquatSound.play().catch((err) => console.error("Failed to play sound:", err));
   }
 };
 
@@ -291,9 +288,7 @@ export const gnocchi = async () => {
     animateProfileSrc(newProfileSrc);
     gnocchiSound.currentTime = 0;
     gnocchiSound.volume = 0.7;
-    gnocchiSound
-      .play()
-      .catch((err) => console.error("Failed to play sound:", err));
+    gnocchiSound.play().catch((err) => console.error("Failed to play sound:", err));
     if (!gnocchiLoopActive) {
       gnocchiLoopActive = true;
       scheduleGnocchiLoop();

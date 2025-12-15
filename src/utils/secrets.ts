@@ -8,6 +8,7 @@ import {
   pancake,
   kumquat,
   gnocchi,
+  waffle,
 } from "../signals/handlers";
 import {
   changelogVisible,
@@ -53,6 +54,10 @@ export const secrets: Secret[] = [
   {
     hash: "1716131c789f581164846ebe440c4edc7a315f35b96efe7cc0083a2900cde67f",
     onUnlock: () => pancake(),
+  },
+  {
+    hash: "223ef71359c426788e306b6bfe08a07201519827eb9787179261d504fa4fe11c",
+    onUnlock: () => waffle(),
   },
   {
     hash: "32d1abff5e189d2736c4a126c7da616f51a7f569bdd2572354898c21a0271446",

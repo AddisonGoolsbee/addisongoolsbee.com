@@ -1,6 +1,6 @@
 import { onCleanup, onMount, createSignal, createEffect } from "solid-js";
 import type { Component } from "solid-js";
-import { particleEmoji } from "../signals/state";
+import { particleMode } from "../signals/state";
 
 interface Particle {
   x: number;
@@ -11,6 +11,7 @@ interface Particle {
   speedX: number;
   speedY: number;
   emoji?: string;
+  isImage?: boolean;
 }
 
 const Particles: Component = () => {
@@ -23,6 +24,9 @@ const Particles: Component = () => {
   const EMOJI_SIZE = 50;
   const EMOJI_GROWTH = 0.1;
 
+  const IMAGE_SIZE = 48;
+  const IMAGE_GROWTH = 0.12;
+
   const [canvasSize, setCanvasSize] = createSignal({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -32,6 +36,9 @@ const Particles: Component = () => {
   let canvasRef: HTMLCanvasElement | undefined;
   const particles: Particle[] = [];
   let animationFrameId: number;
+
+  const [spriteImage, setSpriteImage] = createSignal<HTMLImageElement | null>(null);
+  const [spriteReady, setSpriteReady] = createSignal(false);
 
   const handleResize = () => {
     setCanvasSize({ width: window.innerWidth, height: window.innerHeight });
@@ -61,8 +68,10 @@ const Particles: Component = () => {
 
     const createParticle = () => {
       currentAmount++;
-      const isEmojiMode = particleEmoji() !== "";
-      const particleSize = isEmojiMode ? EMOJI_SIZE : SIZE;
+      const mode = particleMode();
+      const isEmojiMode = mode.kind === "emoji";
+      const isImageMode = mode.kind === "image";
+      const particleSize = isEmojiMode ? EMOJI_SIZE : isImageMode ? IMAGE_SIZE : SIZE;
 
       const particle: Particle = {
         x: Math.random() * canvas.width,
@@ -75,7 +84,11 @@ const Particles: Component = () => {
       };
 
       if (isEmojiMode) {
-        particle.emoji = particleEmoji();
+        particle.emoji = mode.emoji;
+      }
+
+      if (isImageMode) {
+        particle.isImage = true;
       }
 
       particles.push(particle);
@@ -83,8 +96,13 @@ const Particles: Component = () => {
 
     const animateParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const isEmojiMode = particleEmoji() !== "";
-      const currentGrowth = isEmojiMode ? EMOJI_GROWTH : GROWTH;
+      const mode = particleMode();
+      const isEmojiMode = mode.kind === "emoji";
+      const isImageMode = mode.kind === "image";
+      const currentGrowth = isEmojiMode ? EMOJI_GROWTH : isImageMode ? IMAGE_GROWTH : GROWTH;
+
+      const img = spriteImage();
+      const canDrawImage = isImageMode && spriteReady() && img;
 
       for (let i = 0; i < particles.length; i++) {
         let p = particles[i];
@@ -104,6 +122,14 @@ const Particles: Component = () => {
 
           // Reset global alpha
           ctx.globalAlpha = 1;
+        } else if (p.isImage && canDrawImage) {
+          const opacity = p.currentSize / p.maxSize;
+          ctx.globalAlpha = opacity;
+
+          const size = Math.max(1, p.currentSize);
+          ctx.drawImage(img, p.x - size / 2, p.y - size / 2, size, size);
+
+          ctx.globalAlpha = 1;
         } else {
           // Render circle
           ctx.beginPath();
@@ -119,7 +145,7 @@ const Particles: Component = () => {
           if (p.currentSize >= p.maxSize) p.increasing = false;
         } else {
           p.currentSize -= currentGrowth;
-          const minSize = p.emoji ? 2 : 0.2;
+          const minSize = p.emoji || p.isImage ? 2 : 0.2;
           if (p.currentSize <= minSize) {
             particles.splice(i, 1);
             i--;
@@ -151,10 +177,32 @@ const Particles: Component = () => {
   });
 
   createEffect(() => {
-    // Clear existing particles when emoji mode changes
-    particleEmoji(); // Track the signal
+    // Clear existing particles and (if needed) preload the sprite when mode changes.
+    const mode = particleMode();
     particles.length = 0;
     currentAmount = 0;
+
+    if (mode.kind !== "image") {
+      setSpriteReady(false);
+      setSpriteImage(null);
+      return;
+    }
+
+    const src = mode.src;
+    setSpriteReady(false);
+    setSpriteImage(null);
+
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = () => {
+      setSpriteImage(img);
+      setSpriteReady(true);
+    };
+    img.onerror = () => {
+      setSpriteReady(false);
+      setSpriteImage(null);
+    };
+    img.src = src;
   });
 
   createEffect(() => {
@@ -166,12 +214,7 @@ const Particles: Component = () => {
     }
   });
 
-  return (
-    <canvas
-      ref={canvasRef}
-      class="fixed top-0 left-0 w-full h-full z-0"
-    ></canvas>
-  );
+  return <canvas ref={canvasRef} class="fixed top-0 left-0 w-full h-full z-0"></canvas>;
 };
 
 export default Particles;

@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .secret-select::selection {
+    background: Highlight;
+    color: HighlightText;
+  }
+  .secret-select::-moz-selection {
+    background: Highlight;
+    color: HighlightText;
+  }
+}
+
 body {
   /* overscroll-behavior: hidden; */
   overflow: hidden;

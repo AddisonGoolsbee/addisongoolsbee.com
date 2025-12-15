@@ -197,7 +197,7 @@ const Blurb: Component<Props> = (props) => {
       </p>
       <p class="mb-4">
         Most secrets are unlocked with a password—try typing 'bicycle man'. If you're on a phone, triple tap me to
-        summon the keyboard, but beware, many puzzles are best tackled on a full-sized screen.
+        summon the keyboard, but beware, some puzzles can only be solved on a full-sized screen.
       </p>
       {/* <p class="mb-4">
         Some secrets require a bit of technical know-how. Hover over a tech-hint
@@ -223,7 +223,10 @@ const Blurb: Component<Props> = (props) => {
           <span class="font-bold">Other Websites:</span> It's all here unless a hint says otherwise.
         </li>
       </ul>
-      <p>Maybe there are some secrets hidden in this very page...</p>
+      <p>
+        Maybe there are some secrets hidden in this very page...&nbsp;
+        <span class="text-transparent select-text secret-select">garbfpamfrlms</span>
+      </p>
     </div>
   );
 

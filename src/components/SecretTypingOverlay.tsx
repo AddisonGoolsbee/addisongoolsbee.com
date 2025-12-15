@@ -3,7 +3,7 @@ import { Motion } from "@motionone/solid";
 import { GLOBAL_SALT, sha256 } from "../utils/cryptography";
 import { secrets } from "../utils/secrets";
 
-import { setCurrentDecoderSecret } from "../signals/state";
+import { setCurrentDecoderSecret, particleImageSrc, setParticleImageSrc, setParticleEmoji } from "../signals/state";
 
 const SecretTypingOverlay = () => {
   const [typed, setTyped] = createSignal("");
@@ -22,18 +22,14 @@ const SecretTypingOverlay = () => {
     setPulsing(false);
   };
 
-  const isEditableEl = (el: Element | null) =>
-    !!el && !!el.closest?.('input, textarea, [contenteditable="true"]');
+  const isEditableEl = (el: Element | null) => !!el && !!el.closest?.('input, textarea, [contenteditable="true"]');
 
   const handleKey = (e: KeyboardEvent) => {
     // If the user is typing in any editable (including your secret input), don't interfere
     const target = e.target as Element | null;
     const active = document.activeElement as HTMLElement | null;
 
-    if (
-      isEditableEl(target) ||
-      (active && (isEditableEl(active) || active.id === "secret-input"))
-    ) {
+    if (isEditableEl(target) || (active && (isEditableEl(active) || active.id === "secret-input"))) {
       return; // let typing happen normally
     }
 
@@ -66,7 +62,6 @@ const SecretTypingOverlay = () => {
       resetTyping();
     }
   };
-
 
   const checkSecret = async (word: string) => {
     word = word.replace(/\s+/g, "");
@@ -107,35 +102,34 @@ const SecretTypingOverlay = () => {
     }, 1000);
   };
 
-onMount(() => {
-  window.addEventListener("keydown", handleKey);
+  onMount(() => {
+    window.addEventListener("keydown", handleKey);
 
-  const mirror = (e: Event) => {
-    const target = e.target as HTMLInputElement | null;
-    if (!target || target.id !== "secret-input") return;
+    const mirror = (e: Event) => {
+      const target = e.target as HTMLInputElement | null;
+      if (!target || target.id !== "secret-input") return;
 
-    const raw = target.value;
+      const raw = target.value;
 
-    // Show exactly what they typed
-    setTyped(raw);
-    setVisible(raw.length > 0);
-    setFading(false);
-    resetTimeout();
+      // Show exactly what they typed
+      setTyped(raw);
+      setVisible(raw.length > 0);
+      setFading(false);
+      resetTimeout();
 
-    // Normalize for secret matching (matches your desktop path)
-    const normalized = raw.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
+      // Normalize for secret matching (matches your desktop path)
+      const normalized = raw.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
 
-    void checkSecret(normalized);
-  };
+      void checkSecret(normalized);
+    };
 
-  window.addEventListener("input", mirror, { passive: true });
+    window.addEventListener("input", mirror, { passive: true });
 
-  onCleanup(() => {
-    window.removeEventListener("keydown", handleKey);
-    window.removeEventListener("input", mirror);
+    onCleanup(() => {
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("input", mirror);
+    });
   });
-});
-
 
   onCleanup(() => {
     window.removeEventListener("keydown", handleKey);
