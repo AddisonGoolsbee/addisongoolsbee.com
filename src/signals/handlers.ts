@@ -24,6 +24,7 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const addisonImage = "/images/profile.webp";
 let gnocchiLoopActive = false;
 let gnocchiLoopTimeout: ReturnType<typeof setTimeout> | null = null;
+let gnocchiFirstPlayTimeout: ReturnType<typeof setTimeout> | null = null;
 
 export const animateProfileSrc = async (newSrc: string) => {
   if (newSrc === profileSrc()) {
@@ -99,6 +100,16 @@ export const reset = () => {
   if (gnocchiLoopTimeout) {
     clearTimeout(gnocchiLoopTimeout);
     gnocchiLoopTimeout = null;
+  }
+  if (gnocchiFirstPlayTimeout) {
+    clearTimeout(gnocchiFirstPlayTimeout);
+    gnocchiFirstPlayTimeout = null;
+  }
+  try {
+    gnocchiSound.pause();
+    gnocchiSound.currentTime = 0;
+  } catch {
+    // ignore
   }
 };
 
@@ -188,7 +199,7 @@ export const pancake = async () => {
 export const waffle = async () => {
   try {
     const imageSrc = await decryptWithPassword(
-      "a6bee6a25b4e16dc1f88f0caa95d06eb4e7e235eedc2007aa1c0b5bce8662b29f0f3b3d654471c9372677061cdf448e8c48496ad603d21ef6d3500d516dbf0c2cf530e09b1b68e70bfaec72a5c0a09006c6b8e",
+      "78cc4d1d337efb59d5976866607036b320d4743a2acdb0984ec3f458353df7870864e9a8c3f1920d450c55075ce5b6606a19969e888ff18483a269e6a0cb32fc97237ab7e5b83d9cd1f1a7527b6ccc942001f43565afafa1d80f104a0e2a19f13c8fbe93b38b26d2596d11",
       currentDecoderSecret()
     );
     setParticleEmoji("");
@@ -204,7 +215,7 @@ kumquatSound.load();
 
 export const kumquat = async () => {
   const image = await decryptWithPassword(
-    "7862662757bf235b0a81c6048b35444957c8fc23acc9252bf3bff8643c7677cdd438a6a9c81775ba5c342de5d2aefed2f4479327b787db2a4be61a2ed7d8fb9ca458bae52141f8c411d0f7c5ceb9230edfeb8acd4f",
+    "a79f4c68742d82ba1ae8032339f548b281d945c97ac615c3036d9cb48540abb059b31ae433ee0ff9d2f0004ea74fce96874902652758e670d5a25e65c6305348ede785d4646cbe7aeb23ab56760ce631a57be6396f0c034afe0662f21da2b2fefb55bd929855e60ed3fbcd",
     currentDecoderSecret()
   );
   const img = document.createElement("img");
@@ -281,16 +292,21 @@ gnocchiSound.load();
 export const gnocchi = async () => {
   try {
     const newProfileSrc = await decryptWithPassword(
-      "943028d6e4c1f6d13eb0e2bb088bcd3456d65e56c378432971402747090ac1a7c99ec5024b77a6b90d04cdfb806eeaa151bb25353ad518584bb1c4be3436df932970ae160eccabc1376c6533016a36ea9ace95",
+      "d812810726df0a7aaa9477aaa71132e40aa2c691fed5952fb139f85e7182edef644f5f6fafe5881ef3439df43adfaf68a819e18f272da6980cdeca72ac71b8ec1c24e8dfe615d2203e18aceb80a616064d2fe0b103d3317b88bfe495bfac32388c6ba87922e7f23252691d",
       currentDecoderSecret()
     );
     animateProfileSrc(newProfileSrc);
+    const firstTime = !gnocchiLoopActive;
     gnocchiSound.currentTime = 0;
     gnocchiSound.volume = 0.7;
-    gnocchiSound.play().catch((err) => console.error("Failed to play sound:", err));
-    if (!gnocchiLoopActive) {
+    if (firstTime) {
       gnocchiLoopActive = true;
+      gnocchiFirstPlayTimeout = setTimeout(() => {
+        gnocchiSound.play().catch((err) => console.error("Failed to play sound:", err));
+      }, 1000);
       scheduleGnocchiLoop();
+    } else {
+      gnocchiSound.play().catch((err) => console.error("Failed to play sound:", err));
     }
   } catch (error) {
     console.error("Failed to unlock gnocchi secret:", error);
