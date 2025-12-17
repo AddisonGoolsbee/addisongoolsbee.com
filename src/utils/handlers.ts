@@ -355,7 +355,7 @@ export const cheesecake0 = async () => {
 
 export const cheesecake1 = async () => {
   const name = await decryptWithPassword(
-    "6c27cc99e035063d02d96cfffb44fce6c71a4458e7b9f6d56fcdca24238f83bb39ec9841c83c78fe956556eb2179b0e22d11b73ad101d4e705d7e89724a882b3e1d82c99e080b1",
+    "839d8a178d9427cf9ec5b21cec63840d8de29af0a3d4c8d7eef3006a51853511f6806c4abd988dc76103359e92f9327d16d262679b66f67b70635d4b0c10eec19809f9",
     currentDecoderSecret()
   );
   const blurb = await decryptWithPassword(
