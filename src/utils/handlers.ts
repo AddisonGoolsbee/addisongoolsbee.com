@@ -26,7 +26,7 @@ let gnocchiLoopActive = false;
 let gnocchiLoopTimeout: ReturnType<typeof setTimeout> | null = null;
 let gnocchiFirstPlayTimeout: ReturnType<typeof setTimeout> | null = null;
 
-export const animateProfileSrc = async (newSrc: string) => {
+export const setProfileImage = async (newSrc: string) => {
   if (newSrc === profileSrc()) {
     return;
   }
@@ -91,7 +91,7 @@ export function giveHint(encryptedHint: string) {
 export const reset = () => {
   setBlurbStart(defaultBlurbStart);
   setMyName("Addison Goolsbee");
-  animateProfileSrc(addisonImage);
+  setProfileImage(addisonImage);
   setIsRainbowName(false);
   setIsBlurry(false);
   setParticleEmoji("");
@@ -121,7 +121,7 @@ export const reset = () => {
 
 export const sandwich = () => {
   const newSrc = myName() === "Sandwich" ? addisonImage : isSafari ? "/images/sandwich.gif" : "/images/sandwich.webp";
-  animateProfileSrc(newSrc);
+  setProfileImage(newSrc);
   const newName = myName() === "Sandwich" ? "Addison Goolsbee" : "Sandwich";
   setMyName(newName);
   setBlurbStart(defaultBlurbStart);
@@ -133,7 +133,7 @@ export const brie = async () => {
       "ad6db69d9aec241e93d42a621d07c0ba4d26a2f44b032abe2f718f670806b5d524dd44183f4ab15d193e734de55acd01a5dd2d3030ad2ee10dd4e7599fc77b1e5c8727c98d54ba314d94e5c9cc918d1d1b9129",
       currentDecoderSecret()
     );
-    animateProfileSrc(newProfileSrc);
+    setProfileImage(newProfileSrc);
     const newName = await decryptWithPassword(
       "5562f5aa8bcf22ac15b05428a4ce5cbd9ef66347cc442b0da187209c11e9dbbf12bae55cd09a217819d9992ee4755d03cec774738b03",
       currentDecoderSecret()
@@ -183,7 +183,7 @@ export const eggshell = async () => {
   try {
     setBlurbStart(defaultBlurbStart);
     setMyName("Addison Goolsbee");
-    animateProfileSrc(addisonImage);
+    setProfileImage(addisonImage);
     setIsRainbowName(!isRainbowName());
   } catch (error) {
     console.error("Failed to unlock eggshell secret:", error);
@@ -279,7 +279,7 @@ export const kumquat = async () => {
       "7862662757bf235b0a81c6048b35444957c8fc23acc9252bf3bff8643c7677cdd438a6a9c81775ba5c342de5d2aefed2f4479327b787db2a4be61a2ed7d8fb9ca458bae52141f8c411d0f7c5ceb9230edfeb8acd4f",
       currentDecoderSecret()
     );
-    animateProfileSrc(newProfileSrc);
+    setProfileImage(newProfileSrc);
     kumquatSound.currentTime = 0;
     kumquatSound.volume = 0.7;
     kumquatSound.playbackRate = 0.2;
@@ -301,7 +301,7 @@ export const gnocchi = async () => {
       "d812810726df0a7aaa9477aaa71132e40aa2c691fed5952fb139f85e7182edef644f5f6fafe5881ef3439df43adfaf68a819e18f272da6980cdeca72ac71b8ec1c24e8dfe615d2203e18aceb80a616064d2fe0b103d3317b88bfe495bfac32388c6ba87922e7f23252691d",
       currentDecoderSecret()
     );
-    animateProfileSrc(newProfileSrc);
+    setProfileImage(newProfileSrc);
     const firstTime = !gnocchiLoopActive;
     gnocchiSound.currentTime = 0;
     gnocchiSound.volume = 0.7;
@@ -334,13 +334,18 @@ function scheduleGnocchiLoop() {
 
 export const cheesecake0 = async () => {
   const name = await decryptWithPassword(
-    "80123f70aade2eea45f6654dad5eef2551fe9e2deca67b2bf4b48cf769f0578be0e144b99d424be3df445157d604101bd5d5a2a9ce8d",
+    "0b7a54cd9be71c79083042b3ae4c33337aeeb9868c787fcc620913dd6a15d1217cb1a20f12ae6197bda2fb53ae95b672cf291958c37a",
     currentDecoderSecret()
   );
   const blurb = await decryptWithPassword(
-    "a2f79d3240a046d3c7500085e91100b3765129851b6fa397469eb5e994ee22ffb2d67b984fd1759fc001609e42e9f02bcd2eef463973df29acff345a18c2851d3c4f7d76617701c67a9b4c47016311d3260f203b1b434a5ed5ac48e893a39ecd6c77f21e8407ec5443891cfa5d2fcf448ef6f9cc8ffd77cb6cd101f59b062163a915e864caf9f4fbec7321e3e0237693def76b08f044d94b98520610b6695f90e17f228b1553cfe9521e35f468720be247da",
+    "7d92414779e26a89d7efea85c151e4244015cdb18055a028f913b881d15073813b503083a68a384d2b7105b2d9770dc3041ff82ff210b4a06d689e136cbd517dae0277643da8ddd63b9f64981f26b46da4962743ab9722263ebd6e521eb225eddecbc923033f8d451f3a08ebcc7863a6f80f58d119b6fbc92c767efdded13fd71952b2c4e8d0ea756aedec4a401b91763c2e8b91a6447cadb122deb83c63e6e6ddd75e249b8d166c72bd032063343ed8b8",
+    currentDecoderSecret()
+  );
+  const image = await decryptWithPassword(
+    "ea842171dfe2f9de68869dc4b868554768f7b5518f20da97adce0228de0beee3538000dce1448d0617ed5b5f39b69e776452c017803a6504abfc8f3a757da161b08e2c035bcd273c0e3f2b5c1fed1fdcf2aa453492bb57e6275a7feb3597a9e809232ca2e6f5188b10d160",
     currentDecoderSecret()
   );
   setMyName(name);
   setBlurbStart(blurb);
+  setProfileImage(image);
 };

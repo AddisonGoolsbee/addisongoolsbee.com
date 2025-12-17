@@ -12,7 +12,7 @@ const SecretMessage: Component = () => {
       role="status"
       aria-live="polite"
     >
-      <div class="font-bold bg-black/50 text-white text-2xl p-4 rounded-lg max-w-[83.333%] text-center">
+      <div class="font-extrabold bg-black/50 text-white text-2xl sm:text-4xl p-4 rounded-lg max-w-[83.333%] text-center tracking-wide">
         {secretMessage()}
       </div>
     </div>

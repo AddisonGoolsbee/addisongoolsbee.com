@@ -81,7 +81,7 @@ export const secrets: Secret[] = [
     onUnlock: () => gnocchi(),
   },
   {
-    hash: "d67193170a4bbfacff5a347099bf95d45591d23ce87a580308c7e4a5af01fd0c",
+    hash: "624fea22c51974a45962a8d4db89ef7bed04ecf9d15961fe69a7019a69527b2f",
     onUnlock: () => cheesecake0(),
   },
 ];
