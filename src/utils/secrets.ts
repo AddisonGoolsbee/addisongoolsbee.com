@@ -11,6 +11,9 @@ import {
   waffle,
   cheesecake0,
   giveHint,
+  cheesecake1,
+  cheesecake2,
+  cheesecake3,
 } from "./handlers";
 import {
   changelogVisible,
@@ -83,5 +86,17 @@ export const secrets: Secret[] = [
   {
     hash: "624fea22c51974a45962a8d4db89ef7bed04ecf9d15961fe69a7019a69527b2f",
     onUnlock: () => cheesecake0(),
+  },
+  {
+    hash: "1ae9c4f5336214779a8b3d7795df4d0cda049a41e92572a1da4946c0f6cfac2e",
+    onUnlock: () => cheesecake1(),
+  },
+  {
+    hash: "91c703301fe7fc4e742b8df9cee991b64cef9905639a4a6b01dfe1f71d1efeef",
+    onUnlock: () => cheesecake2(),
+  },
+  {
+    hash: "8705a499ddf1933db73ff571f09876748e36bc96e1f1128a46b1220f1fa37003",
+    onUnlock: () => cheesecake3(),
   },
 ];

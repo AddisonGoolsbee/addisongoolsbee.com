@@ -117,6 +117,9 @@ export const reset = () => {
   } catch {
     // ignore
   }
+  if (typeof document !== "undefined") {
+    document.title = "Addison Goolsbee";
+  }
 };
 
 export const sandwich = () => {
@@ -343,6 +346,63 @@ export const cheesecake0 = async () => {
   );
   const image = await decryptWithPassword(
     "ea842171dfe2f9de68869dc4b868554768f7b5518f20da97adce0228de0beee3538000dce1448d0617ed5b5f39b69e776452c017803a6504abfc8f3a757da161b08e2c035bcd273c0e3f2b5c1fed1fdcf2aa453492bb57e6275a7feb3597a9e809232ca2e6f5188b10d160",
+    currentDecoderSecret()
+  );
+  setMyName(name);
+  setBlurbStart(blurb);
+  setProfileImage(image);
+};
+
+export const cheesecake1 = async () => {
+  const name = await decryptWithPassword(
+    "6c27cc99e035063d02d96cfffb44fce6c71a4458e7b9f6d56fcdca24238f83bb39ec9841c83c78fe956556eb2179b0e22d11b73ad101d4e705d7e89724a882b3e1d82c99e080b1",
+    currentDecoderSecret()
+  );
+  const blurb = await decryptWithPassword(
+    "b8efb9ce79af39f8258e09b656c8b277e7fa3bd987731705dfdcdffc5899a72e73d5685de494043916c9eac8f97692d2cafa691656239ec7bb7f62e76b1bb489e9d2e08a9b38282f1c0b66",
+    currentDecoderSecret()
+  );
+  const image = await decryptWithPassword(
+    "87ee071b96daeef3aafc54275c191aa75eee1c86a857061d8fb9936d18b7da7af9114e40478069f39a3d9703a8d164dc3d669a685624f8e776408565337b8d418771240527a8880ab5c5460f860239f8bbfe77b7025e1071d6283cf46824569a5642c7c248f38a155f941c",
+    currentDecoderSecret()
+  );
+  setMyName(name);
+  setBlurbStart(blurb);
+  setProfileImage(image);
+};
+
+export const cheesecake2 = async () => {
+  const name = await decryptWithPassword(
+    "998a77ddefd0557b65d58ad25d2ae37c03adb17b602ecb32f2296048bed327bb0e327b6e7c6da35c7e58a1aa4050739553c6411db15ce5a5d5a785a211",
+    currentDecoderSecret()
+  );
+  const blurb = await decryptWithPassword(
+    "75412929a23057a49c9f13d825c89646b6dcb7abb753fec04988fb4a0a3d9fb0cd8120878c8d5043a184f6316159cf780eb2a56b37e212ae22f4b1229b1eb58063a299ed82f6b5",
+    currentDecoderSecret()
+  );
+  const image = await decryptWithPassword(
+    "8eda3b574a0b37ce9af641d428cd63605a1c53c57721103adad6018ab1aa520214d4316d96c61a6a09344392864ae4d741e3e91f624c4e7c7625872df721e5ccce137c8f3f68a8583220fd84531d4070d29aea63be47739abd0c8b2434eeaa7ed76cb6c72e2397f2ffc86d",
+    currentDecoderSecret()
+  );
+  setMyName(name);
+  setBlurbStart(blurb);
+  setProfileImage(image);
+  if (typeof document !== "undefined") {
+    document.title = "Slungus Slim";
+  }
+};
+
+export const cheesecake3 = async () => {
+  const name = await decryptWithPassword(
+    "2835b551a74ebc790fdd1a4ba6a79f950b8a7594bd0ff8f3a52a129355a4457bd819f677b79c1d79e28c433f1bd740c7874632ea79353fc4bf9785898b3f817e4b11",
+    currentDecoderSecret()
+  );
+  const blurb = await decryptWithPassword(
+    "65ca6c325d52d0515f898968e00bbe754a69e534192b9802568e9c7db64643e2aebfdad507b1b232244ed5ebe103a765920e27ee3587f2ca7ea2d3508a1221dae25d915ac63adddc4ae4548734a5e53e311b3f56fe6c78184d9547edde8dd32e27f82cbadaed0e3a4e65831c7dd0708bba5b14bdd68f61e595d9",
+    currentDecoderSecret()
+  );
+  const image = await decryptWithPassword(
+    "32e787c67563a0708e040b5a030c7b6a0fd78ab427455b66bcbe908a46ac1b74a107f627aae437558d3f72f4cffde3f9bfde7c118ec6231f925fdaf2340a4b01db77e2fa33ec1d9450c1f181beacb7e48590dc3d977de066fafb016842b4834137845605a4c57a800fc8e3",
     currentDecoderSecret()
   );
   setMyName(name);
