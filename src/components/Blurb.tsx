@@ -165,7 +165,7 @@ const Blurb: Component<Props> = (props) => {
           </span>
         </p>
         <p class="mb-4">
-          Feeling nostalgic? You can see{" "}
+          Feeling nostalgic? You can interact with{" "}
           <a onClick={() => setChangelogVisible(!changelogVisible())} class="link">
             past versions of the site
           </a>{" "}
@@ -227,7 +227,7 @@ const Blurb: Component<Props> = (props) => {
         Reset the state of the site with 'reset'. I recommend having your sound on.
       </p>
       <p>
-        Maybe there are some secrets hidden in this very page...&nbsp;
+        Maybe there are some secrets hidden in this very window...&nbsp;
         <span class="text-transparent select-text secret-select">garbfpamfrlms</span>
       </p>
     </div>
