@@ -1,13 +1,13 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "addisongoolsbee.com",
+  "version": "1.0.0",
+  "description": "Addison Goolsbee's personal website",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "buildserve": "pnpm run build && pnpm run serve"
   },
   "license": "MIT",
   "devDependencies": {

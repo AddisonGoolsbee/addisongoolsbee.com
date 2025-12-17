@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /resume.pdf
+Disallow: /resumes/
+Sitemap: https://yourdomain.com/sitemap.xml
