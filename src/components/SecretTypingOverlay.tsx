@@ -3,7 +3,7 @@ import { Motion } from "@motionone/solid";
 import { GLOBAL_SALT, sha256 } from "../utils/cryptography";
 import { secrets } from "../utils/secrets";
 
-import { setCurrentDecoderSecret, particleImageSrc, setParticleImageSrc, setParticleEmoji } from "../signals/state";
+import { setCurrentDecoderSecret, particleImageSrc, setParticleImageSrc, setParticleEmoji } from "../utils/state";
 
 const SecretTypingOverlay = () => {
   const [typed, setTyped] = createSignal("");

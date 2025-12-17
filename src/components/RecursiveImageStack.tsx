@@ -1,5 +1,5 @@
 import { type Component, createSignal, For, Show } from "solid-js";
-import { isBlurry, recursionLevel } from "../signals/state";
+import { isBlurry, recursionLevel } from "../utils/state";
 
 type Props = {
   src: string;
@@ -29,10 +29,7 @@ const RecursiveImageStack: Component<Props> = (props) => {
   };
 
   return (
-    <div
-      class="relative w-full h-full select-none flex items-end"
-      onTouchEnd={handleTripleTap}
-    >
+    <div class="relative w-full h-full select-none flex items-end" onTouchEnd={handleTripleTap}>
       <Show when={showInput()}>
         <div class="absolute top-80 inset-0 flex items-center justify-center z-30">
           <input
@@ -68,9 +65,7 @@ const RecursiveImageStack: Component<Props> = (props) => {
                 src={props.src}
                 alt="Addison"
                 class="w-5/6 sm:w-full h-auto max-h-full object-contain opacity-0 animate-slide-up transition-opacity duration-500"
-                style={`${baseImgStyle} filter: ${
-                  isBlurry() ? "blur(8px)" : "none"
-                };`}
+                style={`${baseImgStyle} filter: ${isBlurry() ? "blur(8px)" : "none"};`}
                 decoding="async"
                 fetchpriority={index() === 0 ? "high" : "low"}
                 draggable="false"

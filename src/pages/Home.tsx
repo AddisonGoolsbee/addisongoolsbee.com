@@ -1,11 +1,4 @@
-import {
-  onMount,
-  type Component,
-  onCleanup,
-  createSignal,
-  Show,
-  createEffect,
-} from "solid-js";
+import { onMount, type Component, onCleanup, createSignal, Show, createEffect } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../components/Changelog";
@@ -23,7 +16,7 @@ import {
   setBlurbStart,
   setRecursionLevel,
   recursionLevel,
-} from "../signals/state";
+} from "../utils/state";
 import { defaultBlurbStart } from "../components/Blurb";
 import KumquatHint from "../components/KumquatHint";
 import SecretMessage from "../components/SecretMessage";
@@ -77,7 +70,7 @@ const Home: Component = () => {
     window.addEventListener("beforeprint", handlePrint);
     updateTopPoint();
 
-    fetch("/suspicious.json")
+    fetch("/suspicious.json");
 
     console.log("blurry face");
   });
@@ -127,11 +120,7 @@ const Home: Component = () => {
             partyModeActive() ? "sm:left-1/2" : "sm:left-22p"
           }`}
         >
-          <RecursiveImageStack
-            src={profileSrc()}
-            ref={imgRef}
-            onLoad={onImageLoad}
-          />
+          <RecursiveImageStack src={profileSrc()} ref={imgRef} onLoad={onImageLoad} />
         </div>
       </Show>
       <Show when={imageLoaded()}>

@@ -12,9 +12,9 @@ import {
   partyModeActive,
   setBlurbStart,
   setChangelogVisible,
-} from "../signals/state";
+} from "../utils/state";
 import HighFiveButton from "./HighFiveButton";
-import { sandwich, showSecretMessage } from "../signals/handlers";
+import { sandwich, showSecretMessage } from "../utils/handlers";
 
 type Props = {
   imgTop: number;
@@ -223,9 +223,7 @@ const Blurb: Component<Props> = (props) => {
           <span class="font-bold">Other Websites:</span> It's all here unless a hint says otherwise.
         </li>
       </ul>
-      <p class='mb-4'>
-        Reset the state of the site with 'reset'. I recommend having your sound on.
-      </p>
+      <p class="mb-4">Reset the state of the site with 'reset'. I recommend having your sound on.</p>
       <p>
         Maybe there are some secrets hidden in this very window...&nbsp;
         <span class="text-transparent select-text secret-select">garbfpamfrlms</span>

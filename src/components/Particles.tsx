@@ -1,6 +1,6 @@
 import { onCleanup, onMount, createSignal, createEffect } from "solid-js";
 import type { Component } from "solid-js";
-import { particleMode } from "../signals/state";
+import { particleMode } from "../utils/state";
 
 interface Particle {
   x: number;

@@ -1,17 +1,10 @@
-import {
-  onMount,
-  type Component,
-  onCleanup,
-  createSignal,
-  Show,
-  createEffect,
-} from "solid-js";
+import { onMount, type Component, onCleanup, createSignal, Show, createEffect } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../../../components/Changelog";
 import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
-import { toggleChangelog } from "../../../signals/state";
+import { toggleChangelog } from "../../../utils/state";
 
 const Home: Component = () => {
   useCanonical();
@@ -64,8 +57,7 @@ const Home: Component = () => {
   const sandwichMode = () => {
     const newSrc = profileSrc() === profileURL ? sandwichURL : profileURL;
     setProfileSrc(newSrc);
-    const newName =
-      myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
+    const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
     setMyName(newName);
   };
 
@@ -96,12 +88,7 @@ const Home: Component = () => {
         </div>
       </Show>
       <Show when={imageLoaded()}>
-        <Blurb
-          imgTop={topPoint()}
-          toggleChangelog={toggleChangelog}
-          sandwichMode={sandwichMode}
-          myName={myName()}
-        />
+        <Blurb imgTop={topPoint()} toggleChangelog={toggleChangelog} sandwichMode={sandwichMode} myName={myName()} />
       </Show>
       <Changelog />
     </div>

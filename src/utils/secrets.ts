@@ -10,13 +10,14 @@ import {
   gnocchi,
   waffle,
   cheesecake0,
-} from "../signals/handlers";
+  giveHint,
+} from "./handlers";
 import {
   changelogVisible,
   partyModeActive,
   setChangelogVisible,
   setPartyModeActive,
-} from "../signals/state";
+} from "./state";
 
 export interface Secret {
   hash: string;
@@ -63,6 +64,13 @@ export const secrets: Secret[] = [
   {
     hash: "32d1abff5e189d2736c4a126c7da616f51a7f569bdd2572354898c21a0271446",
     onUnlock: () => kumquat(),
+  },
+  {
+    hash: "64e2cd93723972a599b18aaf3a65de0b07925794620247d653525c2e2122da5e",
+    onUnlock: () =>
+      giveHint(
+        "0ca76bdbd3232953dfe0c1dd519c6cc0913d7943bddaee32236b5314c48fe6dc1ca1fd2d5aa4f64ab7c0a2cec9ba2a488128235456557038f1f96ae36a6d1141e89c7e7fc5312ab33d449cc3"
+      ),
   },
   {
     hash: "a00649668afccad4ce6cb6a8249a4ade8898e98395648b79e0f53c12945b72bc",

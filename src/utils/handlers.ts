@@ -17,7 +17,7 @@ import {
   setSecretMessageVisible,
   setParticleImageSrc,
 } from "./state";
-import { decryptWithPassword } from "../utils/cryptography";
+import { decryptWithPassword } from "./cryptography";
 import { defaultBlurbStart } from "../components/Blurb";
 
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -80,6 +80,12 @@ export function showSecretMessage(text: string, duration = 3000, fadeMs = 300) {
     setSecretMessageVisible(false);
     window.setTimeout(() => setSecretMessage(""), fadeMs);
   }, duration);
+}
+
+export function giveHint(encryptedHint: string) {
+  decryptWithPassword(encryptedHint, currentDecoderSecret()).then((hint) => {
+    showSecretMessage(hint);
+  });
 }
 
 export const reset = () => {

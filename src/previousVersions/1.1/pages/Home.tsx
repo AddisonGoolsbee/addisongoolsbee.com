@@ -1,11 +1,4 @@
-import {
-  onMount,
-  type Component,
-  onCleanup,
-  createSignal,
-  Show,
-  createEffect,
-} from "solid-js";
+import { onMount, type Component, onCleanup, createSignal, Show, createEffect } from "solid-js";
 import Particles from "../components/Particles";
 import Blurb from "../components/Blurb";
 import Changelog from "../../../components/Changelog";
@@ -13,7 +6,7 @@ import Navbar from "../components/Navbar";
 import { useCanonical } from "../utils/canonical";
 import Party from "../components/Party";
 import RecursiveImageStack from "../components/RecursiveImageStack";
-import { toggleChangelog } from "../../../signals/state";
+import { toggleChangelog } from "../../../utils/state";
 
 const Home: Component = () => {
   useCanonical();
@@ -43,7 +36,7 @@ const Home: Component = () => {
     setRecursionLevel(Math.min(level, isMobile ? 10 : 10));
   });
 
-  const handleRecursion = () => {  
+  const handleRecursion = () => {
     const currentLevel = recursionLevel();
     const newLevel = Math.min(currentLevel + 1, 10);
     setRecursionLevel(newLevel);
@@ -112,15 +105,9 @@ const Home: Component = () => {
       setMyName("Addison Goolsbee");
       return;
     }
-    const newSrc =
-      profileSrc() === profileURL
-        ? isSafari
-          ? sandwichGifURL
-          : sandwichURL
-        : profileURL;
+    const newSrc = profileSrc() === profileURL ? (isSafari ? sandwichGifURL : sandwichURL) : profileURL;
     setProfileSrc(newSrc);
-    const newName =
-      myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
+    const newName = myName() === "Addison Goolsbee" ? "Sandwich" : "Addison Goolsbee";
     setMyName(newName);
   };
 
@@ -131,11 +118,7 @@ const Home: Component = () => {
       </Show>
       <Particles />
 
-      <Navbar
-        toggleChangelog={toggleChangelog}
-        togglePartyMode={togglePartyMode}
-        handleRecursion={handleRecursion}
-      />
+      <Navbar toggleChangelog={toggleChangelog} togglePartyMode={togglePartyMode} handleRecursion={handleRecursion} />
 
       <Show when={isProfileLoaded()}>
         <div
@@ -143,12 +126,7 @@ const Home: Component = () => {
             partyModeActive() ? "sm:left-1/2" : "sm:left-22p"
           }`}
         >
-          <RecursiveImageStack
-            src={profileSrc()}
-            recursionLevel={recursionLevel()}
-            ref={imgRef}
-            onLoad={onImageLoad}
-          />
+          <RecursiveImageStack src={profileSrc()} recursionLevel={recursionLevel()} ref={imgRef} onLoad={onImageLoad} />
         </div>
       </Show>
       <Show when={imageLoaded()}>
@@ -160,9 +138,7 @@ const Home: Component = () => {
           myName={myName()}
         />
       </Show>
-      <Changelog
-        handleRecursion={handleRecursion}
-      />
+      <Changelog handleRecursion={handleRecursion} />
     </div>
   );
 };

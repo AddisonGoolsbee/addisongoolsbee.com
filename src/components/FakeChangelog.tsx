@@ -1,7 +1,7 @@
 import { createSignal, onMount } from "solid-js";
 import Changelog from "./Changelog";
 import { Show } from "solid-js";
-import { toggleChangelog } from "../signals/state";
+import { toggleChangelog } from "../utils/state";
 
 export const FakeChangelog = () => {
   const [changelogVisible, setChangelogVisible] = createSignal(false);

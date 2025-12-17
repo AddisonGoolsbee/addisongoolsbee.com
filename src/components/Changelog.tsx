@@ -1,6 +1,6 @@
 import { type Component, For } from "solid-js";
 import { Transition } from "solid-transition-group";
-import { changelogVisible, toggleChangelog } from "../signals/state";
+import { changelogVisible, toggleChangelog } from "../utils/state";
 import { useLocation, useNavigate } from "@solidjs/router";
 
 type Props = {

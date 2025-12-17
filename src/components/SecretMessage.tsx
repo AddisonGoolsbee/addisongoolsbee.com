@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import { secretMessage, secretMessageVisible } from "../signals/state";
+import { secretMessage, secretMessageVisible } from "../utils/state";
 
 const SecretMessage: Component = () => {
   return (
